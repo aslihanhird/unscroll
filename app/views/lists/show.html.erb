@@ -1,20 +1,37 @@
 <div class="container">
   <div class="mt-2 mb-5">
-    <h1 class="text-end list"><%= @list.name %> list</h1>
+    <h1 class="text-end text-list-post"><%= @list.name %> list</h1>
   </div>
-  <ul>
+
+
+    <% posts_left_to_see = @list.all_posts.count %>
     <% @list.all_posts.each do |post| %>
-    <div class="d-flex justify-content-between">
-      <div class="d-flex align-item-left">
-        <p class="me-3"><%= post.insta_profile_id %></p>
-        <p><%= post.insta_profile_id %></p>
+      <div class="post">
+
+        <div class="d-flex justify-content-between mb-2">
+            <div class="d-flex align-items-left align-items-center">
+                <%= image_tag("#{post.insta_profile.profile_picture_url}", class: "me-2 img-profile") %>
+                <p class="remove-margin-bottom"><%= post.insta_profile.username  %></p>
+            </div>
+            <div>
+              <%= link_to "Save", lists_path, class: "button-dark d-flex align-items-center" %>
+            </div>
+        </div>
+        <%= image_tag(post.media_url, class:"mb-2 img-post") %>
+        <p><%= post.caption %></p>
+        <% posts_left_to_see -= 1 %>
+        <% if posts_left_to_see == 0 %>
+          <div class="center-margin-300">
+            <h2 class="mb-3">You saw all the post of <%= @list.name %></h2>
+            <%= link_to "See all the lists", lists_path, class: "mb-2 button-dark" %>
+            <%= link_to "Stop scrolling", lists_path, class: "button-transparent"%>
+          </div>
+          <% else %>
+            <div class="test">
+              <p class=""><%= posts_left_to_see %> Posts to see</p>
+            </div>
+        <% end %>
       </div>
-      <div><a href="#" class="btn btn-dark"><i class="fa-solid fa-plus me-1"></i>Save</a></div>
-    </div>
-      <li class="single-post">
-        <img src="<%= post.media_url %>" alt="A post" class="mb-2">
-        <%= post.caption %>
-      </li>
     <% end %>
-  </ul>
+
 </div>
