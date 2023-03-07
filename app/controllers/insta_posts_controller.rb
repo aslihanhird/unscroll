@@ -3,10 +3,7 @@ class InstaPostsController < ApplicationController
     list = List.find(params[:list_id])
     list.insta_profiles.each do |profile|
       posts_data = posts_from_api(profile.insta_id)
-      posts_data.first(5).each do |post|
-        caption = post['node']['edge_media_to_caption']['edges'][0]["node"]['text']
-        raise
-        new_post = Post.new()
+      posts_data.first(5).each { |post| post_maker(post) } if posts_data
       end
     end
   end
@@ -26,12 +23,18 @@ class InstaPostsController < ApplicationController
     # return 'error' if response.status != 200
 
     parse_result = JSON.parse(response.body)
+    return false if parse_result['status'] == "error"
+
     parse_result['data']['user']['edge_owner_to_timeline_media']['edges']
   end
 
   def post_maker(post)
-    @insta_post = InstaPost.new()
-    @insta_post.save
+    new_post = InstaPost.new()
+    new_post.caption = post['node']['edge_media_to_caption']['edges'][0]["node"]['text']
+    new_post.media_url = post['node']['display_url']
+    new_post.timestamp = post['node']['taken_at_timestamp']
+    new_post.insta_profile = profile
+    new_post.save
   end
 
 end
