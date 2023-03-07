@@ -1,0 +1,10 @@
+<h1>Edit <%= @list.name %></h1>
+
+<ul>
+  <% @list.insta_profiles.each do |insta| %>
+    <li><%= insta.username %></li>
+  <% end %>
+</ul>
+
+
+<%# Put a form here or something, idk %>
