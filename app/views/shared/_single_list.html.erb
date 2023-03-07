@@ -1,15 +1,29 @@
 
-<div class="list-wrapper">
-  <div class="list-icon">
+<div class="list-wrapper" data-controller="list">
+  <div class="list-icon" data-action="click->list#showOptions" data-list-target="viewOptions">
     <i class="fa-solid fa-gear"></i> <span class="">options</span>
   </div>
 
-<%= link_to list_path(list) do  %>
-  <div class="list-main-content">
-    <h3><%= list.name %></h3>
-    <p class="list-main-subtext">
-      <%= list.insta_posts.size %> new updates.
-    </p>
+  <div class="list-icon d-none" data-action="click->list#showOptions" data-list-target="back">
+    <i class="fa-solid fa-arrow-left"></i> <span class="">back</span>
   </div>
-<% end %>
+
+  <%= link_to list_path(list), data: {list_target: "main"} do  %>
+    <div class="list-main-content">
+      <h3><%= list.name %></h3>
+      <p class="list-main-subtext">
+        <%= list.insta_posts.size %> new updates.
+      </p>
+    </div>
+  <% end %>
+
+  <%# TODO: Add the accurate links %>
+  <div class="list-main-content list-options d-none" data-list-target="options">
+    <div class="list-edit">
+      <h3>Edit</h3>
+    </div>
+    <div class="list-delete">
+      <h3>Delete</h3>
+    </div>
+  </div>
 </div>

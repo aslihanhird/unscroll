@@ -21,6 +21,11 @@
   padding: 1em 1.5em;
   border-radius: 5px;
   color: white;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
 
   h3 {
@@ -34,4 +39,16 @@
 .list-main-subtext {
   margin: 0;
   opacity: .65;
+}
+
+.list-options {
+  display: flex;
+  height: 100px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.list-edit, .list-delete {
+  width: 50%;
+  text-align: center;
 }
