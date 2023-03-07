@@ -9,4 +9,5 @@ class InstaPostsController < ApplicationController
   def insta_post_params
     param.require(:insta_post).permit(:caption, :media_url, :timestamp)
   end
+
 end
