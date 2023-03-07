@@ -1,0 +1,15 @@
+
+<div class="list-wrapper">
+  <div class="list-icon">
+    <i class="fa-solid fa-gear"></i> <span class="">options</span>
+  </div>
+
+<%= link_to list_path(list) do  %>
+  <div class="list-main-content">
+    <h3><%= list.name %></h3>
+    <p class="list-main-subtext">
+      <%= list.insta_posts.size %> new updates.
+    </p>
+  </div>
+<% end %>
+</div>

@@ -1,0 +1,37 @@
+.list-wrapper {
+  margin: 0 0 1.5em 0;
+  padding: 0;
+  width: 100%;
+}
+
+.list-wrapper > a:hover {
+  opacity: .3;
+}
+
+.list-icon {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.list-main-content {
+  background-image: linear-gradient(to bottom right, var(--yellow), var(--light-red));
+  padding: 1em 1.5em;
+  border-radius: 5px;
+  color: white;
+
+
+  h3 {
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+}
+
+.list-main-subtext {
+  margin: 0;
+  opacity: .65;
+}
