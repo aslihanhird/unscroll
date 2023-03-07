@@ -1,3 +1,8 @@
 <div class="container">
   <h1>This is a show for the <%= @list.name %> list</h1>
+  <ul>
+    <% @list.all_posts.each do |post| %>
+      <li><%= post.caption %></li>
+    <% end %>
+  </ul>
 </div>
