@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   before_action :set_list, only: %i[show edit update destroy]
   def index
-    @lists = List.all
+    @lists = current_user.lists
   end
 
   def show
@@ -13,6 +13,13 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.user = current_user
+
+    if @list.save
+      redirect_to list_path(@list)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
