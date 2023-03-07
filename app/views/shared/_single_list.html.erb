@@ -1,11 +1,11 @@
 
 <div class="list-wrapper" data-controller="list">
   <div class="list-icon" data-action="click->list#showOptions" data-list-target="viewOptions">
-    <i class="fa-solid fa-gear"></i> <span class="">options</span>
+    <i class="fa-solid fa-gear"></i> <span class="icon-text">options</span>
   </div>
 
   <div class="list-icon d-none" data-action="click->list#showOptions" data-list-target="back">
-    <i class="fa-solid fa-arrow-left"></i> <span class="">back</span>
+    <i class="fa-solid fa-arrow-left"></i> <span class="icon-text">back</span>
   </div>
 
   <%= link_to list_path(list), data: {list_target: "main"} do  %>

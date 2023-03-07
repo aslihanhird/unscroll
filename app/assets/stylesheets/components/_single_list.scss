@@ -12,8 +12,13 @@
   display: flex;
   justify-content: end;
   align-items: center;
-  margin: 0;
+  margin: 0 0 .5em 0;
   padding: 0;
+  color:rgba(0, 0, 0, 0.3);
+}
+
+.list-icon:hover {
+  cursor: pointer;
 }
 
 .list-main-content {
@@ -51,4 +56,9 @@
 .list-edit, .list-delete {
   width: 50%;
   text-align: center;
+}
+
+.icon-text {
+  margin-left: .75em;
+  margin-right: .5em;
 }
