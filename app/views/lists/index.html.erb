@@ -3,6 +3,6 @@
   <h1>This is the list index</h1>
 
   <% @lists.each do |list| %>
-    <%= list.name %>
+    <%= link_to list.name, list_path(list) %>
   <% end %>
 </div>
