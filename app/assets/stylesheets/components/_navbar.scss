@@ -1,3 +1,22 @@
+.mobile-navbar {
+  height: 50px;
+  width: 100%;
+  background-color: var(--dark);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.force-bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.navbar-icon {
+  color: white;
+}
+
+
 .navbar-lewagon {
   justify-content: space-between;
   background: white;

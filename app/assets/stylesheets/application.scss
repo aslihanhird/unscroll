@@ -10,3 +10,17 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+:root {
+  --light: #EFF7FF;
+  --dark: #161315;
+  --dark-blue: #2E4052;
+  --yellow: #FFC857;
+  --light-red: #EF626C;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
