@@ -1,4 +1,4 @@
 class InstaPost < ApplicationRecord
-  belongs_to :insta_profile, dependent: :destroy
-  
+  belongs_to :insta_profile
+
 end
