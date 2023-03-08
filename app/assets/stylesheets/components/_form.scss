@@ -1,0 +1,23 @@
+.unscroll-form {
+  padding: 1em;
+  margin-top: 2em;
+
+  a {
+    color: var(--dark-blue-50);
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 1.5em;
+  }
+}
+
+.unscroll-form-input {
+  background-color: white;
+
+  &:focus {
+    border: 1px solid var(--yellow);
+    background-color: white;
+  }
+}

@@ -1,0 +1,20 @@
+.unscroll-btn {
+  border-radius: 3px;
+  width: 100%;
+  padding: 6px 12px;
+  text-align: center;
+}
+
+.unscroll-btn-primary {
+  background-color: var(--light-red);
+  color: var(--light);
+}
+
+.unscroll-btn-ghost {
+  border: 1px solid var(--light-red);
+  color: var(--light-red);
+}
+
+.shadowed {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
