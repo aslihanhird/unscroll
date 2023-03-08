@@ -1,10 +1,13 @@
-<h1>Edit <%= @list.name %></h1>
+<div class="container">
+  <h1>Edit <%= @list.name %></h1>
 
-<ul>
-  <% @list.insta_profiles.each do |insta| %>
-    <li><%= insta.username %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @list.insta_profiles.each do |insta| %>
+      <li><%= insta.username %></li>
+    <% end %>
+  </ul>
 
-
-<%# Put a form here or something, idk %>
+  <%= link_to 'Add a profile', new_list_insta_profile_path(@list), class: "btn btn-outline-dark rounded-3" %>
+  <%= link_to 'Back to list', list_path(@list), class: "btn btn-outline-dark rounded-3" %>
+  <%# Put a form here or something, idk %>
+</div>

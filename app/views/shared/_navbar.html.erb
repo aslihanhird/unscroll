@@ -7,26 +7,18 @@
     </div>
 
     <div>
-      <%= link_to "#", class: "navbar-icon" do %>
+      <%= link_to lists_path, class: "navbar-icon" do %>
       <i class="fa-solid fa-list"></i>
       <% end %>
     </div>
 
     <div>
-      <%= link_to "#", class: "navbar-icon" do %>
+      <%= link_to profile_path, class: "navbar-icon" do %>
         <i class="fa-solid fa-user"></i>
       <% end %>
     </div>
 
-    <%# Temporary logout button untill JavaScript is fixed %>
 
-    <div>
-      <%= link_to destroy_user_session_path,
-          data: {turbo_method: :delete},
-          class: "navbar-icon" do %>
-        <i class="fa-solid fa-xmark"></i>
-      <% end %>
-    </div>
 
   <% else %>
     <%= link_to "Click here to log in", new_user_session_path, class: "navbar-icon" %>

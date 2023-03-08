@@ -10,9 +10,9 @@
   </div>
 
   <%# TODO: Make this a link %>
-  <div class="new-list-btn">
-    <i class="fa-solid fa-plus"></i>
-  </div>
+  <%= link_to new_list_path do %>
+    <div class="new-list-btn shadowed">
+      <i class="fa-solid fa-plus"></i>
+    </div>
+  <% end %>
 </div>
-
-<%= link_to "New", new_list_path %>

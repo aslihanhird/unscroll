@@ -1,0 +1,13 @@
+<div class="profile-wrapper">
+  <div class="container">
+    <%= link_to :back do %>
+      <div class="profile-close">
+        <i class="fa-solid fa-x"></i>
+      </div>
+    <% end %>
+
+    <h1><%= current_user.username %>'s profile</h1>
+
+    <%= render "shared/log-out" %>
+  </div>
+</div>

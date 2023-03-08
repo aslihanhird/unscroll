@@ -1,0 +1,14 @@
+.profile-wrapper {
+  background-color: var(--dark);
+  color: var(--light);
+  min-height: 100vh;
+  padding-top: 2em;
+}
+
+.profile-close {
+  color: var(--light-red);
+  display: inline;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+}
