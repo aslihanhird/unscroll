@@ -4,10 +4,8 @@
 
 import { application } from "./application"
 
+import InstaPostController from "./insta_post_controller"
+application.register("insta-post", InstaPostController)
+
 import ListController from "./list_controller"
 application.register("list", ListController)
-
-
-import ScrollTo from 'stimulus-scroll-to'
-const application = Application.start()
-application.register('scroll-to', ScrollTo)
