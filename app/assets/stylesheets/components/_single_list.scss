@@ -1,3 +1,102 @@
+.list-item-wrapper {
+  display: flex;
+  height: 75px;
+  margin: .7em 0em;
+
+  a {
+    width: 100%;
+    color: $gray;
+    text-decoration: none;
+  }
+}
+
+.list-item-main {
+  background-color: white;
+  display: grid;
+  height: 100%;
+  grid-template-columns: 6fr 2fr 1fr;
+  flex-grow: 1;
+  padding: 1.5em .75em;
+
+  h4 {
+    font-family: $accent-font;
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+  }
+
+  .greyed-out {
+    color: $subtle-gray;
+  }
+
+  .light-green {
+    color: $light-green;
+  }
+
+  .list-item-name {
+    display: flex;
+    align-items: center;
+  }
+
+  .list-item-updates {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.list-item-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $subtle-gray;
+  font-size: .7em;
+}
+
+.icon-wrapper {
+  margin-right: 1.5em;
+  color: $subtle-gray;
+  display: flex;
+  align-items: center
+}
+
+.list-item-updates {
+  font-size: .7em;
+  color: $subtle-gray;
+}
+
+.list-item-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+
+  .list-edit, .list-delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: .75em;
+    color: $subtle-gray;
+  }
+
+  .list-edit {
+    background-color: white;
+  }
+
+  .list-delete {
+    background-color: $light-gray;
+  }
+
+  i {
+    margin-right: .5em;
+  }
+
+}
+
+
+
+
+
+// OLD CODE CLEAN UP
 .list-wrapper {
   margin: 0 0 1.5em 0;
   padding: 0;

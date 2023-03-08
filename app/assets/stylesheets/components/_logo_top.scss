@@ -3,8 +3,20 @@
   display: flex;
   justify-content: center;
   padding: 10px 0px;
+
 }
 
 .logo-link-wrapper {
   width: 150px;
+  text-align: center;
+  font-size: 1.5em;
+  border-bottom: 1px solid $subtle-gray;
+
+  .regular-text {
+    font-family: "Roboto", sans-serif;
+  }
+
+  a {
+    color: $subtle-gray;
+  }
 }

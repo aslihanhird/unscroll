@@ -11,6 +11,7 @@
 @import "components/index";
 @import "pages/index";
 
+// Variables
 :root {
   --light: #EFF7FF;
   --dark: #161315;
@@ -26,4 +27,8 @@
 
 a {
   text-decoration: none;
+}
+
+body {
+  font-size: 16px;
 }

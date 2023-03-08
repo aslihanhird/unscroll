@@ -1,33 +1,78 @@
 
-<div class="list-wrapper" data-controller="list">
+<div class="list-item-wrapper">
+  <div class="icon-wrapper">
+    <i class="fa-solid fa-gear"></i>
+  </div>
+
+  <%= link_to list_path(list), class: "d-none" do %>
+    <div class="list-item-main <%= "shadowed" if list.insta_posts.size > 0 %>">
+      <div class="list-item-name <%= "greyed-out" if list.insta_posts.size <= 0 %>">
+        <h4><%= list.name.downcase %></h4>
+      </div>
+
+      <div class="list-item-updates">
+            <% if list.insta_posts.size > 0 %>
+              <%= list.insta_posts.size %> updates
+            <% else %>
+              up to date
+            <% end %>
+      </div>
+
+      <div class="list-item-icon">
+        <% if list.insta_posts.size > 0 %>
+          <i class="fa-solid fa-arrow-right-long"></i>
+        <% else %>
+          <i class="fa-solid fa-check light-green"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="list-item-options shadowed">
+    <div class="list-edit">
+      <i class="fa-solid fa-plus"></i>  add profiles
+    </div>
+    <div class="list-delete">
+      <i class="fa-regular fa-trash-can"></i>  delete list
+    </div>
+  </div>
+
+
+
+</div>
+
+
+<%# <div class="list-wrapper" data-controller="list">
   <div class="list-icon" data-action="click->list#showOptions" data-list-target="viewOptions">
     <i class="fa-solid fa-gear"></i> <span class="icon-text">options</span>
   </div>
 
   <div class="list-icon d-none" data-action="click->list#showOptions" data-list-target="back">
     <i class="fa-solid fa-arrow-left"></i> <span class="icon-text">back</span>
-  </div>
+  </div> %>
 
-  <%= link_to list_path(list), data: {list_target: "main"} do  %>
-    <div class="list-main-content">
-      <h3><%= list.name %></h3>
-      <p class="list-main-subtext">
-        <%= list.insta_posts.size %> new updates.
-      </p>
-    </div>
-  <% end %>
+  <%# <%= link_to list_path(list), data: {list_target: "main"} do  %>
+    <%# <div class="list-main-content">
+      <h3><%= list.name %>
+      <%# </h3> %>
+      <%# <p class="list-main-subtext"> %>
+        <%# <%= list.insta_posts.size %>
+        <%# new updates. %>
+      <%# </p> %>
+    <%# </div> %>
+  <%# <% end %>
 
   <%# TODO: Add the accurate links %>
-  <div class="list-main-content list-options d-none" data-list-target="options">
+  <%# <div class="list-main-content list-options d-none" data-list-target="options">
     <div class="list-edit">
       <%= link_to edit_list_path(list) do %>
-        <h3>Edit</h3>
+        <%# <h3>Edit</h3>
       <% end %>
-    </div>
+    <%# </div>
     <div class="list-delete">
       <%= link_to list_path(list), data: {turbo_method: "delete", turbo_confirm: "Ya Sure?"} do %>
-        <h3>Delete</h3>
+        <%# <h3>Delete</h3>
       <% end %>
-    </div>
+    <%# </div>
   </div>
-</div>
+</div> %>

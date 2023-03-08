@@ -1,7 +1,10 @@
-<%= render "shared/logo-top" %>
+<div class="main-background"></div>
+
 <div class="container pt-4">
-  <h1>Hello <%= current_user.username %>!</h1>
-  <h2>Here are your lists for today.</h2>
+  <h1 class="welcome-message">Welcome, <span class="italic-accent"><%= current_user.username %></span>.</h1>
+  <h2 class="subheader">Let's get you up to date with your social media.</h2>
+
+  <h3 class="your-lists">Your lists</h3>
 
   <div class="lists-wrapper">
     <% @lists.each do |list| %>
