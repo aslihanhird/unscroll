@@ -21,8 +21,9 @@
                 <%= image_tag("#{post.insta_profile.profile_picture_url}", class: "me-2 img-profile") %>
                 <p class="remove-margin-bottom"><%= post.insta_profile.username  %></p>
             </div>
-            <div>
-              <%= link_to "Save", lists_path, class: "button-dark d-flex align-items-center" %>
+            <div class="d-flex justify-content-between align-items-center">
+              <i class="fa-brands fa-instagram"></i>
+              <%= link_to "Save", lists_path, class: "button-dark ms-3" %>
             </div>
         </div>
 
