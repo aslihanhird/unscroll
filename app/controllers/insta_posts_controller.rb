@@ -6,8 +6,6 @@ class InstaPostsController < ApplicationController
     list.insta_profiles.each do |profile|
       profile.insta_posts.each(&:destroy)
       response = posts_from_api(profile.insta_id)
-      call_successful?(response)
-      # if fetch successful
       if call_successful?(response)
         posts_data = response['data']['user']['edge_owner_to_timeline_media']['edges']
         posts_data.first(15).each { |post| post_maker(post, profile) }
@@ -38,44 +36,32 @@ class InstaPostsController < ApplicationController
   end
 
   def post_maker(post, profile)
+    new_post = base_post_maker(post, profile)
+
     case post['node']['__typename']
     when "GraphImage"
-      image_post_builder(post, profile)
+      new_post.media_url = post['node']['display_url']
+      new_post.photo.attach(io: URI.open(new_post.media_url), filename: "#{new_post.id}-content.png", content_type: "image/png")
     when "GraphVideo"
-      video_post_builder(post, profile)
+      new_post.media_url = post['node']['video_url']
+      new_post.video.attach(io: URI.open(new_post.media_url), filename: "#{new_post.id}-content.mp4", content_type: "video/mp4")
     else
       # eventually, carousel
       return
     end
+
+    new_post.save
   end
 
-  def image_post_builder(post, profile)
+  def base_post_maker(post, profile)
     new_post = InstaPost.new
     if post['node']['edge_media_to_caption']['edges'].empty?
       new_post.caption = "No caption"
     else
       new_post.caption = post['node']['edge_media_to_caption']['edges'][0]["node"]['text']
     end
-    new_post.media_url = post['node']['display_url']
     new_post.timestamp = post['node']['taken_at_timestamp']
     new_post.insta_profile = profile
-    new_post.save
-    file = URI.open(new_post.media_url)
-    new_post.photo.attach(io: file, filename: "#{new_post.id}-content.png", content_type: "image/png")
-  end
-
-  def video_post_builder(post, profile)
-    new_post = InstaPost.new
-    if post['node']['edge_media_to_caption']['edges'].empty?
-      new_post.caption = "No caption"
-    else
-      new_post.caption = post['node']['edge_media_to_caption']['edges'][0]["node"]['text']
-    end
-    new_post.media_url = post['node']['video_url']
-    new_post.timestamp = post['node']['taken_at_timestamp']
-    new_post.insta_profile = profile
-    new_post.save
-    file = URI.open(new_post.media_url)
-    new_post.video.attach(io: file, filename: "#{new_post.id}-content.mp4", content_type: "video/mp4")
+    new_post
   end
 end
