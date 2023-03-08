@@ -1,35 +1,46 @@
-<%= render "shared/logo-top" %>
-
-<div class="container">
+<div class="container main-padding">
   <div class="row">
     <div class="col-sm-12 col-sm-4 col-sm-offset-4">
 
       <div class="unscroll-form">
-          <h1>Sign up</h1>
+            <h1>Let's <span class="italic-accent underline">create</span> a new account.</h1>
 
             <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
               <%= f.error_notification %>
 
               <div class="form-inputs">
                 <%= f.input :username,
-                            required: true,
+                            required: false,
                             autofocus: true,
-                            input_html: { autocomplete: "username", class: "unscroll-form-input" }%>
+                            label: "username",
+                            input_html: { autocomplete: "username", class: "unscroll-form-input shadowed-subtle" },
+                            label_html: { class: "unscroll-form-label"}
+                            %>
+
                 <%= f.input :email,
-                            required: true,
+                            required: false,
                             autofocus: true,
-                            input_html: { autocomplete: "email", class: "unscroll-form-input" }%>
+                            label: "e-mail",
+                            input_html: { autocomplete: "email", class: "unscroll-form-input shadowed-subtle" },
+                            label_html: { class: "unscroll-form-label"}
+                            %>
                 <%= f.input :password,
-                            required: true,
+                            required: false,
+                            label: "password",
                             hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                            input_html: { autocomplete: "new-password", class: "unscroll-form-input" } %>
+                            input_html: { autocomplete: "new-password", class: "unscroll-form-input shadowed-subtle" },
+                            label_html: { class: "unscroll-form-label" }
+                            %>
                 <%= f.input :password_confirmation,
-                            required: true,
-                            input_html: { autocomplete: "new-password", class: "unscroll-form-input" } %>
+                            required: false,
+                            label: "password confirmation",
+                            input_html: { autocomplete: "new-password", class: "unscroll-form-input shadowed-subtle" },
+                            label_html: { class: "unscroll-form-label" }
+                            %>
               </div>
 
               <div class="form-actions">
-                <%= f.button :submit, "Sign up",
+                <%= f.button :submit, "Create my account",
                              class: "unscroll-btn unscroll-btn-primary shadowed mb-3" %>
               </div>
             <% end %>

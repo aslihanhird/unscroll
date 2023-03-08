@@ -1,0 +1,36 @@
+.main-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, rgba(217, 217, 217, 1.0), rgba(255, 255, 255, 1.0));
+  z-index: -1000;
+}
+
+.main-padding {
+  padding: 2em;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.shadowed {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.shadowed-subtle {
+  box-shadow: rgba(0, 0, 0, 0.8), 0px 1px 6px;
+}
+
+.divider {
+  width: 100px;
+  padding: 3em 0;
+}
+
+.center-fullpage {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+}
