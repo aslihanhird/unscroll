@@ -1,12 +1,12 @@
 <div class="container">
   <div class="mt-2 mb-5">
-    <h1 class="text-end text-list-post"><%= @list.name %> list</h1>
+    <h1 class="text-start text-list-post"><%= @list.name %> list</h1>
   </div>
 
 
     <% posts_left_to_see = @list.all_posts.count %>
     <% @list.all_posts.each do |post| %>
-      <div class="post">
+      <div class="post-card">
 
         <div class="d-flex justify-content-between mb-2">
             <div class="d-flex align-items-left align-items-center">
@@ -22,12 +22,12 @@
         <% posts_left_to_see -= 1 %>
         <% if posts_left_to_see == 0 %>
           <div class="center-margin-300">
-            <h2 class="mb-3">You saw all the post of <%= @list.name %></h2>
+            <h2 class="mb-5">You saw all the post of <%= @list.name %></h2>
             <%= link_to "See all the lists", lists_path, class: "mb-2 button-dark" %>
             <%= link_to "Stop scrolling", lists_path, class: "button-transparent"%>
           </div>
           <% else %>
-            <div class="test">
+            <div class="post-counter">
               <p class=""><%= posts_left_to_see %> Posts to see</p>
             </div>
         <% end %>
