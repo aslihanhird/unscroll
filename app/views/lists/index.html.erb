@@ -1,8 +1,18 @@
-<div class="container">
-  <%= render "shared/logo-top" %>
-  <h1>This is the list index</h1>
+<%= render "shared/logo-top" %>
+<div class="container pt-4">
+  <h1>Hello <%= current_user.username %>!</h1>
+  <h2>Here are your lists for today.</h2>
 
-  <% @lists.each do |list| %>
-    <%= link_to list.name, list_path(list) %>
-  <% end %>
+  <div class="lists-wrapper">
+    <% @lists.each do |list| %>
+      <%= render "shared/single_list", list: list %>
+    <% end %>
+  </div>
+
+  <%# TODO: Make this a link %>
+  <div class="new-list-btn">
+    <i class="fa-solid fa-plus"></i>
+  </div>
 </div>
+
+<%= link_to "New", new_list_path %>

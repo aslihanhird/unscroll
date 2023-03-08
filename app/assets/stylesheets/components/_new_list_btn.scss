@@ -1,0 +1,21 @@
+.new-list-btn {
+  background-color: var(--light-red);
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+
+  // Flex utilities
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // Positioning
+  position: fixed;
+  bottom: 65px;
+  right: 15px;
+
+  i {
+    font-size: 2em;
+    color: var(--light);
+  }
+}

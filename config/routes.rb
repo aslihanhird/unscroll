@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :lists, only: %i[index show]
+  resources :lists do
+    resources :insta_profiles, only: %i[index new create]
+  end
 end
