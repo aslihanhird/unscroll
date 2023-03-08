@@ -18,6 +18,8 @@ class InstaProfilesController < ApplicationController
 
     new_insta_profile = define_new_insta_profile(response, @list)
     if new_insta_profile.save
+      file = URI.open(new_insta_profile.profile_picture_url)
+      new_insta_profile.photo.attach(io: file, filename: "#{new_insta_profile.username}_profile.png", content_type: "image/png")
       redirect_to list_path(@list)
     else
       render :new, status: :unprocessable_entity
