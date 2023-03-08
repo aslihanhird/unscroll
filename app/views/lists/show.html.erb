@@ -1,9 +1,10 @@
-    <div class="pe-3 ps-3 edit-section">
-      <h1 class="text-list"><%= @list.name %> list</h1>
-      <%= link_to edit_list_path(@list), class: 'link' do %>
-        <i class="fa-regular fa-pen-to-square"></i> Edit
-      <% end %>
-    </div>
+  <div class="pe-3 ps-3 edit-section">
+    <h1 class="text-list"><%= @list.name %> list</h1>
+    <%= link_to edit_list_path(@list), class: 'link' do %>
+      <i class="fa-regular fa-pen-to-square"></i> Edit
+    <% end %>
+    <%= link_to "Refresh", insta_posts_path(list_id: @list.id), data: {turbo_method: "post"} %>
+  </div>
 
 <div class="pt-4 container post-card">
 
@@ -23,7 +24,7 @@
             </div>
         </div>
 
-        <%= image_tag(post.media_url, class:"mb-2 img-post") %>
+        <%# <%= cl_image_tag(post.photo.key, class:"mb-2 img-post") %>
         <p><%= post.caption %></p>
 
         <% posts_left_to_see -= 1 %>
@@ -34,7 +35,7 @@
             <%= link_to "See all the lists", lists_path, class: "mb-2 button-dark" %>
             <%= link_to "Stop scrolling", lists_path, class: "button-transparent"%>
           </div>
-          
+
           <% else %>
             <div class="post-counter">
               <%= link_to "Jump to next post", "##{post_index_position}", data: { controller: "scroll-to"}, class: 'button-transparent' %>
