@@ -1,10 +1,16 @@
 
-<div class="list-item-wrapper">
-  <div class="icon-wrapper">
+<div class="list-item-wrapper" data-controller="list">
+  <div class="icon-wrapper" data-action="click->list#showOptions" data-list-target="viewOptions">
     <i class="fa-solid fa-gear"></i>
   </div>
 
-  <%= link_to list_path(list), class: "d-none" do %>
+  <div class="icon-wrapper d-none" data-action="click->list#showOptions" data-list-target="back">
+    <i class="fa-solid fa-xmark"></i>
+  </div>
+
+
+
+  <%= link_to list_path(list), data: {list_target: "main"} do %>
     <div class="list-item-main <%= "shadowed" if list.insta_posts.size > 0 %>">
       <div class="list-item-name <%= "greyed-out" if list.insta_posts.size <= 0 %>">
         <h4><%= list.name.downcase %></h4>
@@ -28,12 +34,16 @@
     </div>
   <% end %>
 
-  <div class="list-item-options shadowed">
+  <div class="list-item-options shadowed d-none" data-list-target="options">
     <div class="list-edit">
-      <i class="fa-solid fa-plus"></i>  add profiles
+      <%= link_to edit_list_path(list) do %>
+        <i class="fa-solid fa-plus"></i>add profiles
+      <% end %>
     </div>
     <div class="list-delete">
-      <i class="fa-regular fa-trash-can"></i>  delete list
+      <%= link_to list_path(list), data: {turbo_method: "delete", turbo_confirm: "Do you really want to delete this list?"} do %>
+        <i class="fa-regular fa-trash-can"></i>delete list
+      <% end %>
     </div>
   </div>
 

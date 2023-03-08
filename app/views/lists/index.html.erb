@@ -1,6 +1,4 @@
-<div class="main-background"></div>
-
-<div class="container pt-4">
+<div class="container main-padding">
   <h1 class="welcome-message">Welcome, <span class="italic-accent"><%= current_user.username %></span>.</h1>
   <h2 class="subheader">Let's get you up to date with your social media.</h2>
 
@@ -12,10 +10,7 @@
     <% end %>
   </div>
 
-  <%# TODO: Make this a link %>
-  <%= link_to new_list_path do %>
-    <div class="new-list-btn shadowed">
-      <i class="fa-solid fa-plus"></i>
-    </div>
+  <%= link_to new_list_path, class: "unscroll-btn-sm unscroll-btn-primary fixed-bottom-right" do %>
+      create new list
   <% end %>
 </div>
