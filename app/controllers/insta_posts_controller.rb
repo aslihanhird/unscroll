@@ -1,3 +1,5 @@
+require "open-uri"
+
 class InstaPostsController < ApplicationController
   def create
     list = List.find(params[:list_id])
@@ -44,6 +46,8 @@ class InstaPostsController < ApplicationController
     new_post.timestamp = post['node']['taken_at_timestamp']
     new_post.insta_profile = profile
     new_post.save
+    file = URI.open(new_post.media_url)
+    new_post.photo.attach(io: file, filename: "#{new_post.id}-content.png", content_type: "image/png")
+    p new_post.photo
   end
-
 end
