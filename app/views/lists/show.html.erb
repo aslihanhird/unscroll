@@ -3,7 +3,9 @@
     <%= link_to edit_list_path(@list), class: 'link' do %>
       <i class="fa-regular fa-pen-to-square"></i> Edit
     <% end %>
-    <%= link_to "Refresh", insta_posts_path(list_id: @list.id), data: {turbo_method: "post"} %>
+    <%= link_to insta_posts_path(list_id: @list.id), data: {turbo_method: "post"}, class: 'link' do %>
+      <i class="fa-sharp fa-solid fa-retweet"></i> Refresh
+    <% end %>
   </div>
 
 <div class="pt-4 container post-card">
@@ -33,7 +35,6 @@
           <div class="center-margin-300">
             <h2 class="mb-5">You saw all the post of <%= @list.name %></h2>
             <%= link_to "See all the lists", lists_path, class: "mb-2 button-dark" %>
-            <%= link_to "Stop scrolling", lists_path, class: "button-transparent"%>
           </div>
 
           <% else %>
