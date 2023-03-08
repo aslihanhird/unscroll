@@ -13,6 +13,7 @@ class InstaPostsController < ApplicationController
         posts_data.first(15).each { |post| post_maker(post, profile) }
       end
     end
+    redirect_to list_path(list)
   end
 
   private
