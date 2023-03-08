@@ -23,3 +23,14 @@
 .shadowed-subtle {
   box-shadow: rgba(0, 0, 0, 0.8), 0px 1px 6px;
 }
+
+.divider {
+  width: 100px;
+  padding: 3em 0;
+}
+
+.center-fullpage {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+}
