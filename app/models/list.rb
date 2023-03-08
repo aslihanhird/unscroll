@@ -13,6 +13,6 @@ class List < ApplicationRecord
         posts.push(post)
       end
     end
-    posts
+    posts.sort_by { |p| p.timestamp.to_i }.reverse
   end
 end

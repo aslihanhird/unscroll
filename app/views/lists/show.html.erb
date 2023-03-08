@@ -6,6 +6,7 @@
     <%= link_to "Refresh", insta_posts_path(list_id: @list.id), data: {turbo_method: "post"} %>
   </div>
 
+
 <div class="pt-4 container post-card">
 
     <% posts_left_to_see = @list.all_posts.count %>
@@ -16,7 +17,7 @@
 
         <div class="d-flex justify-content-between mb-2">
             <div class="d-flex align-items-left align-items-center">
-                <%= image_tag("#{post.insta_profile.profile_picture_url}", class: "me-2 img-profile") %>
+                <%= cl_image_tag(post.insta_profile.photo.key, class: "me-2 img-profile") %>
                 <p class="remove-margin-bottom"><%= post.insta_profile.username  %></p>
             </div>
             <div>
