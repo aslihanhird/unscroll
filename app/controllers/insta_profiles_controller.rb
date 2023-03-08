@@ -13,14 +13,11 @@ class InstaProfilesController < ApplicationController
   end
 
   def create
-    @user_data = find_insta_profile(insta_profile_params[:username])
-    id = @user_data['id']
-    profile_pic_url = @user_data['profile_pic_url_hd']
-    username = @user_data['username']
-    insta_profile = InstaProfile.new(username: username, insta_id: id, profile_picture_url: profile_pic_url)
-    insta_profile.list = @list
+    response = find_insta_profile(insta_profile_params[:username])
+    return error_messages(response) unless call_succeeded?(response)
 
-    if insta_profile.save
+    new_insta_profile = define_new_insta_profile(response, @list)
+    if new_insta_profile.save
       redirect_to list_path(@list)
     else
       render :new, status: :unprocessable_entity
@@ -43,6 +40,16 @@ class InstaProfilesController < ApplicationController
     params.require(:insta_profile).permit(:username)
   end
 
+  def define_new_insta_profile(response, list)
+    user_data = response['data']['user']
+    id = user_data['id']
+    profile_pic_url = user_data['profile_pic_url_hd']
+    username = user_data['username']
+    new_insta_profile = InstaProfile.new(username: username, insta_id: id, profile_picture_url: profile_pic_url)
+    new_insta_profile.list = list
+    return new_insta_profile
+  end
+
   def request_insta_id_from_api(url)
     response = Excon.get(
       url,
@@ -51,15 +58,26 @@ class InstaProfilesController < ApplicationController
         'X-RapidAPI-Key' => ENV.fetch('RAPIDAPI_API_KEY')
       }
     )
-    # return 'error' if response.status != 200
-
-    parse_result = JSON.parse(response.body)
-    @user_data = parse_result['data']['user']
+    return JSON.parse(response.body)
   end
 
   def find_insta_profile(profile_name)
     request_insta_id_from_api(
       "https://instagram-data12.p.rapidapi.com/user/details-by-username/?username=#{profile_name}"
     )
+  end
+
+  def call_succeeded?(response)
+    errors = ['error', 'fail']
+    return false if errors.include?(response['status'])
+
+    true
+  end
+
+  def error_messages(response)
+    error_message = response['message']
+    @insta_profile = InstaProfile.new
+    @insta_profile.errors.add(:username, error_message)
+    return render :new, status: :unprocessable_entity
   end
 end
