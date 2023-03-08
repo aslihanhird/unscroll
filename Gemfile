@@ -50,6 +50,8 @@ gem "sassc-rails"
 
 # Custom gems
 gem "excon"
+gem "cloudinary"
+
 
 gem "devise"
 gem "autoprefixer-rails"
