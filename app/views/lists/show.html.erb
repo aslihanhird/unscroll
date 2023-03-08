@@ -1,11 +1,13 @@
   <div class="pe-3 ps-3 edit-section">
     <h1 class="text-list"><%= @list.name %> list</h1>
-    <%= link_to edit_list_path(@list), class: 'link' do %>
-      <i class="fa-regular fa-pen-to-square"></i> Edit
-    <% end %>
-    <%= link_to insta_posts_path(list_id: @list.id), data: {turbo_method: "post"}, class: 'link' do %>
-      <i class="fa-sharp fa-solid fa-retweet"></i> Refresh
-    <% end %>
+    <div class="d-flex justify-content-between">
+      <%= link_to edit_list_path(@list), class: 'link' do %>
+        <i class="fa-regular fa-pen-to-square"></i> Edit
+      <% end %>
+      <%= link_to insta_posts_path(list_id: @list.id), data: {turbo_method: "post"}, class: 'link' do %>
+        <i class="fa-sharp fa-solid fa-retweet ms-3"></i> Refresh
+      <% end %>
+    </div>
   </div>
 
 <div class="pt-4 container post-card">
