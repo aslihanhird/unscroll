@@ -6,3 +6,8 @@ import { application } from "./application"
 
 import ListController from "./list_controller"
 application.register("list", ListController)
+
+
+import ScrollTo from 'stimulus-scroll-to'
+const application = Application.start()
+application.register('scroll-to', ScrollTo)
