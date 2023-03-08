@@ -11,3 +11,15 @@
 .main-padding {
   padding: 2em;
 }
+
+.underline {
+  text-decoration: underline;
+}
+
+.shadowed {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.shadowed-subtle {
+  box-shadow: rgba(0, 0, 0, 0.8), 0px 1px 6px;
+}
