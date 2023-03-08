@@ -16,10 +16,3 @@
     </div>
   <% end %>
 </div>
-
-<%= cl_video_tag("sea_turtles",
-  :loop => true, :controls => true,
-  :transformation => [
-    :height=>360, :width=>480, :crop=>"pad",
-    :quality=>70, :duration=>"10"],
-  :fallback_content => "Your browser does not support HTML5 video tags." ) %>
