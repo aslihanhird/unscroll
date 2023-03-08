@@ -1,7 +1,19 @@
-.text-list-post {
+.edit-section {
+  height: 50px;
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+}
+.text-list {
   color: black;
   opacity: .5;
   font-size: 16px;
+  margin: 0;
 }
 
 .img-profile {
@@ -13,6 +25,7 @@
 .post-card {
   width: 500px;
   margin: auto;
+  margin-top: 50px;
   margin-bottom: 350px;
   box-sizing: border-box;
 
@@ -68,5 +81,17 @@
 
 .post-counter {
   margin-top: 150px;
+  margin-bottom: 150px;
   text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+
+
+  &:hover {
+    color: black;
+    opacity: .5;
+  }
 }
