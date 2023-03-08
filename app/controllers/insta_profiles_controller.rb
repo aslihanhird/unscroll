@@ -17,7 +17,6 @@ class InstaProfilesController < ApplicationController
     return error_messages(response) unless call_succeeded?(response)
 
     new_insta_profile = define_new_insta_profile(response, @list)
-
     if new_insta_profile.save
       redirect_to list_path(@list)
     else
@@ -52,7 +51,6 @@ class InstaProfilesController < ApplicationController
   end
 
   def request_insta_id_from_api(url)
-
     response = Excon.get(
       url,
       headers: {
