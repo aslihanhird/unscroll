@@ -14,21 +14,11 @@ class InstaProfilesController < ApplicationController
 
   def create
     response = find_insta_profile(insta_profile_params[:username])
-    if call_succeeded?(response)
-      user_data = response['data']['user']
-      id = user_data['id']
-      profile_pic_url = user_data['profile_pic_url_hd']
-      username = user_data['username']
-      insta_profile = InstaProfile.new(username: username, insta_id: id, profile_picture_url: profile_pic_url)
-      insta_profile.list = @list
-    else
-      error_message = response['message']
-      @insta_profile = InstaProfile.new
-      @insta_profile.errors.add(:username, error_message)
-      return render :new, status: :unprocessable_entity
-    end
+    return error_messages(response) unless call_succeeded?(response)
 
-    if insta_profile.save
+    new_insta_profile = define_new_insta_profile(response, @list)
+
+    if new_insta_profile.save
       redirect_to list_path(@list)
     else
       render :new, status: :unprocessable_entity
@@ -49,6 +39,16 @@ class InstaProfilesController < ApplicationController
 
   def insta_profile_params
     params.require(:insta_profile).permit(:username)
+  end
+
+  def define_new_insta_profile(response, list)
+    user_data = response['data']['user']
+    id = user_data['id']
+    profile_pic_url = user_data['profile_pic_url_hd']
+    username = user_data['username']
+    new_insta_profile = InstaProfile.new(username: username, insta_id: id, profile_picture_url: profile_pic_url)
+    new_insta_profile.list = list
+    return new_insta_profile
   end
 
   def request_insta_id_from_api(url)
@@ -74,5 +74,12 @@ class InstaProfilesController < ApplicationController
     return false if errors.include?(response['status'])
 
     true
+  end
+
+  def error_messages(response)
+    error_message = response['message']
+    @insta_profile = InstaProfile.new
+    @insta_profile.errors.add(:username, error_message)
+    return render :new, status: :unprocessable_entity
   end
 end
