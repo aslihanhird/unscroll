@@ -11,6 +11,7 @@ class InstaPostsController < ApplicationController
         posts_data.first(5).each { |post| post_maker(post, profile) }
       end
     end
+    redirect_to list_path(list)
   end
 
 
@@ -29,6 +30,7 @@ class InstaPostsController < ApplicationController
 
     parse_result = JSON.parse(response.body)
     if errors.include?(parse_result['status'])
+      puts "FAILED TO FETCH"
       return false
     end
 
