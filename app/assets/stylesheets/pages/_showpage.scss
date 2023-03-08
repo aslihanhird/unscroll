@@ -17,8 +17,8 @@
 }
 
 .img-profile {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
@@ -30,6 +30,10 @@
 
 }
 
+.post {
+  overflow: hidden;
+}
+
 .img-post {
   border-radius: 10px;
   width: 100%;
@@ -39,7 +43,7 @@
 
 .button-dark {
   background-color: black;
-  padding: 8px 15px;
+  padding: 5px 15px;
   border-radius: 30px;
   text-decoration: none;
   text-align: center;
@@ -78,12 +82,6 @@
   margin-bottom: 300px;
 }
 
-.post-counter {
-  margin-top: 150px;
-  margin-bottom: 500px;
-  text-align: center;
-}
-
 .link {
   text-decoration: none;
   color: black;
@@ -93,4 +91,8 @@
     color: black;
     opacity: .5;
   }
+}
+
+.margin-bottom-caption {
+  margin-bottom: 200px;
 }
