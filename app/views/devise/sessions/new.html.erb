@@ -1,13 +1,10 @@
-<%= render "shared/logo-top" %>
-
-
-<div class="container">
+<div class="container main-padding">
   <div class="row">
     <div class="col-sm-12 col-sm-4 col-sm-offset-4">
 
       <div class="unscroll-form">
 
-            <h1>Log in</h2>
+            <h1>Let's <span class="italic-accent underline">log in</span> to your account.</h1>
 
             <%= simple_form_for(resource,
                                 as: resource_name,
@@ -17,10 +14,16 @@
                 <%= f.input :email,
                             required: false,
                             autofocus: true,
-                            input_html: { autocomplete: "email", class: "unscroll-form-input"} %>
+                            label: "e-mail",
+                            input_html: { autocomplete: "email", class: "unscroll-form-input shadowed-subtle"},
+                            label_html: { class: "unscroll-form-label"}
+                            %>
                 <%= f.input :password,
                             required: false,
-                            input_html: { autocomplete: "current-password", class: "unscroll-form-input" } %>
+                            label: "password",
+                            input_html: { autocomplete: "current-password", class: "unscroll-form-input shadowed-subtle" },
+                            label_html: { class: "unscroll-form-label"}
+                            %>
                 <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
               </div>
 

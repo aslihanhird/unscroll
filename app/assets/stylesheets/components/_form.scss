@@ -3,12 +3,12 @@
   margin-top: 2em;
 
   a {
-    color: var(--dark-blue-50);
+    color: $subtle-gray;
   }
 
   h1 {
-    text-align: center;
-    font-weight: 600;
+    font-style: italic;
+    font-weight: 400;
     margin-bottom: 1.5em;
   }
 }
@@ -17,7 +17,11 @@
   background-color: white;
 
   &:focus {
-    border: 1px solid var(--yellow);
     background-color: white;
   }
+}
+
+.unscroll-form-label {
+  color: $subtle-gray;
+  font-family: $accent-font;
 }
