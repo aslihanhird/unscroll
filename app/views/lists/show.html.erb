@@ -27,7 +27,7 @@
             </div>
         </div>
         <%= cl_image_tag(post.photo.key, class:"mb-2 img-post") %>
-        <p><%= post.caption %></p>
+        <p class="margin-bottom-caption"><%= post.caption %></p>
         <% posts_left_to_see -= 1 %>
         <% if posts_left_to_see == 0 %>
           <div class="center-margin-300">
@@ -35,9 +35,6 @@
             <%= link_to "See all the lists", lists_path, class: "mb-2 button-transparent" %>
           </div>
           <% else %>
-            <div class="post-counter">
-              <%= link_to "Jump to next post", "##{post_index_position}", data: { controller: "scroll-to"}, class: 'button-transparent' %>
-            </div>
         <% end %>
       </div>
     <% end %>
