@@ -1,4 +1,17 @@
-<%= simple_form_for @list do |f| %>
-  <%= f.input :name %>
-  <%= f.submit %>
-<% end %>
+<%= render "shared/logo-top" %>
+
+
+<div class="container">
+  <h1>Let's create a new list!</h1>
+
+  <%= simple_form_for @list do |f| %>
+    <%= f.input :name,
+          label: "What is your list about?",
+          placeholder: "Music, photography, development, ...",
+          hint_html: { class: 'input-hint' },
+          hint: "Unscrollers generally describe their lists with 1 or 2 words.",
+          class: "new-list-input"
+      %>
+    <%= f.submit %>
+  <% end %>
+</div>
