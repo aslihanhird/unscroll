@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+.unscroll-btn-sm {
+  border-radius: 3px;
+  padding: 6px 12px;
+  text-align: center;
+}
+
 .unscroll-btn-primary {
   background-color: var(--light-red);
   color: var(--light);
@@ -17,4 +23,10 @@
 
 .shadowed {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.fixed-bottom-right {
+  position: fixed;
+  bottom: 65px;
+  right: 15px;
 }
