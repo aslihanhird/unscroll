@@ -1,18 +1,33 @@
-<h2>Forgot your password?</h2>
+<%= render "shared/logo-top" %>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-sm-4 col-sm-offset-4">
+
+      <div class="unscroll-form">
+          <h1>Forgot your password?</h1>
+
+          <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="form-inputs">
+              <%= f.input :email,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "email", class: "unscroll-form-input"} %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Send me reset password instructions",
+                          class: "unscroll-btn unscroll-btn-primary shadowed mb-3" %>
+            </div>
+          <% end %>
+
+          <%= render "devise/shared/links" %>
+
+
+        </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
