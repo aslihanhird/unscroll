@@ -35,3 +35,5 @@
       </div>
     <% end %>
 </div>
+
+<%= link_to "Add to List", insta_posts_path(list_id: @list.id), data: {turbo_method: "post"} %>

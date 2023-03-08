@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     resources :insta_profiles, only: %i[index new create]
   end
 
+  resources :insta_posts, only: :create
+  
   get "/profile", to: "pages#profile"
 end
