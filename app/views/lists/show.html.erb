@@ -14,10 +14,12 @@
 <div class="pt-4 container post-card">
     <% posts_left_to_see = @list.all_posts.count %>
     <% post_index_position = 1 %>
+
     <% @list.all_posts.each do |post| %>
       <% post_index_position += 1 %>
-      <div id="<%=post_index_position - 1%>">
-        <div class="d-flex justify-content-between mb-2">
+
+      <div id="<%=post_index_position - 1%>" data-controller="next" data-next-target="post">
+        <div class="profile-d-flex justify-content-between mb-2">
             <div class="d-flex align-items-left align-items-center">
                 <%= cl_image_tag(post.insta_profile.photo.key, class: "me-2 img-profile") %>
                 <p class="remove-margin-bottom"><%= post.insta_profile.username  %></p>
@@ -34,7 +36,8 @@
           <%= cl_image_tag(post.photo.key, class:"mb-2 img-post") %>
         <% end %>
         <p class="margin-bottom-caption"><%= post.caption %></p>
-
+        <button data-action="click->next#nextPost">Click me</button>
+        <button data-action="click->next#previousPost">Click</button>
         <% posts_left_to_see -= 1 %>
         <% if posts_left_to_see == 0 %>
           <div class="center-margin-300">

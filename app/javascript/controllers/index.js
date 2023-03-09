@@ -7,3 +7,5 @@ import { application } from "./application"
 import ListController from "./list_controller"
 application.register("list", ListController)
 
+import NextController from "./next_controller"
+application.register("next", NextController)
