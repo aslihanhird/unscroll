@@ -11,7 +11,7 @@
             <%= insta.username %>
           </div>
           <div>
-            <%= link_to "#", class: 'link-delete', data: {turbo_method: :delete} do %>
+            <%= link_to insta_profile_path(insta), data: {turbo_method: :delete, turbo_confirm: 'U sure buddy?'}, class: 'link-delete' do %>
               <i class="fa-solid fa-trash"></i>
             <% end %>
           </div>

@@ -29,7 +29,7 @@ class InstaProfilesController < ApplicationController
   def destroy
     @insta_profile = InstaProfile.find(params[:id])
     @insta_profile.destroy
-    # redirect to where ??
+    redirect_to edit_list_path
   end
 
   def profile_added

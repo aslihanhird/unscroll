@@ -1,10 +1,12 @@
+
 <div class="profile-d-flex justify-content-between mb-2">
-            <div class="d-flex align-items-left align-items-center">
-                <%= cl_image_tag(post.insta_profile.photo.key, class: "me-2 img-profile") %>
-                <p class="remove-margin-bottom"><%= post.insta_profile.username  %></p>
-            </div>
-            <div class="d-flex justify-content-between align-items-center">
-              <i class="fa-brands fa-instagram"></i>
-              <%= link_to "Save", lists_path, class: "link button-dark ms-3" %>
-            </div>
-        </div>
+    <div class="d-flex align-items-left align-items-center">
+        <%= cl_image_tag(post.insta_profile.photo.key, class: "me-2 img-profile") %>
+        <p class="remove-margin-bottom"><%= post.insta_profile.username  %></p>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <i class="fa-brands fa-instagram"></i>
+      <%= link_to "Save", favourite_insta_posts_path(insta_post_id: post.id), data: { turbo_method: :post }, class: "button-dark ms-3" %>
+    </div>
+</div>
+
