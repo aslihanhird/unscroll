@@ -17,18 +17,11 @@
     <% @list.all_posts.each do |post| %>
       <% post_index_position += 1 %>
       <div id="<%=post_index_position - 1%>">
-        <div class="d-flex justify-content-between mb-2">
-            <div class="d-flex align-items-left align-items-center">
-                <%= cl_image_tag(post.insta_profile.photo.key, class: "me-2 img-profile") %>
-                <p class="remove-margin-bottom"><%= post.insta_profile.username  %></p>
-            </div>
-            <div class="d-flex justify-content-between align-items-center">
-              <i class="fa-brands fa-instagram"></i>
-
-              <%= link_to "Save", favourite_insta_posts_path(insta_post_id: post.id), data: { turbo_method: :post }, class: "button-dark ms-3" %>
-
-            </div>
-        </div>
+        <% if post.class == InstaPost %>
+          <%= render "insta_card_top", post: post %>
+        <% else %>
+          <%= render "twit_card_top", post: post %>
+        <% end %>
 
         <% if post.video.attached? %>
           <%= cl_video_tag(post.video.key, class: "mb-2 img-post", preload: "none", controls: true) %>
