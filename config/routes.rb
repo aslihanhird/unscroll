@@ -8,10 +8,13 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :lists do
     resources :insta_profiles, only: %i[index new create]
+    resources :twitter_profiles, only: %i[new create]
+    
     get "/profile-added", to: "insta_profiles#profile_added"
   end
 
   resources :insta_posts, only: :create
+  resources :twitter_posts, only: :create
 
   get "/profile", to: "pages#profile"
 end
