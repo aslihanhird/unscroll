@@ -1,39 +1,56 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= render "shared/back-button" %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+<div class="container main-padding">
+  <div class="row">
+    <div class="col-sm-12 col-sm-4 col-sm-offset-4">
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+      <div class="unscroll-form">
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+            <h1>Let's <span class="italic-accent underline">edit</span> your profile.</h1>
 
-    <%= f.input :username,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-username" } %>
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="form-inputs">
+              <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    label: "e-mail",
+                    input_html: { class: "unscroll-form-input shadowed-subtle" },
+                    label_html: { class: "unscroll-form-label" }%>
+
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
+
+              <%= f.input :username,
+                          hint: "leave it blank if you don't want to change it",
+                          required: false,
+                          input_html: { autocomplete: "new-username", class: "unscroll-form-input shadowed-subtle" },
+                          label_html: { class: "unscroll-form-label" } %>
+              <%= f.input :password,
+                          hint: "leave it blank if you don't want to change it",
+                          required: false,
+                          input_html: { autocomplete: "new-password", class: "unscroll-form-input shadowed-subtle"  },
+                          label_html: { class: "unscroll-form-label" } %>
+              <%= f.input :password_confirmation,
+                          required: false,
+                          input_html: { autocomplete: "new-password", class: "unscroll-form-input shadowed-subtle" },
+                          label_html: { class: "unscroll-form-label" } %>
+              <%= f.input :current_password,
+                          hint: "we need your current password to confirm your changes",
+                          required: true,
+                          input_html: { autocomplete: "current-password", class: "unscroll-form-input shadowed-subtle" },
+                          label_html: { class: "unscroll-form-label" } %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit,
+                            "Update profile",
+                            class: "unscroll-btn unscroll-btn-primary shadowed mb-3" %>
+            </div>
+          <% end %>
+        </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</div>

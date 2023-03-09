@@ -1,13 +1,12 @@
-<div class="profile-wrapper">
-  <div class="container">
-    <%= link_to :back do %>
-      <div class="profile-close">
-        <i class="fa-solid fa-x"></i>
-      </div>
-    <% end %>
+<%= render "shared/back-button" %>
+<div class="container main-padding">
 
-    <h1><%= current_user.username %>'s profile</h1>
+  <h1 class="welcome-message"><span class="italic-accent"><%= current_user.username %></span>'s profile.</h1>
 
-    <%= render "shared/log-out" %>
-  </div>
+  <%= link_to edit_user_registration_path, class: "unscroll-btn unscroll-btn-primary mt-3 mb-3" do %>
+    Change username or password
+  <% end %>
+
+  <%= render "shared/log-out" %>
+
 </div>

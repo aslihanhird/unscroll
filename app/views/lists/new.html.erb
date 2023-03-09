@@ -1,17 +1,20 @@
-<%= render "shared/logo-top" %>
+<div class="center-fullpage">
+  <div class="container main-padding">
+    <h1 class="mb-5">Let's <span class="italic-accent underline">create</span> a new list.</h1>
 
-
-<div class="container">
-  <h1>Let's create a new list!</h1>
-
-  <%= simple_form_for @list do |f| %>
-    <%= f.input :name,
-          label: "What is your list about?",
-          placeholder: "Music, photography, development, ...",
-          hint_html: { class: 'input-hint' },
-          hint: "Unscrollers generally describe their lists with 1 or 2 words.",
-          class: "new-list-input"
-      %>
-    <%= f.submit %>
-  <% end %>
+    <%= simple_form_for @list do |f| %>
+      <%= f.input :name,
+            label: "What is your list about?",
+            placeholder: "Music, photography, development, ...",
+            hint: "Unscrollers generally describe their lists with 1 or 2 words.",
+            input_html: { class: "unscroll-form-input shadowed-subtle"},
+            hint_html: { class: 'input-hint' },
+            label_html: { class: 'unscroll-form-label'},
+            class: "new-list-input"
+        %>
+      <%= f.button :submit,
+            "create list",
+            class: "unscroll-btn unscroll-btn-primary shadowed mt-3" %>
+    <% end %>
+  </div>
 </div>

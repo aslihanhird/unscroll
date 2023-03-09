@@ -2,67 +2,96 @@
   height: 50px;
   width: 100%;
   background-color: white;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $subtle-gray;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   top: 0;
+  box-shadow: rgba(0, 0, 0, 0.8), 0px 1px 6px;
+  .text-list {
+    color: $subtle-gray;
+    font-family: $headers-font;
+    font-size: 16px;
+    margin: 0;
+  }
+  i {
+    background-color: transparent;
+    padding: 7px;
+    border-radius: 15%;
+    border: 1px solid $subtle-gray;
+  }
 }
-.text-list {
+
+.link {
+  text-decoration: none;
   color: black;
-  opacity: .5;
+  font-family: $body-font;
   font-size: 16px;
-  margin: 0;
+  &:hover {
+    color: black;
+    opacity: .5;
+  }
 }
 
 .img-profile {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
 .post-card {
-  width: 500px;
+  width: 100%;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 25px;
   box-sizing: border-box;
 
+  .img-post {
+    border-radius: 10px;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  p {
+    font-family: $body-font;
+  }
+
+  h2 {
+    font-family: $accent-font;
+    font-style: italic;
+  }
 }
 
-.img-post {
-  border-radius: 10px;
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-}
 
 .button-dark {
-  background-color: black;
-  padding: 8px 15px;
+  background-color: $primary-color;
+  padding: 5px 15px;
   border-radius: 30px;
   text-decoration: none;
   text-align: center;
   color: white;
+  transition: 0.5s ease;
 
   &:hover {
-    color: black;
-    background-color: white;
+    color: white;
+    opacity: .7;
+    background-color: $primary-color;
   }
 }
 
-.button-transparent {
-  background-color: transparent;
-  padding: 7px 15px;
+.button-gray {
+  background-color: $subtle-gray;
+  padding: 10px 15px;
   border-radius: 30px;
-  border: 1px solid black;
   text-decoration: none;
   text-align: center;
-  color: black;
+  color: white;
+  transition: 0.5s ease;
 
   &:hover {
     color: black;
-    opacity: .5;
+    opacity: .7;
   }
 }
 
@@ -71,26 +100,14 @@
 }
 
 .center-margin-300 {
-  width: 500px;
+  width: 100%;
   margin: auto;
   text-align: center;
   margin-top: 300px;
   margin-bottom: 300px;
 }
 
-.post-counter {
-  margin-top: 150px;
-  margin-bottom: 500px;
-  text-align: center;
-}
 
-.link {
-  text-decoration: none;
-  color: black;
-
-
-  &:hover {
-    color: black;
-    opacity: .5;
-  }
+.margin-bottom-caption {
+  margin-bottom: 200px;
 }

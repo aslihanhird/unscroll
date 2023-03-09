@@ -2,13 +2,23 @@
   <h1 class="welcome-message">Welcome, <span class="italic-accent"><%= current_user.username %></span>.</h1>
   <h2 class="subheader">Let's get you up to date with your social media.</h2>
 
-  <h3 class="your-lists">Your lists</h3>
+  <% if @lists.size > 0 %>
+    <h3 class="your-lists">Your lists</h3>
 
-  <div class="lists-wrapper">
-    <% @lists.each do |list| %>
-      <%= render "shared/single_list", list: list %>
-    <% end %>
-  </div>
+    <div class="lists-wrapper">
+      <% @lists.each do |list| %>
+        <%= render "shared/single_list", list: list %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="divider">
+      <hr>
+    </div>
+    <h3 class="no-lists-info">
+    You have no lists yet. How about you <span class="italic-accent underline"><%= link_to "create one", new_list_path %></span>?</h3>
+
+
+  <% end %>
 
   <%= link_to new_list_path, class: "unscroll-btn-sm unscroll-btn-primary fixed-bottom-right" do %>
       create new list

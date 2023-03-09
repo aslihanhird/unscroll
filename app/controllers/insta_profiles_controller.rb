@@ -1,9 +1,9 @@
-require 'uri'
+require 'open-uri'
 require 'net/http'
 require 'openssl'
 
 class InstaProfilesController < ApplicationController
-  before_action :set_list, only: %i[new create]
+  before_action :set_list, only: %i[new create profile_added]
   def index
     @insta_profiles = current_user.list
   end
@@ -20,7 +20,7 @@ class InstaProfilesController < ApplicationController
     if new_insta_profile.save
       file = URI.open(new_insta_profile.profile_picture_url)
       new_insta_profile.photo.attach(io: file, filename: "#{new_insta_profile.username}_profile.png", content_type: "image/png")
-      redirect_to list_path(@list)
+      redirect_to list_profile_added_path(@list)
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,6 +30,10 @@ class InstaProfilesController < ApplicationController
     @insta_profile = InstaProfile.find(params[:id])
     @insta_profile.destroy
     # redirect to where ??
+  end
+
+  def profile_added
+
   end
 
   private
@@ -42,14 +46,10 @@ class InstaProfilesController < ApplicationController
     params.require(:insta_profile).permit(:username)
   end
 
-  def define_new_insta_profile(response, list)
-    user_data = response['data']['user']
-    id = user_data['id']
-    profile_pic_url = user_data['profile_pic_url_hd']
-    username = user_data['username']
-    new_insta_profile = InstaProfile.new(username: username, insta_id: id, profile_picture_url: profile_pic_url)
-    new_insta_profile.list = list
-    return new_insta_profile
+  def find_insta_profile(profile_name)
+    request_insta_id_from_api(
+      "https://instagram-data12.p.rapidapi.com/user/details-by-username/?username=#{profile_name}"
+    )
   end
 
   def request_insta_id_from_api(url)
@@ -61,12 +61,6 @@ class InstaProfilesController < ApplicationController
       }
     )
     return JSON.parse(response.body)
-  end
-
-  def find_insta_profile(profile_name)
-    request_insta_id_from_api(
-      "https://instagram-data12.p.rapidapi.com/user/details-by-username/?username=#{profile_name}"
-    )
   end
 
   def call_succeeded?(response)
@@ -81,5 +75,15 @@ class InstaProfilesController < ApplicationController
     @insta_profile = InstaProfile.new
     @insta_profile.errors.add(:username, error_message)
     return render :new, status: :unprocessable_entity
+  end
+
+  def define_new_insta_profile(response, list)
+    user_data = response['data']['user']
+    id = user_data['id']
+    profile_pic_url = user_data['profile_pic_url_hd']
+    username = user_data['username']
+    new_insta_profile = InstaProfile.new(username: username, insta_id: id, profile_picture_url: profile_pic_url)
+    new_insta_profile.list = list
+    return new_insta_profile
   end
 end

@@ -3,6 +3,7 @@
   width: 100%;
   padding: 6px 12px;
   text-align: center;
+  display: block;
 }
 
 .unscroll-btn-sm {
@@ -12,21 +13,27 @@
 }
 
 .unscroll-btn-primary {
-  background-color: var(--light-red);
+  background-color: $primary-color;
   color: var(--light);
 }
 
 .unscroll-btn-ghost {
-  border: 1px solid var(--light-red);
-  color: var(--light-red);
-}
-
-.shadowed {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border: 1px solid $primary-color;
+  color: $primary-color;
 }
 
 .fixed-bottom-right {
   position: fixed;
   bottom: 65px;
   right: 15px;
+}
+
+.back-button-wrapper {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+
+  a {
+    color: $primary-color;
+  }
 }
