@@ -98,71 +98,11 @@
 }
 
 
-
-
-
-// OLD CODE CLEAN UP
-.list-wrapper {
-  margin: 0 0 1.5em 0;
-  padding: 0;
-  width: 100%;
-}
-
-.list-wrapper > a:hover {
-  opacity: .3;
-}
-
-.list-icon {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin: 0 0 .5em 0;
-  padding: 0;
-  color:rgba(0, 0, 0, 0.3);
-}
-
-.list-icon:hover {
-  cursor: pointer;
-}
-
-.list-main-content {
-  background-image: linear-gradient(to bottom right, var(--yellow), var(--light-red));
-  padding: 1em 1.5em;
-  border-radius: 5px;
-  color: white;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-
-
-  h3 {
-    margin: 0;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-
-}
-
-.list-main-subtext {
-  margin: 0;
-  opacity: .65;
-}
-
-.list-options {
-  display: flex;
-  height: 100px;
-  flex-direction: row;
-  align-items: center;
+.opacity-0 {
+  opacity: 0;
 }
 
 .list-edit, .list-delete {
   width: 50%;
   text-align: center;
-}
-
-.icon-text {
-  margin-left: .75em;
-  margin-right: .5em;
 }
