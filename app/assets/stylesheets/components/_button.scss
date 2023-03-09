@@ -13,17 +13,27 @@
 }
 
 .unscroll-btn-primary {
-  background-color: var(--light-red);
+  background-color: $primary-color;
   color: var(--light);
 }
 
 .unscroll-btn-ghost {
-  border: 1px solid var(--light-red);
-  color: var(--light-red);
+  border: 1px solid $primary-color;
+  color: $primary-color;
 }
 
 .fixed-bottom-right {
   position: fixed;
   bottom: 65px;
   right: 15px;
+}
+
+.back-button-wrapper {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+
+  a {
+    color: $primary-color;
+  }
 }

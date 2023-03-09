@@ -16,7 +16,7 @@
   height: 100%;
   grid-template-columns: 6fr 2fr 1fr;
   flex-grow: 1;
-  padding: 1.5em .75em;
+  padding: 1.5em .75em 1.5em 1.2em;
   width: 100%;
 
   h4 {
@@ -61,7 +61,8 @@
   margin-right: 1.5em;
   color: $subtle-gray;
   display: flex;
-  align-items: center
+  align-items: center;
+  min-width: 16px;
 }
 
 .list-item-updates {
