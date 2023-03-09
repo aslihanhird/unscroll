@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :lists do
     resources :insta_profiles, only: %i[index new create]
     resources :twitter_profiles, only: %i[new create]
-    
+
     get "/profile-added", to: "insta_profiles#profile_added"
   end
 
@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   get "/profile", to: "pages#profile"
   get '/favourites', to: "favourite_lists#show"
 
-  resources :favourite_insta_posts, only: %i[new create destroy]
+  resources :favourite_insta_posts, only: %i[create destroy]
+  resources :favourite_twitter_posts, only: %i[create destroy]
 end
