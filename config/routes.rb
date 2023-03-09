@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :controllers
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -10,6 +11,6 @@ Rails.application.routes.draw do
   end
 
   resources :insta_posts, only: :create
-  
+
   get "/profile", to: "pages#profile"
 end
