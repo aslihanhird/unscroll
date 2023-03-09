@@ -24,7 +24,7 @@ class FavouriteInstaPostsController < ApplicationController
   private
 
   def check_favourite_profile(og_insta_post)
-    checked_insta_profile = FavouriteInstaProfile.find_by(username: og_insta_post.insta_profile)
+    checked_insta_profile = FavouriteInstaProfile.find_by(username: og_insta_post.insta_profile.username)
     return checked_insta_profile if checked_insta_profile != nil
 
     og_insta_profile = InstaProfile.find_by(username: og_insta_post.insta_profile.username)
