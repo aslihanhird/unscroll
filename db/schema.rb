@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_141720) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_153059) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,6 +96,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_141720) do
     t.index ["user_id"], name: "index_favourite_posts_on_user_id"
   end
 
+  create_table "favourite_twitter_posts", force: :cascade do |t|
+    t.string "caption"
+    t.string "media_url"
+    t.string "timestamp"
+    t.bigint "favourite_twitter_profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favourite_twitter_profile_id"], name: "index_favourite_twitter_posts_on_favourite_twitter_profile_id"
+  end
+
+  create_table "favourite_twitter_profiles", force: :cascade do |t|
+    t.string "username"
+    t.string "profile_picture_url"
+    t.string "twitter_id"
+    t.bigint "favourite_list_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favourite_list_id"], name: "index_favourite_twitter_profiles_on_favourite_list_id"
+  end
+
   create_table "insta_posts", force: :cascade do |t|
     t.string "caption"
     t.string "media_url"
@@ -162,6 +183,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_141720) do
   add_foreign_key "favourite_insta_profiles", "favourite_lists"
   add_foreign_key "favourite_lists", "users"
   add_foreign_key "favourite_posts", "users"
+  add_foreign_key "favourite_twitter_posts", "favourite_twitter_profiles"
+  add_foreign_key "favourite_twitter_profiles", "favourite_lists"
   add_foreign_key "insta_posts", "insta_profiles"
   add_foreign_key "insta_profiles", "lists"
   add_foreign_key "lists", "users"
