@@ -8,12 +8,24 @@
   align-items: center;
   position: fixed;
   top: 0;
+
+  .text-list {
+    color: black;
+    font-family: $headers-font;
+    opacity: .5;
+    font-size: 16px;
+    margin: 0;
+  }
 }
-.text-list {
+
+.link {
+  text-decoration: none;
   color: black;
-  opacity: .5;
-  font-size: 16px;
-  margin: 0;
+  font-family: $body-font;
+  &:hover {
+    color: black;
+    opacity: .5;
+  }
 }
 
 .img-profile {
@@ -25,17 +37,26 @@
 .post-card {
   width: 100%;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 25px;
   box-sizing: border-box;
 
+  .img-post {
+    border-radius: 10px;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  p {
+    font-family: $body-font;
+  }
+
+  h2 {
+    font-family: $accent-font;
+    font-style: italic;
+  }
 }
 
-.img-post {
-  border-radius: 10px;
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-}
 
 .button-dark {
   background-color: black;
@@ -78,16 +99,6 @@
   margin-bottom: 300px;
 }
 
-.link {
-  text-decoration: none;
-  color: black;
-
-
-  &:hover {
-    color: black;
-    opacity: .5;
-  }
-}
 
 .margin-bottom-caption {
   margin-bottom: 200px;
