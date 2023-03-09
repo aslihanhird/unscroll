@@ -1,0 +1,62 @@
+#edit-page {
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  margin-top: 25px;
+}
+
+.h1-edit {
+  font-family: $headers-font;
+  font-style: italic;
+  font-weight: 400;
+  .italic-accent {
+    font-style: normal;
+    font-family: $accent-font;
+  }
+}
+
+#profile-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.button-red-edit {
+  display: block;
+  width: 100%;
+  background-color: $primary-color;
+  padding: 10px;
+  margin: 35px 0;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  transition: 0.5s ease;
+  font-family: $body-font;
+
+  &:hover {
+    color: white;
+    opacity: .7;
+    background-color: $primary-color;
+  }
+}
+
+.profile-card-edit {
+  display: flex;
+  justify-content: space-between;
+  .img-profile-edit {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+}
+
+.link-delete {
+  text-decoration: none;
+  color: black;
+  font-family: $body-font;
+  font-size: 16px;
+  &:hover {
+    color: black;
+    opacity: .5;
+  }
+}
