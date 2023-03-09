@@ -1,0 +1,28 @@
+        <%= link_to new_list_insta_profile_path(list), data: {list_target: "main"} do %>
+          <div class="list-item-main shadowed">
+            <div class="list-item-name greyed-out">
+              <h4><%= list.name.downcase %></h4>
+            </div>
+
+            <div class="list-item-updates">
+                  no profiles
+            </div>
+
+            <div class="list-item-icon">
+                <i class="fa-solid fa-triangle-exclamation light-red"></i>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="list-item-options shadowed d-none" data-list-target="options">
+          <div class="list-edit">
+            <%= link_to edit_list_path(list) do %>
+              <i class="fa-solid fa-plus"></i>add profiles
+            <% end %>
+          </div>
+          <div class="list-delete">
+            <%= link_to list_path(list), data: {turbo_method: "delete", turbo_confirm: "Do you really want to delete this list?"} do %>
+              <i class="fa-regular fa-trash-can"></i>delete list
+            <% end %>
+          </div>
+        </div>
