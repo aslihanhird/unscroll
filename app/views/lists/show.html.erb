@@ -1,4 +1,4 @@
-  <div class="pt-2 pb-2 pe-3 ps-3 edit-section">
+<div class="pt-2 pb-2 pe-3 ps-3 edit-section">
     <h1 class="text-list"><%= @list.name %> list</h1>
     <div class="d-flex justify-content-between">
       <%= link_to edit_list_path(@list), class: 'link' do %>
@@ -17,18 +17,12 @@
 
     <% @list.all_posts.each do |post| %>
       <% post_index_position += 1 %>
-
       <div id="<%=post_index_position - 1%>" data-controller="next" data-next-target="post">
-        <div class="profile-d-flex justify-content-between mb-2">
-            <div class="d-flex align-items-left align-items-center">
-                <%= cl_image_tag(post.insta_profile.photo.key, class: "me-2 img-profile") %>
-                <p class="remove-margin-bottom"><%= post.insta_profile.username  %></p>
-            </div>
-            <div class="d-flex justify-content-between align-items-center">
-              <i class="fa-brands fa-instagram"></i>
-              <%= link_to "Save", lists_path, class: "link button-dark ms-3" %>
-            </div>
-        </div>
+        <% if post.class == InstaPost %>
+          <%= render "insta_card_top", post: post %>
+        <% else %>
+          <%= render "twit_card_top", post: post %>
+        <% end %>
 
         <% if post.video.attached? %>
           <%= cl_video_tag(post.video.key, class: "mb-2 img-post", preload: "none", controls: true) %>

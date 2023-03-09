@@ -1,9 +1,9 @@
-require 'uri'
+require 'open-uri'
 require 'net/http'
 require 'openssl'
 
 class InstaProfilesController < ApplicationController
-  before_action :set_list, only: %i[new create]
+  before_action :set_list, only: %i[new create profile_added]
   def index
     @insta_profiles = current_user.list
   end
@@ -20,7 +20,7 @@ class InstaProfilesController < ApplicationController
     if new_insta_profile.save
       file = URI.open(new_insta_profile.profile_picture_url)
       new_insta_profile.photo.attach(io: file, filename: "#{new_insta_profile.username}_profile.png", content_type: "image/png")
-      redirect_to list_path(@list)
+      redirect_to list_profile_added_path(@list)
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,6 +30,10 @@ class InstaProfilesController < ApplicationController
     @insta_profile = InstaProfile.find(params[:id])
     @insta_profile.destroy
     # redirect to where ??
+  end
+
+  def profile_added
+
   end
 
   private
