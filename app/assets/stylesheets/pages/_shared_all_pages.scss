@@ -1,11 +1,14 @@
-.main-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 150vh;
+body {
   background-image: linear-gradient(to bottom right, rgba(217, 217, 217, 1.0), rgba(255, 255, 255, 1.0));
-  z-index: -1000;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.cover {
+  background-color: aqua;
+  height: 50vh;
+  margin-top: 90vh;
+  padding: 20px;
 }
 
 .main-padding {
