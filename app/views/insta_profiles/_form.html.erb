@@ -1,6 +1,17 @@
-<div class="container">
+
   <%= simple_form_for [@list, @insta_profile] do |f| %>
-    <%= f.input :username %>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
+    <%= f.input :username,
+          label: "Instagram username",
+          hint: "You don't need to include the @",
+          placeholder: "beyonce",
+          input_html: { class: "unscroll-form-input shadowed-subtle"},
+          hint_html: { class: 'input-hint' },
+          label_html: { class: 'unscroll-form-label'},
+          class: "new-list-input"
+           %>
+
+    <%= f.button :submit,
+        "add profile",
+        class: "unscroll-btn unscroll-btn-primary shadowed mt-3" %>
+
   <% end %>
-</div>
