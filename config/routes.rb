@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :insta_posts, only: :create
+  resources :twitter_posts, only: :create
 
   get "/profile", to: "pages#profile"
 end

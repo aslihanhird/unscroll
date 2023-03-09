@@ -76,8 +76,8 @@ class TwitterProfilesController < ApplicationController
 
   def error_messages(response)
     error_message = response['message']
-    @insta_profile = InstaProfile.new
-    @insta_profile.errors.add(:username, error_message)
+    @twitter_profile = TwitterProfile.new
+    @twitter_profile.errors.add(:username, error_message)
     return render :new, status: :unprocessable_entity
   end
 end
