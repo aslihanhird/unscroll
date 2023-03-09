@@ -9,8 +9,11 @@ Rails.application.routes.draw do
   resources :lists do
     resources :insta_profiles, only: %i[index new create]
     resources :twitter_profiles, only: %i[new create]
-    
+
     get "/profile-added", to: "insta_profiles#profile_added"
+
+    # When adding a new profile to a list, user has to choose between IG or Twitter
+    get "/new/select", to: "pages#select_insta_or_twitter"
   end
 
   resources :insta_posts, only: :create
