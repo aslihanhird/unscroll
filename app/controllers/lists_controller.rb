@@ -17,7 +17,7 @@ class ListsController < ApplicationController
     @list.user = current_user
 
     if @list.save
-      redirect_to new_list_insta_profile_path(@list)
+      redirect_to list_new_select_path(@list)
     else
       render :new, status: :unprocessable_entity
     end
