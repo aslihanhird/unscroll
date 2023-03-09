@@ -2,7 +2,7 @@ class FavouriteList < ApplicationRecord
   belongs_to :user
 
   has_many :favourite_insta_profiles
-  has_many :favourite_insta_posts, through: :insta_profiles
+  has_many :favourite_insta_posts, through: :favourite_insta_profiles
 
   validates :name, presence: true
 

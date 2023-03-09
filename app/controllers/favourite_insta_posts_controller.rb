@@ -6,14 +6,14 @@ class FavouriteInstaPostsController < ApplicationController
     checked_favourite_insta_profile = check_favourite_profile(og_insta_post)
     new_fav_insta_post = FavouriteInstaPost.new(caption: og_insta_post.caption, timestamp: og_insta_post.timestamp)
     new_fav_insta_post.favourite_insta_profile = checked_favourite_insta_profile
-    new_fav_insta_post.save
     if og_insta_post.video.attached?
-      video_file = URI.open(og_insta_post.media_url)
-      new_fav_insta_post.video.attach(io: video_file, filename: "#{new_fav_insta_post.id}-content.mp4", content_type: "video/mp4")
+      new_fav_insta_post.media_url = og_insta_post.video.key
+      new_fav_insta_post.media_type = 'video'
     else
-      photo_file = URI.open(og_insta_post.media_url)
-      new_fav_insta_post.photo.attach(io: photo_file, filename: "#{new_fav_insta_post.id}-content.png", content_type: "image/png")
+      new_fav_insta_post.media_url = og_insta_post.photo.key
+      new_fav_insta_post.media_type = 'photo'
     end
+    new_fav_insta_post.save
   end
 
   def destroy
@@ -29,10 +29,8 @@ class FavouriteInstaPostsController < ApplicationController
 
     og_insta_profile = InstaProfile.find_by(username: og_insta_post.insta_profile.username)
     new_favourite_insta_profile = FavouriteInstaProfile.new(username: og_insta_profile.username)
-    if new_favourite_insta_profile.save
-      file = URI.open(og_insta_profile.profile_picture_url)
-      new_favourite_insta_profile.photo.attach(io: file, filename: "#{new_favourite_insta_profile.username}_profile.png", content_type: "image/png")
-    end
+    new_favourite_insta_profile.profile_picture_url = og_insta_profile.photo.key
+    new_favourite_insta_profile.save
     new_favourite_insta_profile.favourite_list = FavouriteList.find_by(name: 'Favourites')
     new_favourite_insta_profile
   end

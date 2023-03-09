@@ -1,8 +1,8 @@
-<div class="container">
+<div class="pt-4 container post-card">
   <% @favourite_posts.each do |favourite_post| %>
     <div class="d-flex justify-content-between mb-2">
         <div class="d-flex align-items-left align-items-center">
-            <%= cl_image_tag(favourite_post.favourite_insta_profile.photo.key, class: "me-2 img-profile") %>
+            <%= cl_image_tag(favourite_post.favourite_insta_profile.profile_picture_url, class: "me-2 img-profile") %>
             <p class="remove-margin-bottom"><%= favourite_post.favourite_insta_profile.username  %></p>
         </div>
         <div class="d-flex justify-content-between align-items-center">
@@ -11,10 +11,10 @@
         </div>
     </div>
 
-    <% if favourite_post.video.attached? %>
-      <%= cl_video_tag(favourite_post.video.key, class: "mb-2 img-post", preload: "none", controls: true) %>
+    <% if favourite_post.media_type == 'video' %>
+      <%= cl_video_tag(favourite_post.media_url, class: "mb-2 img-post", preload: "none", controls: true) %>
     <% else %>
-      <%= cl_image_tag(favourite_post.photo.key, class:"mb-2 img-post") %>
+      <%= cl_image_tag(favourite_post.media_url, class:"mb-2 img-post") %>
     <% end %>
     <p class="margin-bottom-caption"><%= favourite_post.caption %></p>
   <% end %>
