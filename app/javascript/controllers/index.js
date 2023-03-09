@@ -4,8 +4,12 @@
 
 import { application } from "./application"
 
+import AddNewProfileController from "./add_new_profile_controller"
+application.register("add-new-profile", AddNewProfileController)
+
 import ListController from "./list_controller"
 application.register("list", ListController)
 
 import NextController from "./next_controller"
 application.register("next", NextController)
+

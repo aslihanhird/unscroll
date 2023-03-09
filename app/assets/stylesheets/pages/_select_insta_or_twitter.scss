@@ -1,0 +1,33 @@
+.social-media-icons-wrapper {
+  width: 150px;
+  background-color: white;
+  color: $subtle-gray;
+  display: flex;
+  margin: 0 auto;
+  border-radius: 3px;
+
+  .icon-instagram, .icon-twitter {
+    padding: .8em 0;
+  }
+
+  .selected.icon-instagram {
+    color: white;
+    background-color: $primary-color;
+  }
+
+  .selected.icon-twitter {
+    color: white;
+    background-color: $twitter-blue;
+  }
+}
+
+.social-media-icon {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.insta-gradient {
+  background-image: linear-gradient(to bottom right, #d9d9d9, rgb(255, 184, 184));
+}

@@ -1,8 +1,10 @@
-<%= link_to new_list_insta_profile_path(list), data: {list_target: "main"} do %>
-  <div class="list-item-main shadowed">
-    <div class="list-item-name greyed-out">
-      <h4><%= list.name.downcase %></h4>
-    </div>
+
+        <%= link_to list_new_select_path(list), data: {list_target: "main"} do %>
+          <div class="list-item-main shadowed">
+            <div class="list-item-name greyed-out">
+              <h4><%= list.name.downcase %></h4>
+            </div>
+
 
     <div class="list-item-updates">
           no profiles

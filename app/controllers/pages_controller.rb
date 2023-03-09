@@ -8,4 +8,10 @@ class PagesController < ApplicationController
   def profile
     redirect_to root_path unless user_signed_in?
   end
+
+  def select_insta_or_twitter
+    @list = List.find(params[:list_id])
+    @insta_profile = InstaProfile.new
+    @twitter_profile = TwitterProfile.new
+  end
 end

@@ -10,11 +10,11 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body data-controller="add-new-profile" data-target="pagebody">
     <%= render "shared/logo-top" %>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-    
+
     <%= yield %>
 
   </body>
