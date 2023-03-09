@@ -11,7 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_132838) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_141720) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +43,35 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_132838) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
+
+  create_table "favourite_insta_posts", force: :cascade do |t|
+    t.string "caption"
+    t.string "media_url"
+    t.string "timestamp"
+    t.bigint "favourite_insta_profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category"
+    t.string "media_type"
+    t.index ["favourite_insta_profile_id"], name: "index_favourite_insta_posts_on_favourite_insta_profile_id"
+  end
+
+  create_table "favourite_insta_profiles", force: :cascade do |t|
+    t.string "username"
+    t.string "profile_picture_url"
+    t.bigint "favourite_list_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favourite_list_id"], name: "index_favourite_insta_profiles_on_favourite_list_id"
+  end
+
+  create_table "favourite_lists", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favourite_lists_on_user_id"
+   end
 
   create_table "controllers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -130,6 +160,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_132838) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favourite_insta_posts", "favourite_insta_profiles"
+  add_foreign_key "favourite_insta_profiles", "favourite_lists"
+  add_foreign_key "favourite_lists", "users"
   add_foreign_key "favourite_posts", "users"
   add_foreign_key "insta_posts", "insta_profiles"
   add_foreign_key "insta_profiles", "lists"

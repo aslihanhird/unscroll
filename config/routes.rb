@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   resources :twitter_posts, only: :create
 
   get "/profile", to: "pages#profile"
+  get '/favourites', to: "favourite_lists#show"
+
+  resources :favourite_insta_posts, only: %i[new create destroy]
 end
