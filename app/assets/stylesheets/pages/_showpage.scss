@@ -2,19 +2,24 @@
   height: 50px;
   width: 100%;
   background-color: white;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $subtle-gray;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   top: 0;
-
+  box-shadow: rgba(0, 0, 0, 0.8), 0px 1px 6px;
   .text-list {
-    color: black;
+    color: $subtle-gray;
     font-family: $headers-font;
-    opacity: .5;
     font-size: 16px;
     margin: 0;
+  }
+  i {
+    background-color: transparent;
+    padding: 7px;
+    border-radius: 15%;
+    border: 1px solid $subtle-gray;
   }
 }
 
@@ -77,11 +82,11 @@
 
 .button-gray {
   background-color: $subtle-gray;
-  padding: 7px 15px;
+  padding: 10px 15px;
   border-radius: 30px;
   text-decoration: none;
   text-align: center;
-  color: black;
+  color: white;
   transition: 0.5s ease;
 
   &:hover {

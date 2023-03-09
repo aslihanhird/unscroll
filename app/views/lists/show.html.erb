@@ -1,11 +1,11 @@
-  <div class="pe-3 ps-3 edit-section">
+  <div class="pt-2 pb-2 pe-3 ps-3 edit-section">
     <h1 class="text-list"><%= @list.name %> list</h1>
     <div class="d-flex justify-content-between">
       <%= link_to edit_list_path(@list), class: 'link' do %>
-        <i class="fa-regular fa-pen-to-square"></i> Edit
+        <i class="fa-regular fa-pen-to-square"></i>
       <% end %>
       <%= link_to insta_posts_path(list_id: @list.id), data: {turbo_method: "post"}, class: 'link' do %>
-        <i class="fa-sharp fa-solid fa-retweet ms-3"></i> Refresh
+        <i class="fa-sharp fa-solid fa-retweet ms-3"></i>
       <% end %>
     </div>
   </div>
@@ -38,7 +38,7 @@
         <% posts_left_to_see -= 1 %>
         <% if posts_left_to_see == 0 %>
           <div class="center-margin-300">
-            <h2 class="mb-5">You saw all the post of <%= @list.name %></h2>
+            <h2 class="mb-5">You saw all the posts of <%= @list.name %></h2>
             <%= link_to "See all the lists", lists_path, class: "mb-2 link button-gray" %>
           </div>
           <% else %>
