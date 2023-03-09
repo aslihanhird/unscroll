@@ -1,0 +1,2 @@
+class TwitterProfilesController < ApplicationController
+end
