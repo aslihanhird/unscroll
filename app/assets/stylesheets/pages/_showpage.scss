@@ -22,6 +22,7 @@
   text-decoration: none;
   color: black;
   font-family: $body-font;
+  font-size: 16px;
   &:hover {
     color: black;
     opacity: .5;
@@ -59,31 +60,33 @@
 
 
 .button-dark {
-  background-color: black;
+  background-color: $primary-color;
   padding: 5px 15px;
   border-radius: 30px;
   text-decoration: none;
   text-align: center;
   color: white;
+  transition: 0.5s ease;
 
   &:hover {
-    color: black;
-    background-color: white;
+    color: white;
+    opacity: .7;
+    background-color: $primary-color;
   }
 }
 
-.button-transparent {
-  background-color: transparent;
+.button-gray {
+  background-color: $subtle-gray;
   padding: 7px 15px;
   border-radius: 30px;
-  border: 1px solid black;
   text-decoration: none;
   text-align: center;
   color: black;
+  transition: 0.5s ease;
 
   &:hover {
     color: black;
-    opacity: .5;
+    opacity: .7;
   }
 }
 
