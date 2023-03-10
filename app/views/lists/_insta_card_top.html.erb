@@ -1,10 +1,12 @@
+
 <div class="top-post">
-            <div class="top-post-info">
-              <%= cl_image_tag(post.insta_profile.photo.key, class: "post-profile-pic") %>
-              <p class="profile-name"><%= post.insta_profile.username  %></p>
-            </div>
-            <div class="top-post-save">
-              <i class="fa-brands fa-instagram"></i>
-              <%= link_to "Save", lists_path, class: "button-save" %>
-            </div>
-        </div>
+    <div class="top-post-info">
+      <%= cl_image_tag(post.insta_profile.photo.key, class: "post-profile-pic") %>
+      <p class="profile-name"><%= post.insta_profile.username  %></p>
+    </div>
+    <div class="top-post-save">
+      <i class="fa-brands fa-instagram"></i>
+      <%= link_to "Save", favourite_insta_posts_path(insta_post_id: post.id), data: { turbo_method: :post }, class: "button-save" %>
+    </div>
+</div>
+

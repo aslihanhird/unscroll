@@ -32,7 +32,7 @@ def check_favourite_profile(og_twitter_post)
   og_twitter_profile = TwitterProfile.find_by(username: og_twitter_post.twitter_profile.username)
   new_favourite_twitter_post = FavouriteTwitterProfile.new(username: og_twitter_profile.username)
   new_favourite_twitter_post.profile_picture_url = og_twitter_profile.photo.key
-  new_favourite_twitter_post.save
   new_favourite_twitter_post.favourite_list = FavouriteList.find_by(name: 'Favourites')
+  new_favourite_twitter_post.save
   new_favourite_twitter_post
 end

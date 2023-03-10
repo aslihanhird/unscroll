@@ -1,6 +1,6 @@
 <div class="container" id="edit-page">
   <h1 class="h1-edit">Edit your <span class="italic-accent"><%= (@list.name).downcase %></span> list</h1>
-  <%= link_to 'Add a profile', new_list_insta_profile_path(@list), class: "button-red-edit" %>
+  <%= link_to 'Add a profile', list_new_select_path(@list), class: "button-red-edit" %>
 
   <ul id="profile-list">
     <% @list.insta_profiles.each do |insta| %>
@@ -11,7 +11,7 @@
             <%= insta.username %>
           </div>
           <div>
-            <%= link_to "#", class: 'link-delete', data: {turbo_method: :delete} do %>
+            <%= link_to insta_profile_path(insta), data: {turbo_method: :delete, turbo_confirm: 'U sure buddy?'}, class: 'link-delete' do %>
               <i class="fa-solid fa-trash"></i>
             <% end %>
           </div>
