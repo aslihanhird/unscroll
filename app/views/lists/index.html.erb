@@ -5,7 +5,7 @@
   <% if @lists.size > 0 %>
     <h3 class="your-lists">Your lists</h3>
 
-    <div class="lists-wrapper">
+    <div class="lists-wrapper mb-5">
       <% @lists.each do |list| %>
         <%= render "shared/single_list", list: list %>
       <% end %>
@@ -24,4 +24,3 @@
       create new list
   <% end %>
 </div>
-
