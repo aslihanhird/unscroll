@@ -1,6 +1,9 @@
 class FavouriteList < ApplicationRecord
   belongs_to :user
 
+  has_many :favourite_twitter_profiles, dependent: :destroy
+  has_many :favourite_twitter_posts, through: :favourite_twitter_profiles, dependent: :destroy
+
   has_many :favourite_insta_profiles, dependent: :destroy
   has_many :favourite_insta_posts, through: :favourite_insta_profiles, dependent: :destroy
 

@@ -1,9 +1,13 @@
 require "open-uri"
 
 InstaPost.delete_all
+FavouriteInstaPost.delete_all
 TwitterPost.delete_all
+FavouriteTwitterPost.delete_all
 InstaProfile.delete_all
+FavouriteInstaProfile.delete_all
 TwitterProfile.delete_all
+FavouriteTwitterProfile.delete_all
 FavouriteList.delete_all
 List.delete_all
 User.delete_all
