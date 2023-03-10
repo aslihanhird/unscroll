@@ -35,9 +35,9 @@
         <p class=""><%= post.caption %></p>
       </div>
       <div class="switch-to-post">
-        <a href="<%= url_for(anchor: "##{post_index_position - 1}") %>" class="previous-post" data-controller="scroll-to" data-scroll-to-offset-value="0" data-scroll-to-behavior-value="auto" data-action="click->next#previousPost"><i class="fa-solid fa-arrow-up"></i></a>
+        <a href="<%= url_for(anchor: "##{post_index_position - 1}") %>" class="previous-post" data-controller="scroll-to" data-scroll-to-offset-value="0" data-scroll-to-behavior-value="auto" data-action="click->next#previousPost"><i class="fa-solid fa-arrow-up"></i> See previous post</a>
         <%# <button class="previous-post" data-action="click->next#previousPost"><i class="fa-solid fa-arrow-up"></i></button> %>
-        <button class="next-post" data-action="click->next#nextPost"><i class="fa-solid fa-arrow-down"></i></button>
+        <button class="next-post" data-action="click->next#nextPost"><i class="fa-solid fa-arrow-down"></i> Jump to next post</button>
       </div>
       <%# END POST %>
     </div>

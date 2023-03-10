@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 25px;
   .list-show {
     padding-left: 50px;
     .text-list-show {
@@ -44,6 +44,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 5px;
     .top-post-info {
       display: flex;
       justify-content: space-between;
@@ -83,6 +84,7 @@
     width: 540px;
     height: 540px;
     object-fit: cover;
+    margin-bottom: 5px;
   }
   .switch-to-post {
     display: flex;
