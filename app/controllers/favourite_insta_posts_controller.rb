@@ -34,6 +34,10 @@ class FavouriteInstaPostsController < ApplicationController
     return checked_insta_profile if checked_insta_profile != nil
 
     og_insta_profile = InstaProfile.find_by(username: og_insta_post.insta_profile.username)
+    puts "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    p og_insta_profile
+    puts "Original profile"
+    puts "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
     new_favourite_insta_profile = FavouriteInstaProfile.new(username: og_insta_profile.username)
     new_favourite_insta_profile.profile_picture_url = og_insta_profile.photo.key
     new_favourite_insta_profile.favourite_list = FavouriteList.find_by(name: 'Favourites')

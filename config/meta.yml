@@ -1,0 +1,5 @@
+meta_product_name: "Unscroll"
+meta_title: "Unscroll - Avoid the social media rabbit hole. Reclaim your time with Unscroll"
+meta_description: "Unscroll saves you time with daily updates of your favourite social media profiles. No endless scroll, no rabbit hole."
+meta_image: "meta_image_for_unscroll.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
