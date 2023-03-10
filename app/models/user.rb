@@ -6,8 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :lists, dependent: :destroy
-  has_many :insta_profiles, through: :lists
-  has_one :favourite_list
+  has_many :insta_profiles, through: :lists, dependent: :destroy
+  has_one :favourite_list, dependent: :destroy
 
   private
 
