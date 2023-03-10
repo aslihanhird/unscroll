@@ -4,7 +4,7 @@ class List < ApplicationRecord
   has_many :insta_profiles, dependent: :destroy
   has_many :twitter_profiles, dependent: :destroy
 
-  has_many :insta_posts, through: :insta_profiles
+  has_many :insta_posts, through: :insta_profiles, dependent: :destroy
 
   validates :name, presence: true
 

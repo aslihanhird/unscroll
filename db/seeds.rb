@@ -1,7 +1,16 @@
+require "open-uri"
+
 InstaPost.delete_all
+TwitterPost.delete_all
 InstaProfile.delete_all
+TwitterProfile.delete_all
+FavouriteList.delete_all
 List.delete_all
 User.delete_all
+
+p "Database cleared"
+p "................................"
+
 # Create a user
 user = User.new(
   username: "demo",
@@ -82,12 +91,14 @@ insta_profile_data.each do |profile|
   new_profile = InstaProfile.new(
     username: profile[:username],
     list: profile[:list],
-    profile_picture_url: profile[:profile_picture_url]
+    profile_picture_url: "https://images.unsplash.com/photo-1677690740070-ec6f41e346a8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY3ODQ0ODAxOA&ixlib=rb-4.0.3&q=80&w=300",
   )
 
   if new_profile.valid?
     new_profile.save
     puts "New profile #{new_profile.username} saved succesfully."
+    new_profile.photo.attach(io: URI.open(new_profile.profile_picture_url), filename: "seed-content.png", content_type: "image/png")
+    puts new_profile.photo.attached? ? "Image attached" : "Image Failed to attach"
   else
     puts "Profile #{new_profile.username} failed to save."
     puts "Errors: #{new_profile.errors.messages}"
@@ -228,14 +239,16 @@ insta_posts_data = [
 insta_posts_data.each do |post|
   new_post = InstaPost.new(
     caption: post[:caption],
-    media_url: post[:media_url],
-    timestamp: post[:timestamp],
+    media_url: "https://images.unsplash.com/photo-1676763132777-3542d78c787f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY3ODQ0NzkyNg&ixlib=rb-4.0.3&q=80&w=500",
+    timestamp: rand(1600000000..1678447387).to_s,
     insta_profile: post[:insta_profile]
   )
 
   if new_post.valid?
     new_post.save
     puts "New post (#{new_post.id}) saved."
+    new_post.photo.attach(io: URI.open(new_post.media_url), filename: "seed-post-image.png", content_type: "image/png")
+    puts new_post.photo.attached? ? "Image attached" : "Image Failed to attach"
   else
     puts "Post failed to save for #{post.insta_profile}."
     puts "Errors: #{new_post.errors.messages}"
