@@ -64,6 +64,9 @@
     .top-post-save {
       display: flex;
       align-items: center;
+      flex-grow: 1;
+      justify-content: flex-end;
+      gap: 1em;
       .button-save {
         background-color: $primary-color;
         padding: 5px 15px;

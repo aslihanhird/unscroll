@@ -37,7 +37,7 @@
       <div class="switch-to-post">
         <a href="<%= url_for(anchor: "##{post_index_position - 1}") %>" class="unscroll-btn unscroll-btn-ghost" data-controller="scroll-to" data-scroll-to-offset-value="0" data-scroll-to-behavior-value="auto" data-action="click->next#previousPost"></i> previous post</a>
         <%# <button class="previous-post" data-action="click->next#previousPost"><i class="fa-solid fa-arrow-up"></i></button> %>
-        <a href="#" class="unscroll-btn unscroll-btn-primary" data-action="click->next#nextPost#">next post</a>
+        <a href="#" class="unscroll-btn unscroll-btn-primary" data-action="click->next#nextPost">next post</a>
         <%# <button class="unscroll-btn-sm unscroll-btn-primary" data-action="click->next#nextPost"></i> next post</button> %>
       </div>
       <%# END POST %>
