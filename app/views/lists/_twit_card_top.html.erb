@@ -1,1 +1,13 @@
-<p>twitter post stuff should go here</p>
+
+<div class="top-post">
+    <div class="top-post-info">
+      <%= cl_image_tag(post.twitter_profile.photo.key, class: "post-profile-pic") %>
+      <p class="profile-name"><%= post.twitter_profile.username  %></p>
+    </div>
+    <div class="top-post-save">
+      <i class="fa-brands fa-twitter"></i>
+      <%= link_to favourite_twitter_posts_path(twitter_post_id: post.id), data: { turbo_method: :post }, class: "button-save" do %>
+          <i class="fa-regular fa-bookmark"></i>
+      <% end %>
+    </div>
+</div>

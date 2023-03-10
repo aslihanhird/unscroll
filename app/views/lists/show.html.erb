@@ -31,8 +31,8 @@
         <%= cl_image_tag(post.photo.key, class:"media-post-show") %>
       <% end %>
       </div>
-      <div class="">
-        <p class=""><%= post.caption %></p>
+      <div class="container card-post-text">
+        <p><%= post.caption %></p>
       </div>
       <div class="switch-to-post">
         <a href="<%= url_for(anchor: "##{post_index_position - 1}") %>" class="unscroll-btn unscroll-btn-ghost" data-controller="scroll-to" data-scroll-to-offset-value="0" data-scroll-to-behavior-value="auto" data-action="click->next#previousPost"></i> previous post</a>
