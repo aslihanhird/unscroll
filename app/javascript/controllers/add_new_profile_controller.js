@@ -8,7 +8,7 @@ export default class extends Controller {
   connect() {
     // Set the body color to red only on the specific page
     if (window.location.pathname.endsWith("new/select")) {
-      document.querySelector("body").classList.add('insta-gradient');
+      document.querySelector('body').style.backgroundImage = "linear-gradient(to bottom right, #ffffff, rgb(255, 184, 184))"
     }
 
   }
@@ -29,8 +29,7 @@ export default class extends Controller {
       this.twFormTarget.classList.add("d-none");
 
       // Set the background to red
-      document.querySelector('body').classList.add('insta-gradient');
-      document.querySelector('body').classList.remove('twitter-gradient');
+      document.querySelector('body').style.backgroundImage = "linear-gradient(to bottom right, #ffffff, rgb(255, 184, 184))"
     }
   }
 
@@ -41,8 +40,7 @@ export default class extends Controller {
       this.igFormTarget.classList.add("d-none");
       this.igIconTarget.classList.remove("selected");
 
-      document.querySelector('body').classList.remove('insta-gradient');
-      document.querySelector('body').classList.add('twitter-gradient');
+      document.querySelector('body').style.backgroundImage = "linear-gradient(to bottom right, #d9d9d9, rgb(184, 227, 255))"
     }
   }
 }

@@ -1,5 +1,7 @@
 .container-show {
   width: 100%;
+  padding: 2em;
+  box-sizing: border-box;
 }
 
 .top {
@@ -37,7 +39,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 540px;
+  width: 100%;
   margin: 0 auto;
   margin-bottom: 500px;
   .top-post {
@@ -81,14 +83,16 @@
   }
   .media-post-show {
     border-radius: 10px;
-    width: 540px;
-    height: 540px;
+    width: 100%;
+    // height: 540px;
     object-fit: cover;
     margin-bottom: 5px;
   }
   .switch-to-post {
     display: flex;
     justify-content: center;
+    gap: 1em;
+
     .previous-post {
       margin-right: 5px;
       border-radius: 5px;
