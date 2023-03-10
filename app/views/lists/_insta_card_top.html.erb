@@ -6,7 +6,8 @@
     </div>
     <div class="top-post-save">
       <i class="fa-brands fa-instagram"></i>
-      <%= link_to "Save", favourite_insta_posts_path(insta_post_id: post.id), data: { turbo_method: :post }, class: "button-save" %>
+      <%= link_to favourite_insta_posts_path(insta_post_id: post.id), data: { turbo_method: :post }, class: "button-save" do %>
+          <i class="fa-regular fa-bookmark"></i>
+      <% end %>
     </div>
 </div>
-
