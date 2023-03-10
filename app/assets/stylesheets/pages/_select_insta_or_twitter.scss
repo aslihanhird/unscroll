@@ -28,6 +28,10 @@
 
 }
 
-.insta-gradient {
-  background-image: linear-gradient(to bottom right, #d9d9d9, rgb(255, 184, 184));
+body.insta-gradient {
+  background-image: linear-gradient(to bottom right, #ffffff, rgb(255, 184, 184));
+}
+
+body.twitter-gradient {
+  background-image: linear-gradient(to bottom right, #d9d9d9, rgb(184, 227, 255));
 }
