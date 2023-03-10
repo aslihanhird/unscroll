@@ -1,45 +1,53 @@
-<div class="pt-2 pb-2 pe-3 ps-3 edit-section">
-    <h1 class="text-list"><%= @list.name %> list</h1>
-    <div class="d-flex justify-content-between">
-      <%= link_to edit_list_path(@list), class: 'link' do %>
-        <i class="fa-regular fa-pen-to-square"></i>
-      <% end %>
-      <%= link_to insta_posts_path(list_id: @list.id), data: {turbo_method: "post"}, class: 'link' do %>
-        <i class="fa-sharp fa-solid fa-retweet ms-3"></i>
-      <% end %>
+<div class="container-show">
+  <div class="top">
+    <div class="list-show">
+      <h1 class="text-list-show"><%= @list.name %> list</h1>
+    </div>
+    <div class="edit-section">
+        <div class="">
+          <%= link_to edit_list_path(@list), class: '' do %>
+            <i class="icon-list fa-regular fa-pen-to-square"></i>
+          <% end %>
+          <%= link_to insta_posts_path(list_id: @list.id), data: {turbo_method: "post"}, class: '' do %>
+            <i class="icon-list fa-sharp fa-solid fa-retweet ms-1"></i>
+          <% end %>
+        </div>
     </div>
   </div>
-
-
-<div class="pt-4 container post-card">
-    <% posts_left_to_see = @list.all_posts.count %>
-    <% post_index_position = 1 %>
-
-    <% @list.all_posts.each do |post| %>
-      <% post_index_position += 1 %>
-      <div id="<%=post_index_position - 1%>" data-controller="next" data-next-target="post">
-        <% if post.class == InstaPost %>
-          <%= render "insta_card_top", post: post %>
-        <% else %>
-          <%= render "twit_card_top", post: post %>
-        <% end %>
-
-        <% if post.video.attached? %>
-          <%= cl_video_tag(post.video.key, class: "mb-2 img-post", preload: "none", controls: true) %>
-        <% else %>
-          <%= cl_image_tag(post.photo.key, class:"mb-2 img-post") %>
-        <% end %>
-        <p class="margin-bottom-caption"><%= post.caption %></p>
-        <button data-action="click->next#nextPost">Click me</button>
-        <button data-action="click->next#previousPost">Click</button>
-        <% posts_left_to_see -= 1 %>
-        <% if posts_left_to_see == 0 %>
-          <div class="center-margin-300">
-            <h2 class="mb-5">You saw all the posts of <%= @list.name %></h2>
-            <%= link_to "See all the lists", lists_path, class: "mb-2 link button-gray" %>
-          </div>
-          <% else %>
-        <% end %>
+  <% posts_left_to_see = @list.all_posts.count %>
+  <% post_index_position = 1 %>
+  <% @list.all_posts.each do |post| %>
+    <% post_index_position += 1 %>
+    <div id="<%=post_index_position - 1%>" class="post-card" data-controller="next" data-next-target="post">
+      <% if post.class == InstaPost %>
+        <%= render "insta_card_top", post: post %>
+      <% else %>
+        <%= render "twit_card_top", post: post %>
+      <% end %>
+      <div>
+      <% if post.video.attached? %>
+        <%= cl_video_tag(post.video.key, class: "media-post-show", preload: "none", controls: true) %>
+      <% else %>
+        <%= cl_image_tag(post.photo.key, class:"media-post-show") %>
+      <% end %>
       </div>
-    <% end %>
+      <div class="">
+        <p class=""><%= post.caption %></p>
+      </div>
+      <div class="switch-to-post">
+        <a href="<%= url_for(anchor: "##{post_index_position - 1}") %>" class="previous-post" data-controller="scroll-to" data-scroll-to-offset-value="0" data-scroll-to-behavior-value="auto" data-action="click->next#previousPost"><i class="fa-solid fa-arrow-up"></i> See previous post</a>
+        <%# <button class="previous-post" data-action="click->next#previousPost"><i class="fa-solid fa-arrow-up"></i></button> %>
+        <button class="next-post" data-action="click->next#nextPost"><i class="fa-solid fa-arrow-down"></i> Jump to next post</button>
+      </div>
+      <%# END POST %>
+    </div>
+  <% end %>
+  <div class="post-end">
+    <div>
+      <h2 class="italic-accent-show">You saw all the posts of <%= @list.name %></h3>
+    </div>
+    <%= image_tag("https://cdn-icons-png.flaticon.com/512/7486/7486777.png", height: '150', width: '150') %>
+  </div>
+
+<%# END %>
 </div>
