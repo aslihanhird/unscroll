@@ -39,6 +39,7 @@
   justify-content: center;
   width: 540px;
   margin: 0 auto;
+  margin-bottom: 500px;
   .top-post {
     display: flex;
     justify-content: space-between;
@@ -115,12 +116,25 @@
       }
     }
   }
-  .post-end {
-    margin-bottom: 100px;
-  }
+
 
 }
 
+.post-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 150px;
+  margin-bottom: 250px;
+  .italic-accent-show {
+    font-family: $accent-font;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 100px;
+  }
+}
 
 
 
