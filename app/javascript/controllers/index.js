@@ -9,3 +9,7 @@ application.register("list", ListController)
 
 import NextController from "./next_controller"
 application.register("next", NextController)
+
+import ScrollTo from 'stimulus-scroll-to'
+const application = Application.start()
+application.register('scroll-to', ScrollTo)
