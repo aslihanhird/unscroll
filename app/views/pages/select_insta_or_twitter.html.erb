@@ -16,7 +16,7 @@
       </div>
     </div>
     <div data-add-new-profile-target="igForm">
-        <%= simple_form_for [@list, @insta_profile] do |f| %>
+        <%= simple_form_for [@list, @profile] do |f| %>
           <%= f.input :username,
                 label: "Instagram username",
                 hint: "You don't need to include the @",
@@ -26,7 +26,7 @@
                 label_html: { class: 'unscroll-form-label'},
                 class: "new-list-input"
                 %>
-
+          <%= hidden_field_tag 'source', 'instagram' %>
           <%= f.button :submit,
               "add Instagram profile",
               class: "unscroll-btn unscroll-btn-primary shadowed mt-3" %>
@@ -34,7 +34,7 @@
     </div>
 
     <div data-add-new-profile-target="twForm" class="d-none">
-        <%= simple_form_for [@list, @twitter_profile],
+        <%= simple_form_for [@list, @profile],
           class: "d-none",
           data: { target: "twForm" } do |f| %>
         <%= f.input :username,
@@ -46,7 +46,7 @@
               label_html: { class: 'unscroll-form-label'},
               class: "new-list-input"
               %>
-
+        <%= hidden_field_tag 'source', 'twitter' %>
         <%= f.button :submit,
             "add Twitter profile",
             class: "unscroll-btn unscroll-btn-primary twitter-blue shadowed mt-3" %>
