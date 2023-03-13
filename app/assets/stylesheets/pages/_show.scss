@@ -19,6 +19,7 @@
   height: 43px;
   width: 43px;
   background-color: #FF7B85;
+  color: white;
   position: fixed;
   top: 0;
   left: 0;
@@ -34,8 +35,12 @@
   }
 }
 
+
+
 .single-post-wrapper {
   height: 99%;
+  display: flex;
+  align-content: center;
 
   img {
     width: 100%;
@@ -46,6 +51,12 @@
     height: 50px;
     border-radius: 25px;
   }
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .card-top {
@@ -59,7 +70,28 @@
     align-items: center;
   }
 
-  h3 {
+  p {
     margin: 0;
   }
+
+}
+
+.read-more {
+  color: $subtle-gray;
+  display: block;
+}
+
+.user-actions {
+  color: $primary-color;
+  font-size: 1.5em;
+}
+
+.full-caption {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  transition: 1s;
 }

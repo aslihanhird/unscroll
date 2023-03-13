@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="posts"
 export default class extends Controller {
-  static targets = ["post", "previous", "next"]
+  static targets = ["post", "previous", "next", "fullCaption"]
 
   connect() {
     // Remove d-none only from the very first post
@@ -63,6 +63,20 @@ export default class extends Controller {
       this.nextTarget.classList.add("d-none");
     }
 
+  }
+
+  readMore(event) {
+    // Remove the d-none from the current post you're on
+    const captions = this.fullCaptionTargets;
+    captions[this.#getIndex()].classList.remove("d-none");
+  }
+
+  closeCaption(event) {
+    console.log("Trying to close caption");
+    const captions = this.fullCaptionTargets;
+    captions[this.#getIndex()].classList.add("d-none");
+    // const captions = this.fullCaptionsTargets;
+    // captions[this.#getIndex()].classList.add("d-none");
   }
 
   #getIndex() {
