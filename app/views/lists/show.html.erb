@@ -1,51 +1,25 @@
-<div class="container-show">
-  <div class="top">
-    <div class="list-show">
-      <h1 class="text-list-show"><%= @list.name %> list</h1>
-    </div>
-    <div class="edit-section">
-        <div class="">
-          <%= link_to edit_list_path(@list), class: '' do %>
-            <i class="icon-list fa-regular fa-pen-to-square"></i>
-          <% end %>
-        </div>
-    </div>
-  </div>
-  <% posts_left_to_see = @list.all_posts.count %>
-  <% post_index_position = 1 %>
-  <% @list.all_posts.each do |post| %>
-    <% post_index_position += 1 %>
-    <div id="<%=post_index_position - 1%>" class="post-card" data-controller="next" data-next-target="post">
-      <% if post.class == InstaPost %>
-        <%= render "insta_card_top", post: post %>
-      <% else %>
-        <%= render "twit_card_top", post: post %>
-      <% end %>
-      <div>
-      <% if post.video.attached? %>
-        <%= cl_video_tag(post.video.key, class: "media-post-show", preload: "none", controls: true) %>
-      <% elsif post.photo.attaached? %>
-        <%= cl_image_tag(post.photo.key, class:"media-post-show") %>
-      <% end %>
-      </div>
-      <div class="container card-post-text">
-        <p><%= post.caption %></p>
-      </div>
-      <div class="switch-to-post">
-        <a href="<%= url_for(anchor: "##{post_index_position - 1}") %>" class="unscroll-btn unscroll-btn-ghost" data-controller="scroll-to" data-scroll-to-offset-value="0" data-scroll-to-behavior-value="auto" data-action="click->next#previousPost"></i> previous post</a>
-        <%# <button class="previous-post" data-action="click->next#previousPost"><i class="fa-solid fa-arrow-up"></i></button> %>
-        <a href="#" class="unscroll-btn unscroll-btn-primary" data-action="click->next#nextPost">next post</a>
-        <%# <button class="unscroll-btn-sm unscroll-btn-primary" data-action="click->next#nextPost"></i> next post</button> %>
-      </div>
-      <%# END POST %>
-    </div>
-  <% end %>
-  <div class="post-end">
-    <div>
-      <h2 class="italic-accent-show">You saw all the posts of <%= @list.name %></h3>
-    </div>
-    <%= image_tag("https://cdn-icons-png.flaticon.com/512/7486/7486777.png", height: '150', width: '150') %>
-  </div>
 
-<%# END %>
+<div class="close-btn">
+  <%= link_to lists_path do %>
+    <i class="fa-solid fa-xmark"></i>
+  <% end %>
+</div>
+<div class="post-wrapper main-padding" data-controller="posts">
+  <%# CONTAINS PARTIAL OF POST %>
+  <% @posts.each do %>
+    <%= render "shared/show-post" %>
+  <% end %>
+
+  <div class="buttons-wrapper">
+    <a class="controls unscroll-btn unscroll-btn-ghost"
+       href="#" data-action="click->posts#previous"
+       data-posts-target="previous">
+       Previous
+    </a>
+    <a class="controls unscroll-btn unscroll-btn-primary"
+       href="#" data-action="click->posts#next"
+       data-posts-target="next">
+       Next
+    </a>
+  </div>
 </div>
