@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_13_101059) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_13_112344) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -149,8 +149,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_101059) do
     t.integer "timestamp"
     t.string "source"
     t.string "media_type"
-    t.boolean "favourite"
-    t.boolean "read"
+    t.boolean "favourite", default: false, null: false
+    t.boolean "read", default: false, null: false
     t.bigint "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

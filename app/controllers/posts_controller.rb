@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def create
     list = List.find(params[:list_id])
     list.profiles.each do |profile|
-      profile.posts.each(&:destroy)
+      profile.posts.each { |post| post.read = true }
       response = call_api(profile.profile_source_id, profile.profile_type)
       if call_successful?(response)
         case profile.profile_type
@@ -95,13 +95,13 @@ class PostsController < ApplicationController
   end
 
   def base_insta_post_maker(post, profile)
-    new_post = InstaPost.new
+    new_post = Post.new
     if post['node']['edge_media_to_caption']['edges'].empty?
       new_post.caption = "No caption"
     else
       new_post.caption = post['node']['edge_media_to_caption']['edges'][0]["node"]['text']
     end
-    new_post.timestamp = post['node']['taken_at_timestamp']
+    new_post.timestamp = post['node']['taken_at_timestamp'].to_i
     new_post.profile = profile
     new_post
   end
