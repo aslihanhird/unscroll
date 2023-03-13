@@ -6,6 +6,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @posts = @list.insta_posts
   end
 
   def new
