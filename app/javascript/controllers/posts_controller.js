@@ -10,7 +10,8 @@ export default class extends Controller {
     // Give it a displayed class for easier itteration
     this.postTarget.classList.add("displayed");
     // Don't display the previous arrow
-    this.previousTarget.classList.add("d-none");
+    this.#hidePreviousButton();
+    // this.previousTarget.classList.add("d-none");
   }
 
   previous(event) {
@@ -27,12 +28,14 @@ export default class extends Controller {
 
     // If we are at the last post and press previous, show the next button again
     if (current_post_index === targets.length - 1) {
-      this.nextTarget.classList.remove("d-none");
+      this.#showNextButton();
+      // this.nextTarget.classList.remove("d-none");
     }
 
     // If we are at the second post and press previous, hide the previous button
     if (current_post_index === 1) {
-      this.previousTarget.classList.add("d-none");
+      this.#hidePreviousButton();
+      // this.previousTarget.classList.add("d-none");
     }
 
 
@@ -50,17 +53,11 @@ export default class extends Controller {
     targets[current_post_index + 1].classList.remove("d-none");
     targets[current_post_index + 1].classList.add("displayed");
 
-    this.previousTarget.classList.remove("d-none");
-
-    console.log("Current post:");
-    console.log(current_post_index);
-
-    console.log("Targets length:");
-    console.log(targets.length - 2);
-
+    this.#showPreviousButton();
+    // this.previousTarget.classList.remove("d-none");
 
     if (current_post_index === targets.length - 2) {
-      this.nextTarget.classList.add("d-none");
+      this.#hideNextButton();
     }
 
   }
@@ -75,12 +72,26 @@ export default class extends Controller {
     console.log("Trying to close caption");
     const captions = this.fullCaptionTargets;
     captions[this.#getIndex()].classList.add("d-none");
-    // const captions = this.fullCaptionsTargets;
-    // captions[this.#getIndex()].classList.add("d-none");
   }
 
   #getIndex() {
     const targets = this.postTargets;
     return targets.findIndex(post => post.classList.contains("displayed"))
+  }
+
+  #hidePreviousButton() {
+    this.previousTarget.style.opacity = 0;
+  }
+
+  #showPreviousButton() {
+    this.previousTarget.style.opacity = 1;
+  }
+
+  #hideNextButton() {
+    this.nextTarget.style.opacity = 0;
+  }
+
+  #showNextButton() {
+    this.nextTarget.style.opacity = 1;
   }
 }
