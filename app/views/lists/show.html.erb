@@ -1,5 +1,5 @@
 <div class="close-btn">
-  <%= link_to :back do %>
+  <%= link_to lists_path do %>
     <i class="fa-solid fa-xmark"></i>
   <% end %>
 </div>
@@ -10,7 +10,15 @@
   <% end %>
 
   <div class="buttons-wrapper">
-    <a class="controls unscroll-btn unscroll-btn-ghost" href="#" data-action="click->posts#previous">Previous</a>
-    <a class="controls unscroll-btn unscroll-btn-primary" href="#" data-action="click->posts#next">Next</a>
+    <a class="controls unscroll-btn unscroll-btn-ghost"
+       href="#" data-action="click->posts#previous"
+       data-posts-target="previous">
+       Previous
+    </a>
+    <a class="controls unscroll-btn unscroll-btn-primary"
+       href="#" data-action="click->posts#next"
+       data-posts-target="next">
+       Next
+    </a>
   </div>
 </div>
