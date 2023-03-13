@@ -3,10 +3,9 @@
   <div class="post-card">
     <div class="card-top">
       <div class="user-info">
+        <%= cl_image_tag(post.profile.photo.key, class: "avatar") %>
 
-          <%= image_tag("https://media.licdn.com/dms/image/D4E03AQELL61Tp3_UMg/profile-displayphoto-shrink_800_800/0/1673522168845?e=1684368000&v=beta&t=pZBrCiRFNbL5p64d5txUNY6GGBQzuaBVH93VDU7V9yc", class: "avatar") %>
-
-          <h3><%= post.insta_profile.username %></h3>
+          <h3><%= post.profile.username %></h3>
 
       </div>
       <div class="user-actions">
@@ -14,8 +13,11 @@
           <i class="fa-regular fa-bookmark"></i>
       </div>
     </div>
-
-    <%= image_tag("https://picsum.photos/1200") %>
+    <% if post.video.attached? %>
+        <%= cl_video_tag(post.video.key, class: "media-post-show", preload: "none", controls: true) %>
+      <% elsif post.photo.attached? %>
+        <%= cl_image_tag(post.photo.key, class:"media-post-show") %>
+      <% end %>
 
     <p><%= post.caption.slice(0,200) %></p>
 
