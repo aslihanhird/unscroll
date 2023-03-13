@@ -1,4 +1,23 @@
 <div class="single-post-wrapper d-none" data-posts-target="post">
-  <h1>This is a test for a partial</h1>
-    <img src="https://quillingarts.com/wp-content/uploads/quilling-art-viet-net-quilling-card-quilling-T.rex-1080x1080px.jpg" alt="Test">
+
+  <div class="post-card">
+    <div class="card-top">
+      <div class="user-info">
+
+          <%= image_tag("https://media.licdn.com/dms/image/D4E03AQELL61Tp3_UMg/profile-displayphoto-shrink_800_800/0/1673522168845?e=1684368000&v=beta&t=pZBrCiRFNbL5p64d5txUNY6GGBQzuaBVH93VDU7V9yc", class: "avatar") %>
+
+          <h3><%= post.insta_profile.username %></h3>
+
+      </div>
+      <div class="user-actions">
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-regular fa-bookmark"></i>
+      </div>
+    </div>
+
+    <%= image_tag("https://picsum.photos/1200") %>
+
+    <p><%= post.caption.slice(0,200) %></p>
+
+  </div>
 </div>

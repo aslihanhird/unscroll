@@ -7,10 +7,10 @@ export default class extends Controller {
   connect() {
     // Remove d-none only from the very first post
     this.postTarget.classList.remove("d-none");
+    // Give it a displayed class for easier itteration
     this.postTarget.classList.add("displayed");
-
+    // Don't display the previous arrow
     this.previousTarget.classList.add("d-none");
-
   }
 
   previous(event) {
