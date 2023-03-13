@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: :create
 
-  # get "/profile", to: "pages#profile"
+  get "/user_profile", to: "pages#profile"
   get '/favourites', to: "pages#favourites"
 
 end
