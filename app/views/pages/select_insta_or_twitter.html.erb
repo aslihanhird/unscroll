@@ -1,59 +1,57 @@
 <div class="container main-padding">
 
-    <h1 class="mb-5">Let's add a <span class="italic-accent underline">profile</span> to your <%= @list.name %> list.</h1>
+  <h1 class="mb-5">Let's add a <span class="italic-accent underline">profile</span> to your <%= @list.name %> list.</h1>
 
-
-    <div class="social-media-icons-wrapper shadowed mb-5">
-      <div  class="social-media-icon icon-instagram selected"
-            data-action="click->add-new-profile#clickig"
-            data-add-new-profile-target="igIcon">
-        <i class="fa-brands fa-instagram"></i>
-      </div>
-      <div class="social-media-icon icon-twitter"
-            data-action="click->add-new-profile#twitterClick"
-            data-add-new-profile-target="twIcon">
-        <i class="fa-brands fa-twitter"></i>
-      </div>
+  <div class="social-media-icons-wrapper shadowed mb-5">
+    <div  class="social-media-icon icon-instagram selected"
+          data-action="click->add-new-profile#clickig"
+          data-add-new-profile-target="igIcon">
+      <i class="fa-brands fa-instagram"></i>
     </div>
-    <div data-add-new-profile-target="igForm">
-        <%= simple_form_for [@list, @profile] do |f| %>
-          <%= f.input :username,
-                label: "Instagram username",
-                hint: "You don't need to include the @",
-                placeholder: "beyonce",
-                input_html: { class: "unscroll-form-input shadowed-subtle"},
-                hint_html: { class: 'input-hint' },
-                label_html: { class: 'unscroll-form-label'},
-                class: "new-list-input"
-                %>
-          <%= hidden_field_tag 'source', 'instagram' %>
-          <%= f.button :submit,
-              "add Instagram profile",
-              class: "unscroll-btn unscroll-btn-primary shadowed mt-3" %>
-        <% end %>
+    <div class="social-media-icon icon-twitter"
+          data-action="click->add-new-profile#twitterClick"
+          data-add-new-profile-target="twIcon">
+      <i class="fa-brands fa-twitter"></i>
     </div>
+  </div>
 
-    <div data-add-new-profile-target="twForm" class="d-none">
-        <%= simple_form_for [@list, @profile],
-          class: "d-none",
-          data: { target: "twForm" } do |f| %>
-        <%= f.input :username,
-              label: "Twitter username",
-              hint: "You don't need to include the @",
-              placeholder: "beyonce",
-              input_html: { class: "unscroll-form-input shadowed-subtle"},
-              hint_html: { class: 'input-hint' },
-              label_html: { class: 'unscroll-form-label'},
-              class: "new-list-input"
-              %>
-        <%= hidden_field_tag 'source', 'twitter' %>
-        <%= f.button :submit,
-            "add Twitter profile",
-            class: "unscroll-btn unscroll-btn-primary twitter-blue shadowed mt-3" %>
-      <% end %>
+  <div data-add-new-profile-target="igForm">
+    <%= simple_form_for [@list, @profile] do |f| %>
+      <%= f.input :username,
+            label: "Instagram username",
+            hint: "You don't need to include the @",
+            placeholder: "beyonce",
+            input_html: { class: "unscroll-form-input shadowed-subtle"},
+            hint_html: { class: 'input-hint' },
+            label_html: { class: 'unscroll-form-label'},
+            class: "new-list-input"
+            %>
+      <%= hidden_field_tag 'source', 'instagram' %>
+      <%= f.button :submit,
+          "add Instagram profile",
+          class: "unscroll-btn unscroll-btn-primary shadowed mt-3" %>
+    <% end %>
+  </div>
 
-    </div>
+  <div data-add-new-profile-target="twForm" class="d-none">
+    <%= simple_form_for [@list, @profile],
+        class: "d-none",
+        data: { target: "twForm" } do |f| %>
+      <%= f.input :username,
+            label: "Twitter username",
+            hint: "You don't need to include the @",
+            placeholder: "beyonce",
+            input_html: { class: "unscroll-form-input shadowed-subtle"},
+            hint_html: { class: 'input-hint' },
+            label_html: { class: 'unscroll-form-label'},
+            class: "new-list-input"
+            %>
+      <%= hidden_field_tag 'source', 'twitter' %>
+      <%= f.button :submit,
+          "add Twitter profile",
+          class: "unscroll-btn unscroll-btn-primary twitter-blue shadowed mt-3" %>
+    <% end %>
 
+  </div>
 
-    </div>
 </div>
