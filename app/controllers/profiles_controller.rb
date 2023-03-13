@@ -4,17 +4,17 @@ require 'openssl'
 
 class ProfilesController < ApplicationController
   before_action :set_list, only: %i[new create profile_added]
-  # done
+
   def index
     @profiles = current_user.list
   end
-  # done
+
   def new
     @profile = Profile.new
   end
-  # TO DO
+
   def create
-    source = params[:source] # NEED FRONT TO SEND THIS
+    source = params[:source] # NEED FRONT TO SEND THIS (added hidden tag param to forms)
     response = find_profile(profile_params[:username], source)
     return error_messages(response) unless call_succeeded?(response)
     new_profile = define_new_profile(response, @list, source)
@@ -27,7 +27,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # done
   def destroy
     @profile = Profile.find(params[:id])
     @profile.destroy
@@ -36,17 +35,14 @@ class ProfilesController < ApplicationController
 
   private
 
-   # done
   def set_list
     @list = List.find(params[:list_id])
   end
 
-  # DONE
   def profile_params
     params.require(:profile).permit(:username)
   end
 
-  # DONE
   def find_profile(profile_name, source)
     case source
     when 'twitter'
@@ -57,7 +53,6 @@ class ProfilesController < ApplicationController
     request_id_from_api(url)
   end
 
-  # DONE
   def request_id_from_api(url)
     response = Excon.get(
       url,

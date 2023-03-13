@@ -8,9 +8,6 @@
           <%= link_to edit_list_path(@list), class: '' do %>
             <i class="icon-list fa-regular fa-pen-to-square"></i>
           <% end %>
-          <%= link_to insta_posts_path(list_id: @list.id), data: {turbo_method: "post"}, class: '' do %>
-            <i class="icon-list fa-sharp fa-solid fa-retweet ms-1"></i>
-          <% end %>
         </div>
     </div>
   </div>
@@ -27,7 +24,7 @@
       <div>
       <% if post.video.attached? %>
         <%= cl_video_tag(post.video.key, class: "media-post-show", preload: "none", controls: true) %>
-      <% else %>
+      <% elsif post.photo.attaached? %>
         <%= cl_image_tag(post.photo.key, class:"media-post-show") %>
       <% end %>
       </div>

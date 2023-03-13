@@ -14,4 +14,8 @@ class PagesController < ApplicationController
     @insta_profile = InstaProfile.new
     @twitter_profile = TwitterProfile.new
   end
+
+  def favourites
+    @favourite_posts = current_user.fav_posts
+  end
 end

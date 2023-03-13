@@ -68,6 +68,7 @@ class PostsController < ApplicationController
     new_post.caption = post['full_text']
     new_post.timestamp = format_timestamp(post['created_at'])
     new_post.profile = profile
+    new_post.source = 'twitter'
     new_post
   end
 
@@ -103,6 +104,7 @@ class PostsController < ApplicationController
     end
     new_post.timestamp = post['node']['taken_at_timestamp'].to_i
     new_post.profile = profile
+    new_post.source = 'instagram'
     new_post
   end
 end
