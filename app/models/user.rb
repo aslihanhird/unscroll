@@ -10,7 +10,9 @@ class User < ApplicationRecord
   def fav_posts
     fav_posts = []
     self.lists.each do |list|
-      fav_posts << list.posts.where(favourite: true)
+      list.posts.where(favourite: true).each do |post|
+        fav_posts << post
+      end
     end
     fav_posts
   end
