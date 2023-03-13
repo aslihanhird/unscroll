@@ -82,14 +82,14 @@ class PostsController < ApplicationController
 
     case post['node']['__typename']
     when "GraphImage"
-      media_url = post['node']['display_url']
-      new_post.photo.attach(io: URI.open(media_url), filename: "#{new_post.id}-content.png", content_type: "image/png")
+      new_post.photo.attach(io: URI.open(post['node']['display_url']), filename: "#{new_post.id}-content.png", content_type: "image/png")
+      new_post.media_type = 'photo'
     when "GraphVideo"
-      media_url = post['node']['video_url']
-      new_post.video.attach(io: URI.open(media_url), filename: "#{new_post.id}-content.mp4", content_type: "video/mp4")
-    else
-      # eventually, carousel
-      return
+      new_post.video.attach(io: URI.open(post['node']['video_url']), filename: "#{new_post.id}-content.mp4", content_type: "video/mp4")
+      new_post.media_type = 'video'
+    when "GraphSidecar"
+      new_post.media_type = 'carousel'
+      new_post.media_keys = insta_carousel_maker(post['node']['edge_sidecar_to_children']['edges'])
     end
 
     new_post.save
@@ -106,5 +106,24 @@ class PostsController < ApplicationController
     new_post.profile = profile
     new_post.source = 'instagram'
     new_post
+  end
+
+  def insta_carousel_maker(children)
+    array = []
+    children.each do |child|
+      case child['node']['__typename']
+      when "GraphImage"
+        new_post.photo.attach(io: URI.open(child['node']['display_url']), content_type: "image/png")
+        key = new_post.photo.key
+        type = 'photo'
+        array << { type: type.to_s, key: key.to_s }
+      when "GraphVideo"
+        new_post.video.attach(io: URI.open(child['node']['video_url']), content_type: "video/mp4")
+        key = new_post.video.key
+        type = 'video'
+        array << { type: type.to_s, key: key.to_s }
+      end
+    end
+    array
   end
 end
