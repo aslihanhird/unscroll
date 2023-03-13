@@ -20,6 +20,10 @@ class PostsController < ApplicationController
     redirect_to list_path(list)
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   private
 
   def call_successful?(response)
