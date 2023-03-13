@@ -1,6 +1,6 @@
 require "test_helper"
 
-class FavouriteInstaPostsControllerTest < ActionDispatch::IntegrationTest
+class PostTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

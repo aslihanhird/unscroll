@@ -1,40 +1,40 @@
-        <%= link_to list_path(list), data: {list_target: "main"} do %>
-          <div class="list-item-main <%= "shadowed" if list.insta_posts.size > 0 %>">
-            <div class="list-item-name <%= "greyed-out" if list.insta_posts.size <= 0 %>">
-              <h4><%= list.name.downcase %></h4>
-            </div>
+<%= link_to list_path(list), data: {list_target: "main"} do %>
+  <div class="list-item-main <%= "shadowed" if list.posts.size > 0 %>">
+    <div class="list-item-name <%= "greyed-out" if list.posts.size <= 0 %>">
+      <h4><%= list.name.downcase %></h4>
+    </div>
 
-            <div class="list-item-updates">
-                  <% if list.insta_posts.size > 0 %>
-                    <%= list.insta_posts.size %> updates
-                  <% elsif list.insta_profiles.size == 0 %>
-                    no profiles
-                  <% else %>
-                    up to date
-                  <% end %>
-            </div>
+    <div class="list-item-updates">
+          <% if list.posts.size > 0 %>
+            <%= list.posts.size %> updates
+          <% elsif list.profiles.size == 0 %>
+            no profiles
+          <% else %>
+            up to date
+          <% end %>
+    </div>
 
-            <div class="list-item-icon">
-              <% if list.insta_posts.size > 0 %>
-                <i class="fa-solid fa-arrow-right-long"></i>
-              <% elsif list.insta_profiles.size == 0 %>
-                <i class="fa-solid fa-triangle-exclamation light-red"></i>
-              <% else %>
-                <i class="fa-solid fa-check light-green"></i>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
+    <div class="list-item-icon">
+      <% if list.posts.size > 0 %>
+        <i class="fa-solid fa-arrow-right-long"></i>
+      <% elsif list.profiles.size == 0 %>
+        <i class="fa-solid fa-triangle-exclamation light-red"></i>
+      <% else %>
+        <i class="fa-solid fa-check light-green"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
-        <div class="list-item-options shadowed d-none" data-list-target="options">
-          <div class="list-edit">
-            <%= link_to list_new_select_path(list) do %>
-              <i class="fa-solid fa-plus"></i>add profiles
-            <% end %>
-          </div>
-          <div class="list-delete">
-            <%= link_to list_path(list), data: {turbo_method: "delete", turbo_confirm: "Do you really want to delete this list?"} do %>
-              <i class="fa-regular fa-trash-can"></i>delete list
-            <% end %>
-          </div>
-        </div>
+<div class="list-item-options shadowed d-none" data-list-target="options">
+  <div class="list-edit">
+    <%= link_to list_new_select_path(list) do %>
+      <i class="fa-solid fa-plus"></i>add profiles
+    <% end %>
+  </div>
+  <div class="list-delete">
+    <%= link_to list_path(list), data: {turbo_method: "delete", turbo_confirm: "Do you really want to delete this list?"} do %>
+      <i class="fa-regular fa-trash-can"></i>delete list
+    <% end %>
+  </div>
+</div>
