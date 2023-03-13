@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_153059) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_13_094224) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -143,6 +143,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_153059) do
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "caption"
+    t.string "media_url"
+    t.integer "timestamp"
+    t.string "source"
+    t.string "media_type"
+    t.boolean "favourite"
+    t.boolean "read"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_posts_on_profile_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "username"
+    t.string "profile_type"
+    t.string "profile_pic"
+    t.bigint "list_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_profiles_on_list_id"
+  end
+
   create_table "twitter_posts", force: :cascade do |t|
     t.string "caption"
     t.string "media_url"
@@ -187,6 +211,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_153059) do
   add_foreign_key "insta_posts", "insta_profiles"
   add_foreign_key "insta_profiles", "lists"
   add_foreign_key "lists", "users"
+  add_foreign_key "posts", "profiles"
+  add_foreign_key "profiles", "lists"
   add_foreign_key "twitter_posts", "twitter_profiles"
   add_foreign_key "twitter_profiles", "lists"
 end

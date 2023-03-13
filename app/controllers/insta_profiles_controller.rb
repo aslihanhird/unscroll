@@ -32,10 +32,6 @@ class InstaProfilesController < ApplicationController
     redirect_to edit_list_path
   end
 
-  def profile_added
-
-  end
-
   private
 
   def set_list

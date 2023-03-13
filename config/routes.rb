@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :lists do
+    resources :profiles, only: %i[new create]
     resources :insta_profiles, only: %i[new create]
     resources :twitter_profiles, only: %i[new create]
 
@@ -16,9 +17,11 @@ Rails.application.routes.draw do
     get "/new/select", to: "pages#select_insta_or_twitter"
   end
 
+  resources :profiles, only: :destroy
   resources :insta_profiles, only: :destroy
   resources :twitter_profiles, only: :destroy
 
+  resources :posts, only: :create
   resources :insta_posts, only: :create
   resources :twitter_posts, only: :create
 

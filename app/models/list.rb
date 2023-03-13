@@ -1,10 +1,11 @@
 class List < ApplicationRecord
   belongs_to :user
 
+  has_many :profiles
   has_many :insta_profiles, dependent: :destroy
   has_many :twitter_profiles, dependent: :destroy
 
-  has_many :insta_posts, through: :insta_profiles, dependent: :destroy
+  has_many :posts, through: :profiles
 
   validates :name, presence: true
 
