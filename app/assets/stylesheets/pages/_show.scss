@@ -34,14 +34,32 @@
   }
 }
 
-.test-post-height {
-  width: 1080px;
-  height: 1080px;
-  background-color: lightgreen;
-}
-
 .single-post-wrapper {
+  height: 99%;
+
   img {
     width: 100%;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+  }
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+
+  h3 {
+    margin: 0;
   }
 }

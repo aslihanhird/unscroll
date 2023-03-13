@@ -6,6 +6,7 @@
     "@hotwired/turbo-rails": "^7.3.0",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
+    "stimulus-read-more": "^4.1.0",
     "stimulus-scroll-reveal": "^3.1.0",
     "stimulus-scroll-to": "^4.1.0",
     "webpack": "^5.75.0",
