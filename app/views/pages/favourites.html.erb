@@ -1,13 +1,19 @@
 <div class="main-padding favourite-grid">
+
   <% @favourite_posts.each do |post| %>
-    <div>
+    <div class="position-relative">
+        <i class="fa-solid fa-trash unfavourite-btn shadowed"></i>
+
         <%= link_to post_path(post) do %>
-            <%= cl_image_tag(post.photo.key, class: "favourite-grid-item shadowed") %>
+            <% if post.photo.key %>
+              <%= cl_image_tag(post.photo.key, class: "favourite-grid-item shadowed") %>
+            <% else %>
+              <%= image_tag("twitter-logo.jpg.png", class: "favourite-grid-item shadowed") %>
+            <% end %>
         <% end %>
+
         <span class="greyed-out">by <%= post.profile.username %></span>
 
-    <%# TODO: Add a remove button here & add a remove button on the showpage %>
-    <%# TODO: Fix the showpage of a post with kinda the same design as the list showpage %>
     </div>
   <% end %>
 </div>
