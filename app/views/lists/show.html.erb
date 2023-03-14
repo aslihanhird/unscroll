@@ -1,11 +1,12 @@
 
-<div class="close-btn">
-  <%= link_to lists_path do %>
+
+  <%= link_to lists_path, class: "close-btn" do %>
     <i class="fa-solid fa-xmark"></i>
   <% end %>
-</div>
-<div class="post-wrapper main-padding" data-controller="posts">
-  <%# CONTAINS PARTIAL OF POST %>
+
+
+<div class="post-wrapper small-padding" data-controller="posts">
+
   <% @posts.each do |post| %>
     <%= render "shared/show-post", post: post %>
   <% end %>
@@ -21,5 +22,8 @@
        data-posts-target="next">
        Next
     </a>
+  </div>
+  <div class="progress-bar-wrapper">
+    <div class="progress-bar" data-posts-target="progressBar"></div>
   </div>
 </div>
