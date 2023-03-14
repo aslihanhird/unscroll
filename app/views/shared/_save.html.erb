@@ -6,7 +6,7 @@
           } do |f| %>
             <%# <%= f.check_box :favourite, { checked: true } %>
             <%= f.hidden_field :favourite, :value => true %>
-            <%= button_tag( :class => "button-save") do %>
+            <%= button_tag( :class => "button-save", :id => "bookmark") do %>
               <i class="fa-regular fa-bookmark"></i>
             <% end %>
           <% end %>
