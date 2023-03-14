@@ -48,5 +48,5 @@ body {
 
 .hyphens {
   hyphens: auto;
-  word-break: break-all;
+  overflow-wrap:break-word;
 }
