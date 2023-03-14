@@ -14,9 +14,9 @@
         </div>
     </div>
   </div>
-  <% posts_left_to_see = @list.all_posts.count %>
+  <% posts_left_to_see = @list.new_posts.count %>
   <% post_index_position = 1 %>
-  <% @list.all_posts.each do |post| %>
+  <% @list.new_posts.each do |post| %>
     <% post_index_position += 1 %>
     <div id="<%=post_index_position - 1%>" class="post-card" data-controller="next" data-next-target="post">
       <% if post.class == InstaPost %>

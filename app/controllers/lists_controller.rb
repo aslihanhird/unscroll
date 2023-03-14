@@ -6,7 +6,7 @@ class ListsController < ApplicationController
   end
 
   def show
-    @posts = @list.posts
+    @posts = @list.new_posts
   end
 
   def new

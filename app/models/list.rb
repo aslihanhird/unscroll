@@ -7,11 +7,11 @@ class List < ApplicationRecord
 
   validates :name, presence: true
 
-  def all_posts
+  def new_posts
     posts = []
     profiles.each do |profile|
       profile.posts.each do |post|
-        posts.push(post)
+        posts.push(post) unless post.favourite
       end
     end
     posts.sort_by { |p| p.timestamp }.reverse
