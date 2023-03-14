@@ -1,12 +1,12 @@
 <%= link_to list_path(list), data: {list_target: "main"} do %>
-  <div class="list-item-main <%= "shadowed" if list.posts.size > 0 %>">
-    <div class="list-item-name <%= "greyed-out" if list.posts.size <= 0 %>">
+  <div class="list-item-main <%= "shadowed" if list.new_posts.size > 0 %>">
+    <div class="list-item-name <%= "greyed-out" if list.new_posts.size <= 0 %>">
       <h4><%= list.name.downcase %></h4>
     </div>
 
     <div class="list-item-updates">
-          <% if list.posts.size > 0 %>
-            <%= list.posts.size %> updates
+          <% if list.new_posts.size > 0 %>
+            <%= list.new_posts.size %> updates
           <% elsif list.profiles.size == 0 %>
             no profiles
           <% else %>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="list-item-icon">
-      <% if list.posts.size > 0 %>
+      <% if list.new_posts.size > 0 %>
         <i class="fa-solid fa-arrow-right-long"></i>
       <% elsif list.profiles.size == 0 %>
         <i class="fa-solid fa-triangle-exclamation light-red"></i>

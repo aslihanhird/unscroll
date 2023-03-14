@@ -9,7 +9,7 @@ class Profile < ApplicationRecord
   validates :username, presence: true
 
   def refresh
-    posts.each { |post| post.read = true }
+    posts.where(favourite: false).delete_all
     response = call_api
     case profile_type
     when 'twitter'
