@@ -1,4 +1,4 @@
-<%= link_to list_path(list), data: {list_target: "main"} do %>
+<%= link_to (list.new_posts.size > 0 ? list_path(list) : edit_list_path(list)), data: {list_target: "main"} do %>
   <div class="list-item-main <%= "shadowed" if list.new_posts.size > 0 %>">
     <div class="list-item-name <%= "greyed-out" if list.new_posts.size <= 0 %>">
       <h4><%= list.name.downcase %></h4>
