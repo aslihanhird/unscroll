@@ -1,0 +1,24 @@
+
+<div class="full-caption main-padding d-none" data-posts-target="fullCaption">
+
+  <div class="close-btn close-caption" data-action="click->posts#closeCaption">
+      <i class="fa-solid fa-arrow-left-long"></i>
+  </div>
+
+  <div class="card-top">
+    <div class="user-info">
+      <%= cl_image_tag(post.profile.photo.key, class: "avatar shadowed") %>
+      <h4><%= post.profile.username %>:</h4>
+    </div>
+
+    <div class="user-actions">
+      <% if post.source == "instagram" %>
+        <i class="fa-brands fa-instagram"></i>
+      <% else %>
+        <i class="fa-brands fa-twitter"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <p class="hyphens"><%= post.caption %></p>
+</div>

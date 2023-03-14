@@ -1,22 +1,39 @@
-<div class="single-post-wrapper d-none" data-posts-target="post">
+<div class="single-post-wrapper small-padding" data-posts-target="post">
 
   <div class="post-card">
+
+    <%# CARD TOP WITH INFO %>
+
     <div class="card-top">
+
       <div class="user-info">
-        <%= cl_image_tag(post.profile.photo.key, class: "avatar") %>
-
-          <h3><%= post.profile.username %></h3>
-
+          <%= cl_image_tag(post.profile.photo.key, class: "avatar shadowed") %>
+          <p><%= post.profile.username %></p>
       </div>
+
       <div class="user-actions">
+
+        <% if post.source == "instagram" %>
           <i class="fa-brands fa-instagram"></i>
+        <% else %>
+          <i class="fa-brands fa-twitter"></i>
+        <% end %>
+
+        <% if post.favourite %>
+          <i class="fa-solid fa-bookmark"></i>
+        <% else %>
           <i class="fa-regular fa-bookmark"></i>
+        <% end %>
       </div>
+
     </div>
+
       <% if post.media_type == 'photo' %>
         <%= cl_image_tag(post.photos[0].key, class:"media-post-show") %>
+        <%= render "shared/post-caption", post: post %>
       <% elsif post.media_type == 'video' %>
         <%= cl_video_tag(post.videos[0].key, class: "media-post-show", preload: "none", controls: true) %>
+        <%= render "shared/post-caption", post: post %>
       <% elsif post.media_type == 'carousel' %>
         <% i = 0 %>
         <% j = 0 %>
@@ -28,10 +45,16 @@
             <%= cl_video_tag(post.videos[j].key, class: "media-post-show", preload: "none", controls: true) %>
             <% j += 1 %>
           <% end %>
+          <%= render "shared/post-caption", post: post %>
         <% end %>
+        
+       <% else %>
+        <p class="hyphens"><%= post.caption %></p>
       <% end %>
 
-    <p><%= post.caption.slice(0,200) %></p>
+    <%# CAPTION %>
+
+
 
   </div>
 </div>
