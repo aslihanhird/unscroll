@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :profiles, only: :destroy
 
-  resources :posts, only: %i[create show]
+  resources :posts, only: %i[create show update]
 
   get "/user_profile", to: "pages#profile"
   get '/favourites', to: "pages#favourites"
