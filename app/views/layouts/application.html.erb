@@ -30,7 +30,7 @@
 
   <body data-controller="add-new-profile" data-target="pagebody">
     <%# ONLY RENDER THIS IF IT IS NOT THE POST SHOW PAGE %>
-    <% unless request.original_url.match(/.*\/lists\/\d+\/?/) || request.original_url.match(/.*\/posts\/\d+\/?/) %>
+    <% unless request.original_url.match(/.*\/lists\/\d+\/?$/) || request.original_url.match(/.*\/posts\/\d+\/?/) %>
       <%= render "shared/logo-top" %>
       <%= render "shared/navbar" %>
     <% end %>
