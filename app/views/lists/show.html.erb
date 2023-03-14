@@ -1,9 +1,10 @@
 
-<div class="close-btn">
-  <%= link_to lists_path do %>
+
+  <%= link_to lists_path, class: "close-btn" do %>
     <i class="fa-solid fa-xmark"></i>
   <% end %>
-</div>
+
+
 <div class="post-wrapper small-padding" data-controller="posts">
 
   <% @posts.each do |post| %>
