@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: %i[show edit update destroy refresh]
 
   def index
-    @lists = current_user.lists
+    @lists = current_user.lists.where(active: true)
   end
 
   def show
@@ -33,7 +33,8 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list.destroy
+    @list.active = false
+    @list.save
     redirect_to lists_path, status: :see_other
   end
 
