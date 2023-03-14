@@ -11,7 +11,7 @@ class List < ApplicationRecord
     posts = []
     profiles.each do |profile|
       profile.posts.each do |post|
-        posts.push(post) unless post.favourite
+        posts.push(post) unless post.favourite? || post.read?
       end
     end
     posts.sort_by { |p| p.timestamp }.reverse
