@@ -2,16 +2,24 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="posts"
 export default class extends Controller {
-  static targets = ["post", "previous", "next", "fullCaption"]
+
+  static targets = ["post", "previous", "next", "fullCaption", "progressBar"]
+
 
   connect() {
     // Remove d-none only from the very first post
     this.postTarget.classList.remove("d-none");
     // Give it a displayed class for easier itteration
     this.postTarget.classList.add("displayed");
-    // Don't display the previous arrow
+
+// Don't display the previous arrow
     this.#hidePreviousButton();
-    // this.previousTarget.classList.add("d-none");
+    
+    // Default progress bar when page loads
+    let numberOfPosts = this.postTargets.length;
+    let valueProgress = 100 / numberOfPosts;
+    let progress = this.progressBarTarget;
+    progress.style.width = (valueProgress) + '%';
   }
 
   previous(event) {
@@ -38,6 +46,16 @@ export default class extends Controller {
       // this.previousTarget.classList.add("d-none");
     }
 
+    // Progress bar
+    let numberOfPosts = this.postTargets.length;
+    let valueProgress = 100 / numberOfPosts;
+    let decreaseValue = valueProgress * (current_post_index+1);
+    let progress = this.progressBarTarget;
+
+    if (current_post_index === 0) {
+      progress.style.width = (decreaseValue-valueProgress) + '%';
+    }
+    progress.style.width = (decreaseValue-valueProgress) + '%';
 
   }
 
@@ -46,6 +64,7 @@ export default class extends Controller {
 
     const targets = this.postTargets;
     const current_post_index = this.#getIndex();
+
 
     targets[current_post_index].classList.add("d-none");
     targets[current_post_index].classList.remove("displayed");
@@ -58,6 +77,23 @@ export default class extends Controller {
 
     if (current_post_index === targets.length - 2) {
       this.#hideNextButton();
+    }
+
+    // Progress bar
+    let numberOfPosts = this.postTargets.length;
+    let valueProgress = 100 / numberOfPosts;
+    let increaseValue = valueProgress * (current_post_index+1);
+    console.log(increaseValue*2);
+    let progress = this.progressBarTarget;
+
+    if (current_post_index === 0) {
+      progress.style.width = (increaseValue + valueProgress) + '%';
+    }
+    progress.style.width = (increaseValue + valueProgress) + '%';
+
+    // Change the color of the progress bar when list is read
+    if (increaseValue + valueProgress === 100) {
+      progress.style.backgroundColor = "#B5F1CC"
     }
 
   }
