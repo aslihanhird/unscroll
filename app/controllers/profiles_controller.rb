@@ -73,9 +73,9 @@ class ProfilesController < ApplicationController
 
   def error_messages(response)
     error_message = response['message']
-    @insta_profile = Profile.new
-    @insta_profile.errors.add(:username, error_message)
-    return render :new, status: :unprocessable_entity
+    @profile = Profile.new
+    @profile.errors.add(:username, error_message)
+    return render 'pages/select_insta_or_twitter', status: :unprocessable_entity
   end
 
   def define_new_profile(response, list, source)

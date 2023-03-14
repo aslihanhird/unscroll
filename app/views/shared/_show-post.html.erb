@@ -28,23 +28,29 @@
 
     </div>
 
-    <%# MEDIA %>
-
-    <% if post.video.attached? %>
-
-        <%= cl_video_tag(post.video.key, class: "shadowed mb-5", preload: "none", controls: true) %>
+      <% if post.media_type == 'photo' %>
+        <%= cl_image_tag(post.photos[0].key, class:"media-post-show") %>
         <%= render "shared/post-caption", post: post %>
-
-    <% elsif post.photo.attached? %>
-
-        <%= cl_image_tag(post.photo.key, class:"shadowed mb-5") %>
+      <% elsif post.media_type == 'video' %>
+        <%= cl_video_tag(post.videos[0].key, class: "media-post-show", preload: "none", controls: true) %>
         <%= render "shared/post-caption", post: post %>
-
-    <% else %>
-
+      <% elsif post.media_type == 'carousel' %>
+        <% i = 0 %>
+        <% j = 0 %>
+        <% post.media_keys.each do |media| %>
+          <% if media == 'photo' %>
+            <%= cl_image_tag(post.photos[i].key, class:"media-post-show") %>
+            <% i += 1 %>
+          <% elsif media == 'video' %>
+            <%= cl_video_tag(post.videos[j].key, class: "media-post-show", preload: "none", controls: true) %>
+            <% j += 1 %>
+          <% end %>
+          <%= render "shared/post-caption", post: post %>
+        <% end %>
+        
+       <% else %>
         <p class="hyphens"><%= post.caption %></p>
-
-    <% end %>
+      <% end %>
 
     <%# CAPTION %>
 
