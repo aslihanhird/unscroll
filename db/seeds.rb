@@ -12,7 +12,8 @@ p "................................"
 user = User.new(
   username: "demo",
   email: "demo@lewagon.com",
-  password: "123456"
+  password: "123456",
+  admin: true
 )
 
 if user.valid?
@@ -329,3 +330,5 @@ else
   puts "Post failed to save for #{carousel_2.profile}."
   puts "Errors: #{carousel_2.errors.messages}"
 end
+
+puts 'Done :) (special request from damian)'

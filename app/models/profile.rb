@@ -53,7 +53,7 @@ class Profile < ApplicationRecord
 
     if trim_post.key?('extended_entities') && trim_post['entities']['media'][0]['type'] == 'photo'
       media_url = trim_post['entities']['media'][0]['media_url_https']
-      new_post.photo.attach(io: URI.open(media_url), filename: "#post-content.png", content_type: "image/png")
+      new_post.photos.attach(io: URI.open(media_url), filename: "#post-content.png", content_type: "image/png")
     end
     new_post.save
   end
@@ -78,15 +78,14 @@ class Profile < ApplicationRecord
     case post['node']['__typename']
     when "GraphImage"
       media_url = post['node']['display_url']
-      new_post.photo.attach(io: URI.open(media_url), filename: "#{new_post.id}-content.png", content_type: "image/png")
+      new_post.photos.attach(io: URI.open(media_url), filename: "#{new_post.id}-content.png", content_type: "image/png")
     when "GraphVideo"
       media_url = post['node']['video_url']
-      new_post.video.attach(io: URI.open(media_url), filename: "#{new_post.id}-content.mp4", content_type: "video/mp4")
-    else
-      # eventually, carousel
-      return
+      new_post.videos.attach(io: URI.open(media_url), filename: "#{new_post.id}-content.mp4", content_type: "video/mp4")
+    when "GraphSidecar"
+      new_post.media_type = 'carousel'
+      new_post.media_keys = insta_carousel_keys(new_post, post['node']['edge_sidecar_to_children']['edges'])
     end
-
     new_post.save
   end
 
@@ -101,5 +100,22 @@ class Profile < ApplicationRecord
     new_post.profile = self
     new_post.source = 'instagram'
     new_post
+  end
+
+  def insta_carousel_keys(new_post, children)
+    array = []
+    i = 1
+    children.each do |child|
+      case child['node']['__typename']
+      when "GraphImage"
+        new_post.photos.attach(io: URI.open(child['node']['display_url']), filename: "#{i}-content.png", content_type: "image/png")
+        array << 'photo'
+      when "GraphVideo"
+        new_post.videos.attach(io: URI.open(child['node']['video_url']), filename: "#{i}-content.png", content_type: "video/mp4")
+        array << 'video'
+      end
+      i += 1
+    end
+    array
   end
 end
