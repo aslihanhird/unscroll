@@ -3,15 +3,15 @@
   <%= link_to 'Add a profile', list_new_select_path(@list), class: "button-red-edit" %>
 
   <ul id="profile-list">
-    <% @list.insta_profiles.each do |insta| %>
+    <% @list.profiles.each do |profile| %>
       <li>
         <div class="profile-card-edit">
           <div>
-            <%= cl_image_tag(insta.photo.key, class: "me-5 img-profile-edit") %>
-            <%= insta.username %>
+            <%= cl_image_tag(profile.photo.key, class: "me-5 img-profile-edit") %>
+            <%= profile.username %>
           </div>
           <div>
-            <%= link_to insta_profile_path(insta), data: {turbo_method: :delete, turbo_confirm: 'U sure buddy?'}, class: 'link-delete' do %>
+            <%= link_to profile_path(profile), data: {turbo_method: :delete, turbo_confirm: 'U sure buddy?'}, class: 'link-delete' do %>
               <i class="fa-solid fa-trash"></i>
             <% end %>
           </div>

@@ -1,12 +1,13 @@
+
 <div class="close-btn">
   <%= link_to lists_path do %>
     <i class="fa-solid fa-xmark"></i>
   <% end %>
 </div>
-<div class="post-wrapper main-padding" data-controller="posts">
+<div class="post-wrapper small-padding" data-controller="posts">
   <%# CONTAINS PARTIAL OF POST %>
-  <% @posts.each do %>
-    <%= render "shared/show-post" %>
+  <% @posts.each do |post| %>
+    <%= render "shared/show-post", post: post %>
   <% end %>
 
   <div class="buttons-wrapper">

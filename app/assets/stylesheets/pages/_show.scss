@@ -20,6 +20,7 @@
   height: 43px;
   width: 43px;
   background-color: #FF7B85;
+  color: white;
   position: fixed;
   top: 0;
   left: 0;
@@ -35,16 +36,65 @@
   }
 }
 
-.test-post-height {
-  width: 1080px;
-  height: 1080px;
-  background-color: lightgreen;
-}
+
 
 .single-post-wrapper {
+  height: 99%;
+  display: flex;
+  align-content: center;
+
   img {
     width: 100%;
   }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+  }
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+
+  p {
+    margin: 0;
+  }
+
+}
+
+.read-more {
+  color: $subtle-gray;
+  display: block;
+}
+
+.user-actions {
+  color: $primary-color;
+  font-size: 1.5em;
+}
+
+.full-caption {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  transition: 1s;
 }
 
 

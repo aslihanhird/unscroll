@@ -11,7 +11,10 @@ class PagesController < ApplicationController
 
   def select_insta_or_twitter
     @list = List.find(params[:list_id])
-    @insta_profile = InstaProfile.new
-    @twitter_profile = TwitterProfile.new
+    @profile = Profile.new
+  end
+
+  def favourites
+    @favourite_posts = current_user.fav_posts
   end
 end
