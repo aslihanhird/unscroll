@@ -31,64 +31,14 @@ export default class extends Controller {
   previous(event) {
     event.preventDefault();
 
-    const allPosts = this.postTargets;
-    const current_post_index = this.#getIndex();
-
-    console.log(allPosts);
-    console.log(current_post_index);
-
-    allPosts[current_post_index].classList.add("d-none");
-    allPosts[current_post_index].classList.remove("displayed");
-
-    allPosts[current_post_index - 1].classList.remove("d-none");
-    allPosts[current_post_index - 1].classList.add("displayed");
-
-    // If we are at the last post and press previous, show the next button again
-    if (current_post_index === allPosts.length - 1) {
-      this.#showNextButton();
-      // this.nextTarget.classList.remove("d-none");
-    }
-
-    // If we are at the second post and press previous, hide the previous button
-    if (current_post_index === 1) {
-      this.#hidePreviousButton();
-      // this.previousTarget.classList.add("d-none");
-    }
-
-    // Progress bar
-    let numberOfPosts = this.postTargets.length;
-    let valueProgress = 100 / numberOfPosts;
-    let decreaseValue = valueProgress * (current_post_index+1);
-    let progress = this.progressBarTarget;
-
-    if (current_post_index === 0) {
-      progress.style.width = (decreaseValue-valueProgress) + '%';
-    }
-    progress.style.width = (decreaseValue-valueProgress) + '%';
+    this.#showPreviousPost();
 
   }
 
   next(event) {
     event.preventDefault();
 
-    const allPosts = this.postTargets;
-    const current_post_index = this.#getIndex();
-
-    allPosts[current_post_index].classList.add("d-none");
-    allPosts[current_post_index].classList.remove("displayed");
-
-
-    allPosts[current_post_index + 1].classList.remove("d-none");
-    allPosts[current_post_index + 1].classList.add("displayed");
-
-    this.#showPreviousButton();
-
-    if (current_post_index === allPosts.length - 2) {
-      this.#hideNextButton();
-    }
-
-    // Progress bar
-    this.#updateProgressBar(current_post_index);
+    this.#showNextPost();
 
   }
 
@@ -106,6 +56,7 @@ export default class extends Controller {
   }
 
   swipe(event) {
+    event.preventDefault();
     const startX = event.changedTouches[0].clientX;
     const startY = event.changedTouches[0].clientY;
 
@@ -115,12 +66,32 @@ export default class extends Controller {
       const endX = eventEnd.changedTouches[0].clientX;
       const endY = eventEnd.changedTouches[0].clientY;
 
-      // Swipe right
-      if ((endX - startX) > 200) {
-        this.#showNextPost();
-      // Swipe left
-      } else if ((startX - endX) > 200) {
-        this.#showPreviousPost();
+      const verticalDifference = startY - endY;
+      const horizontalDifference = startX - endX;
+
+      if (Math.abs(verticalDifference) > Math.abs(horizontalDifference)) {
+
+        if (verticalDifference > 0 && Math.abs(verticalDifference) > 500) {
+          // swipe up
+          this.#showNextPost();
+
+        } else if (verticalDifference < 0 && Math.abs(verticalDifference) > 500) {
+          // swipe down
+          this.#showPreviousPost();
+        }
+
+      } else {
+        if (horizontalDifference > 0) {
+          // previous carousel post
+          // const carouselController = this.application.getControllerForElementAndIdentifier(this.postTarget, 'carousel');
+          // carouselController.test()
+          return
+        } else {
+          // next carousel post
+          return
+        }
+
+
       }
 
     });
@@ -153,9 +124,13 @@ export default class extends Controller {
     const allPosts = this.postTargets;
     const current_post_index = this.#getIndex();
 
+    // If we're at the last post, stop here.
+    if (current_post_index == allPosts.length - 1) {
+      return
+    }
+
     allPosts[current_post_index].classList.add("d-none");
     allPosts[current_post_index].classList.remove("displayed");
-
 
     allPosts[current_post_index + 1].classList.remove("d-none");
     allPosts[current_post_index + 1].classList.add("displayed");
@@ -168,14 +143,19 @@ export default class extends Controller {
 
     // Progress bar
     this.#updateProgressBar(current_post_index);
+
+
+
   }
 
   #showPreviousPost() {
     const allPosts = this.postTargets;
     const current_post_index = this.#getIndex();
 
-    console.log(allPosts);
-    console.log(current_post_index);
+    // If we're at the first post, stop here.
+    if (current_post_index == 0) {
+      return
+    }
 
     allPosts[current_post_index].classList.add("d-none");
     allPosts[current_post_index].classList.remove("displayed");
@@ -186,13 +166,11 @@ export default class extends Controller {
     // If we are at the last post and press previous, show the next button again
     if (current_post_index === allPosts.length - 1) {
       this.#showNextButton();
-      // this.nextTarget.classList.remove("d-none");
     }
 
     // If we are at the second post and press previous, hide the previous button
     if (current_post_index === 1) {
       this.#hidePreviousButton();
-      // this.previousTarget.classList.add("d-none");
     }
 
     // Progress bar
@@ -212,7 +190,6 @@ export default class extends Controller {
     let numberOfPosts = this.postTargets.length;
     let valueProgress = 100 / numberOfPosts;
     let increaseValue = valueProgress * (current_post_index+1);
-    console.log(increaseValue*2);
     let progress = this.progressBarTarget;
 
     if (current_post_index === 0) {

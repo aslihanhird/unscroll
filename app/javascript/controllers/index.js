@@ -7,6 +7,9 @@ import { application } from "./application"
 import AddNewProfileController from "./add_new_profile_controller"
 application.register("add-new-profile", AddNewProfileController)
 
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
+
 import ListController from "./list_controller"
 application.register("list", ListController)
 
