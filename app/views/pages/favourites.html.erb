@@ -5,8 +5,8 @@
         <i class="fa-solid fa-trash unfavourite-btn shadowed"></i>
 
         <%= link_to post_path(post) do %>
-            <% if post.photo.key %>
-              <%= cl_image_tag(post.photo.key, class: "favourite-grid-item shadowed") %>
+            <% if post.photos[0] %>
+              <%= cl_image_tag(post.photos[0].key, class: "favourite-grid-item shadowed") %>
             <% else %>
               <%= image_tag("twitter-logo.jpg.png", class: "favourite-grid-item shadowed") %>
             <% end %>
