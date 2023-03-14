@@ -1,0 +1,14 @@
+    <p>
+      <% if post.caption.size > 100 %>
+
+          <%= post.caption.slice(0,100) %> <span class="read-more" data-action="click->posts#readMore">... read more</span>
+
+          <%= render "shared/full_caption_overlay", post: post %>
+
+      <% else %>
+
+          <%= post.caption %>
+          <%= render "shared/full_caption_overlay", post: post %>
+
+      <% end %>
+    </p>

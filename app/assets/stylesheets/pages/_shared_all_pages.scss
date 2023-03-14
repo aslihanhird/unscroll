@@ -45,3 +45,8 @@ body {
 .twitter-blue {
   background-color: $twitter-blue;
 }
+
+.hyphens {
+  hyphens: auto;
+  word-break: break-all;
+}
