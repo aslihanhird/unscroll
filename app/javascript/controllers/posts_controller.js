@@ -56,7 +56,6 @@ export default class extends Controller {
   }
 
   swipe(event) {
-    event.preventDefault();
 
     // Define swipe event intial position
     const startX = event.changedTouches[0].clientX;
@@ -81,10 +80,12 @@ export default class extends Controller {
 
         // If the movement is up and the distance is over 400
         if (verticalDifference > 0 && Math.abs(verticalDifference) > 400) {
+          event.preventDefault();
           // swipe up
           this.#showNextPost();
-        // If the movement is down and the distance is over 400
+          // If the movement is down and the distance is over 400
         } else if (verticalDifference < 0 && Math.abs(verticalDifference) > 400) {
+          event.preventDefault();
           // swipe down
           this.#showPreviousPost();
         }

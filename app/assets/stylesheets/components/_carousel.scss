@@ -1,0 +1,28 @@
+.previous-carousel, .next-carousel {
+  color: $primary-color;
+  background-color: white;
+  border-radius: 100px;
+
+  position: absolute;
+  top: 50%;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.previous-carousel {
+  left: 0;
+}
+
+.next-carousel {
+  right: 0;
+}
+
+div[data-controller="carousel"] {
+  position: relative;
+}
