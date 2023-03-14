@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 
   .buttons-wrapper {
     width: 100%;
@@ -95,4 +96,17 @@
   height: 100vh;
   background-color: white;
   transition: 1s;
+}
+
+
+.progress-bar-wrapper {
+  width: 100%;
+  .progress-bar {
+    height: 7px;
+    width: 0%;
+    background-color: #FF7B85;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
 }
