@@ -30,12 +30,10 @@
       <%# If it's a photo, display it normally %>
       <% if post.media_type == 'photo' %>
         <%= cl_image_tag(post.photos[0].key, class:"post-card") %>
-        <%= render "shared/post-caption", post: post %>
 
       <%# If it's a video, display it normally %>
       <% elsif post.media_type == 'video' %>
         <%= cl_video_tag(post.videos[0].key, class: "post-card", preload: "none", controls: true) %>
-        <%= render "shared/post-caption", post: post %>
 
       <%# If it's a carousel, do some weird stuff %>
       <% elsif post.media_type == 'carousel' %>
@@ -44,9 +42,9 @@
 
 
        <% else %>
-        <p class="hyphens"><%= post.caption %></p>
       <% end %>
 
+      <%= render "shared/post-caption", post: post %>
     <%# CAPTION %>
 
 

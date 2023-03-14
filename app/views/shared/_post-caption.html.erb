@@ -1,5 +1,6 @@
-    <p>
-      <% if post.caption.size > 100 %>
+    <p class="hyphens">
+
+      <% if post.caption.size > 100 && post.media_type %>
 
           <%= post.caption.slice(0,100) %> <span class="read-more" data-action="click->posts#readMore">... read more</span>
 
