@@ -90,7 +90,12 @@ export default class extends Controller {
       progress.style.width = (increaseValue + valueProgress) + '%';
     }
     progress.style.width = (increaseValue + valueProgress) + '%';
+
+    if (increaseValue + valueProgress === 100) {
+      progress.style.backgroundColor = "#B5F1CC"
+    }
   }
+
 
   #getIndex() {
     const targets = this.postTargets;
