@@ -45,11 +45,11 @@ export default class extends Controller {
     let valueProgress = 100 / numberOfPosts;
     let decreaseValue = valueProgress * (current_post_index+1);
     let progress = this.progressBarTarget;
+
     if (current_post_index === 0) {
       progress.style.width = (decreaseValue-valueProgress) + '%';
     }
     progress.style.width = (decreaseValue-valueProgress) + '%';
-
 
   }
 
@@ -79,21 +79,23 @@ export default class extends Controller {
       this.nextTarget.classList.add("d-none");
     }
 
-
     // Progress bar
     let numberOfPosts = this.postTargets.length;
     let valueProgress = 100 / numberOfPosts;
     let increaseValue = valueProgress * (current_post_index+1);
     console.log(increaseValue*2);
     let progress = this.progressBarTarget;
+
     if (current_post_index === 0) {
       progress.style.width = (increaseValue + valueProgress) + '%';
     }
     progress.style.width = (increaseValue + valueProgress) + '%';
 
+    // Change the color of the progress bar when list is read
     if (increaseValue + valueProgress === 100) {
       progress.style.backgroundColor = "#B5F1CC"
     }
+
   }
 
 
