@@ -3,10 +3,6 @@
   <%= link_to lists_path do %>
     <i class="fa-solid fa-xmark"></i>
   <% end %>
- <!-- For test only! -->
-  <%= link_to posts_path(list_id: @list.id), data: {turbo_method: "post"}, class: '' do %>
-    <i class="icon-list fa-sharp fa-solid fa-retweet ms-1"></i>
-  <% end %>
 </div>
 <div class="post-wrapper main-padding" data-controller="posts">
   <%# CONTAINS PARTIAL OF POST %>
