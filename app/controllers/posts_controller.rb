@@ -58,7 +58,7 @@ class PostsController < ApplicationController
 
     if trim_post.key?('extended_entities') && trim_post['entities']['media'][0]['type'] == 'photo'
       media_url = trim_post['entities']['media'][0]['media_url_https']
-      new_post.photo.attach(io: URI.open(media_url), filename: "#post-content.png", content_type: "image/png")
+      new_post.photos.attach(io: URI.open(media_url), filename: "#post-content.png", content_type: "image/png")
     end
     new_post.save
   end
@@ -82,16 +82,15 @@ class PostsController < ApplicationController
 
     case post['node']['__typename']
     when "GraphImage"
-      new_post.photo.attach(io: URI.open(post['node']['display_url']), filename: "#{new_post.id}-content.png", content_type: "image/png")
+      new_post.photos.attach(io: URI.open(post['node']['display_url']), filename: "#{new_post.id}-content.png", content_type: "image/png")
       new_post.media_type = 'photo'
     when "GraphVideo"
-      new_post.video.attach(io: URI.open(post['node']['video_url']), filename: "#{new_post.id}-content.mp4", content_type: "video/mp4")
+      new_post.videos.attach(io: URI.open(post['node']['video_url']), filename: "#{new_post.id}-content.mp4", content_type: "video/mp4")
       new_post.media_type = 'video'
     when "GraphSidecar"
       new_post.media_type = 'carousel'
-      new_post.media_keys = insta_carousel_maker(post['node']['edge_sidecar_to_children']['edges'])
+      new_post.media_keys = insta_carousel_keys(new_post, post['node']['edge_sidecar_to_children']['edges'])
     end
-
     new_post.save
   end
 
@@ -108,21 +107,19 @@ class PostsController < ApplicationController
     new_post
   end
 
-  def insta_carousel_maker(children)
+  def insta_carousel_keys(new_post, children)
     array = []
+    i = 1
     children.each do |child|
       case child['node']['__typename']
       when "GraphImage"
-        new_post.photo.attach(io: URI.open(child['node']['display_url']), content_type: "image/png")
-        key = new_post.photo.key
-        type = 'photo'
-        array << { type: type.to_s, key: key.to_s }
+        new_post.photos.attach(io: URI.open(child['node']['display_url']), filename: "#{i}-content.png", content_type: "image/png")
+        array << 'photo'
       when "GraphVideo"
-        new_post.video.attach(io: URI.open(child['node']['video_url']), content_type: "video/mp4")
-        key = new_post.video.key
-        type = 'video'
-        array << { type: type.to_s, key: key.to_s }
+        new_post.videos.attach(io: URI.open(child['node']['video_url']), filename: "#{i}-content.png", content_type: "video/mp4")
+        array << 'video'
       end
+      i += 1
     end
     array
   end

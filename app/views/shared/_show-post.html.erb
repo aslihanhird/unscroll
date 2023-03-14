@@ -13,10 +13,22 @@
           <i class="fa-regular fa-bookmark"></i>
       </div>
     </div>
-    <% if post.video.attached? %>
-        <%= cl_video_tag(post.video.key, class: "media-post-show", preload: "none", controls: true) %>
-      <% elsif post.photo.attached? %>
-        <%= cl_image_tag(post.photo.key, class:"media-post-show") %>
+      <% if post.media_type == 'photo' %>
+        <%= cl_image_tag(post.photos[0].key, class:"media-post-show") %>
+      <% elsif post.media_type == 'video' %>
+        <%= cl_video_tag(post.videos[0].key, class: "media-post-show", preload: "none", controls: true) %>
+      <% elsif post.media_type == 'carousel' %>
+        <% i = 0 %>
+        <% j = 0 %>
+        <% post.media_keys.each do |media| %>
+          <% if media == 'photo' %>
+            <%= cl_image_tag(post.photos[i].key, class:"media-post-show") %>
+            <% i += 1 %>
+          <% elsif media == 'video' %>
+            <%= cl_video_tag(post.videos[j].key, class: "media-post-show", preload: "none", controls: true) %>
+            <% j += 1 %>
+          <% end %>
+        <% end %>
       <% end %>
 
     <p><%= post.caption.slice(0,200) %></p>

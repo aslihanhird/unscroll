@@ -118,37 +118,43 @@ posts_data = [
     7/10",
     media_url: "https://media-cdn.tripadvisor.com/media/photo-s/1a/e7/61/92/20200209-130439-largejpg.jpg",
     profile: Profile.find_by(username: "BurgerRater"),
-    source: "instagram"
+    source: "instagram",
+    media_type: 'photo'
   },
   {
     caption: "This burger literally saved my marraige.  Didn't taste too good though.  3/10",
     media_url: "https://www.umami.site/wp-content/uploads/2018/10/blended-mushroom-beef-burger-recipe.jpg",
     profile: Profile.find_by(username: "BurgerRater"),
-    source: "instagram"
+    source: "instagram",
+    media_type: 'photo'
   },
   {
     caption: "A perfect pot roast.  Look at that.",
     media_url: "https://therecipecritic.com/wp-content/uploads/2020/09/potroast-500x500.jpg",
     profile: Profile.find_by(username: "ChefRamsay"),
-    source: "instagram"
+    source: "instagram",
+    media_type: 'photo'
   },
   {
     caption: "The perfect sushi rolls from gracademy!! Filled with all the good stuff - salmon, avocado and a hearty helping of soy sauce!",
     media_url: "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-837452_11-fbff219.jpg",
     profile: Profile.find_by(username: "ChefRamsay"),
-    source: "instagram"
+    source: "instagram",
+    media_type: 'photo'
   },
   {
     caption: "CITY OF DREAMS, by Don Winslow: It's a crime classic. Winslow's best book, by far. You won't put it down. I think it's published next month.",
     media_url: "https://i.harperapps.com/covers/9780062851239/y648.jpg",
     profile: Profile.find_by(username: "StephenKing"),
-    source: "instagram"
+    source: "instagram",
+    media_type: 'photo'
   },
   {
     caption: "THE CURATOR, by Owen King: On sale today. The unabridged audio is read by Marin Ireland. It's a bravura performance.",
     media_url: "https://is1-ssl.mzstatic.com/image/thumb/Publication112/v4/d6/ca/a3/d6caa3ea-9da8-13b3-cac6-bf6d99b5deae/9781982196820.jpg/1200x630wz.png",
     profile: Profile.find_by(username: "StephenKing"),
-    source: "instagram"
+    source: "instagram",
+    media_type: 'photo'
   },
   {
     caption: "What a fabulous list to be on! it's an honour to be nominated. https://twitter.com/deloftheendless/status/1633396274559844353",
@@ -161,7 +167,8 @@ posts_data = [
     caption: "Whenever you start to question your own artistic choices, just remember: Picasso drew a butt.",
     media_url: "https://i.pinimg.com/originals/64/c5/ea/64c5ea82d82f916a9b6b2984961236a7.jpg",
     profile: Profile.find_by(username: "PatrickRothfuss"),
-    source: "twitter"
+    source: "twitter",
+    media_type: 'photo'
   },
 
   {
@@ -183,15 +190,16 @@ posts_data.each do |post|
     media_url: post[:media_url],
     timestamp: rand(1600000000..1678447387),
     source: post[:source],
-    profile: post[:profile]
+    profile: post[:profile],
+    media_type: post[:media_type]
   )
 
   if new_post.valid?
     new_post.save
     puts "New post (#{new_post.id}) saved."
     unless new_post.media_url == 'none'
-      new_post.photo.attach(io: URI.open(new_post.media_url), filename: "seed-post-image.png", content_type: "image/png")
-      puts new_post.photo.attached? ? "Image attached" : "Image Failed to attach"
+      new_post.photos.attach(io: URI.open(new_post.media_url), filename: "seed-post-image.png", content_type: "image/png")
+      puts new_post.photos.attached? ? "Image attached" : "Image Failed to attach"
     end
   else
     puts "Post failed to save for #{post.profile}."

@@ -13,9 +13,9 @@
     </div>
 
     <% if post.media_type == 'video' %>
-      <%= cl_video_tag(post.video.key, class: "mb-2 img-post", preload: "none", controls: true) %>
+      <%= cl_video_tag(post.videos[0].key, class: "mb-2 img-post", preload: "none", controls: true) %>
     <% elsif post.media_type == 'photo' %>
-      <%= cl_image_tag(post.photo.key, class:"mb-2 img-post") %>
+      <%= cl_image_tag(post.photos[0].key, class:"mb-2 img-post") %>
     <% end %>
     <p class="margin-bottom-caption"><%= post.caption %></p>
   <% end %>
