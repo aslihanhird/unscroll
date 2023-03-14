@@ -1,5 +1,8 @@
 require "open-uri"
 
+# ALL OF THIS CAN PROBABLY GO :)
+
+
 class PostsController < ApplicationController
   def create
     list = List.find(params[:list_id])

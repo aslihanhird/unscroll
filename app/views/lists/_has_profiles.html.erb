@@ -31,6 +31,7 @@
     <%= link_to edit_list_path(list) do %>
       <i class="fa-solid fa-pen"></i>edit list
     <% end %>
+    <%= link_to "refresh", refresh_list_path(list) %>
   </div>
   <div class="list-delete">
     <%= link_to list_path(list), data: {turbo_method: "delete", turbo_confirm: "Do you really want to delete this list?"} do %>
