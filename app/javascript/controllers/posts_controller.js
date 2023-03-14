@@ -27,6 +27,9 @@ export default class extends Controller {
     const allPosts = this.postTargets;
     const current_post_index = this.#getIndex();
 
+    console.log(allPosts);
+    console.log(current_post_index);
+
     allPosts[current_post_index].classList.add("d-none");
     allPosts[current_post_index].classList.remove("displayed");
 
@@ -84,7 +87,7 @@ export default class extends Controller {
   #getIndex() {
     const allPosts = this.postTargets;
 
-    return targets.findIndex(post => post.classList.contains("displayed"))
+    return allPosts.findIndex(post => post.classList.contains("displayed"))
   }
 
   #hidePreviousButton() {

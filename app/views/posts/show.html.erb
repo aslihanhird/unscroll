@@ -1,1 +1,9 @@
-<%= render "shared/show-post", post: @post %>
+<div class="close-btn">
+  <%= link_to favourites_path do %>
+    <i class="fa-solid fa-xmark"></i>
+  <% end %>
+</div>
+
+<div class="post-wrapper small-padding">
+  <%= render "shared/show-post", post: @post %>
+</div>

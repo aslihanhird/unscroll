@@ -5,7 +5,7 @@
   <% end %>
 </div>
 <div class="post-wrapper small-padding" data-controller="posts">
-  <%# CONTAINS PARTIAL OF POST %>
+
   <% @posts.each do |post| %>
     <%= render "shared/show-post", post: post %>
   <% end %>
