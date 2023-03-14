@@ -1,11 +1,11 @@
 
 
-  <%= link_to lists_path, class: "close-btn" do %>
-    <i class="fa-solid fa-xmark"></i>
-  <% end %>
 
 
 <div class="post-wrapper small-padding" data-controller="posts">
+  <%= link_to lists_path, class: "close-btn", "data-posts-target": "close" do %>
+    <i class="fa-solid fa-xmark"></i>
+  <% end %>
 
   <% @posts.each do |post| %>
     <%= render "shared/show-post", post: post %>
@@ -17,7 +17,7 @@
        data-posts-target="previous">
        Previous
     </a>
-    
+
     <a class="controls unscroll-btn unscroll-btn-primary"
        href="#" data-action="click->posts#next"
        data-posts-target="next">

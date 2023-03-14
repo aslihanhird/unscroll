@@ -1,4 +1,4 @@
-<div class="container" id="edit-page">
+<div class="main-padding">
   <h1 class="h1-edit">Edit your <span class="italic-accent"><%= (@list.name).downcase %></span> list</h1>
   <%= link_to 'Add a profile', list_new_select_path(@list), class: "button-red-edit" %>
 
@@ -7,7 +7,7 @@
       <li>
         <div class="profile-card-edit">
           <div>
-            <%= cl_image_tag(profile.photo.key, class: "me-5 img-profile-edit") %>
+            <%= cl_image_tag(profile.photo.key, class: "me-2 img-profile-edit") %>
             <%= profile.username %>
           </div>
           <div>
@@ -19,7 +19,4 @@
       </li>
     <% end %>
   </ul>
-
-  <%= link_to 'Back to list', list_path(@list), class: "btn btn-outline-dark rounded-3" %>
-  <%# Put a form here or something, idk %>
 </div>

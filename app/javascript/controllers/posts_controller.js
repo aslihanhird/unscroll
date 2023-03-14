@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="posts"
 export default class extends Controller {
 
-  static targets = ["post", "previous", "next", "fullCaption", "progressBar"];
+  static targets = ["post", "previous", "next", "fullCaption", "progressBar", "close"];
 
   connect() {
 
@@ -47,12 +47,17 @@ export default class extends Controller {
     const captions = this.fullCaptionTargets;
 
     captions[this.#getIndex()].classList.remove("d-none");
+
+    this.closeTarget.classList.add("d-none");
   }
 
   closeCaption(event) {
     const captions = this.fullCaptionTargets;
 
     captions[this.#getIndex()].classList.add("d-none");
+
+    this.closeTarget.classList.remove("d-none");
+
   }
 
   swipe(event) {

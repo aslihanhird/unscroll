@@ -1,9 +1,9 @@
-#edit-page {
-  text-align: center;
-  width: 100%;
-  margin: auto;
-  margin-top: 25px;
-}
+// #edit-page {
+//   text-align: center;
+//   width: 100%;
+//   margin: auto;
+//   margin-top: 25px;
+// }
 
 .h1-edit {
   font-family: $headers-font;
@@ -43,6 +43,8 @@
 .profile-card-edit {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1em;
+
   .img-profile-edit {
     width: 40px;
     height: 40px;
