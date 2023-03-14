@@ -51,7 +51,8 @@ gem "sassc-rails"
 # Custom gems
 gem "excon"
 gem "cloudinary"
-
+gem "sidekiq"
+gem "sidekiq-failures", "~> 1.0"
 
 gem "devise"
 gem "autoprefixer-rails"

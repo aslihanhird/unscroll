@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
+
   devise_for :controllers
   devise_for :users
   root to: "pages#home"
@@ -15,11 +22,12 @@ Rails.application.routes.draw do
     get "/new/select", to: "pages#select_insta_or_twitter"
   end
 
+  get "lists/:id/refresh", to: "lists#refresh", as: "refresh_list"
+
   resources :profiles, only: :destroy
 
   resources :posts, only: :create
 
   get "/user_profile", to: "pages#profile"
   get '/favourites', to: "pages#favourites"
-
 end
