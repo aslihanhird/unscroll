@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="posts"
 export default class extends Controller {
-  static targets = ["post", "previous", "next"]
+  static targets = ["post", "previous", "next", "progressBar"]
 
   connect() {
     // Remove d-none only from the very first post
@@ -11,6 +11,11 @@ export default class extends Controller {
 
     this.previousTarget.classList.add("d-none");
 
+    // Default progress bar when page loads
+    let numberOfPosts = this.postTargets.length;
+    let valueProgress = 100 / numberOfPosts;
+    let progress = this.progressBarTarget;
+    progress.style.width = (valueProgress) + '%';
   }
 
   previous(event) {
@@ -35,6 +40,16 @@ export default class extends Controller {
       this.previousTarget.classList.add("d-none");
     }
 
+    // Progress bar
+    let numberOfPosts = this.postTargets.length;
+    let valueProgress = 100 / numberOfPosts;
+    let decreaseValue = valueProgress * (current_post_index+1);
+    let progress = this.progressBarTarget;
+    if (current_post_index === 0) {
+      progress.style.width = (decreaseValue-valueProgress) + '%';
+    }
+    progress.style.width = (decreaseValue-valueProgress) + '%';
+
 
   }
 
@@ -43,6 +58,7 @@ export default class extends Controller {
 
     const targets = this.postTargets;
     const current_post_index = this.#getIndex();
+
 
     targets[current_post_index].classList.add("d-none");
     targets[current_post_index].classList.remove("displayed");
@@ -63,6 +79,17 @@ export default class extends Controller {
       this.nextTarget.classList.add("d-none");
     }
 
+
+    // Progress bar
+    let numberOfPosts = this.postTargets.length;
+    let valueProgress = 100 / numberOfPosts;
+    let increaseValue = valueProgress * (current_post_index+1);
+    console.log(increaseValue*2);
+    let progress = this.progressBarTarget;
+    if (current_post_index === 0) {
+      progress.style.width = (increaseValue + valueProgress) + '%';
+    }
+    progress.style.width = (increaseValue + valueProgress) + '%';
   }
 
   #getIndex() {

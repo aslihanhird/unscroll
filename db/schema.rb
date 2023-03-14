@@ -83,18 +83,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_153059) do
     t.index ["user_id"], name: "index_favourite_lists_on_user_id"
   end
 
-  create_table "favourite_posts", force: :cascade do |t|
-    t.string "username"
-    t.string "profile_picture_url"
-    t.string "caption"
-    t.string "media_url"
-    t.string "timestamp"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_favourite_posts_on_user_id"
-  end
-
   create_table "favourite_twitter_posts", force: :cascade do |t|
     t.string "caption"
     t.string "media_url"
@@ -181,7 +169,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_153059) do
   add_foreign_key "favourite_insta_posts", "favourite_insta_profiles"
   add_foreign_key "favourite_insta_profiles", "favourite_lists"
   add_foreign_key "favourite_lists", "users"
-  add_foreign_key "favourite_posts", "users"
   add_foreign_key "favourite_twitter_posts", "favourite_twitter_profiles"
   add_foreign_key "favourite_twitter_profiles", "favourite_lists"
   add_foreign_key "insta_posts", "insta_profiles"
