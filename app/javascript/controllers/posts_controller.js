@@ -57,43 +57,39 @@ export default class extends Controller {
 
   swipe(event) {
     event.preventDefault();
+
+    // Define swipe event intial position
     const startX = event.changedTouches[0].clientX;
     const startY = event.changedTouches[0].clientY;
-
+    const startTime = event.timeStamp;
 
     document.addEventListener("touchend", (eventEnd) => {
 
+      // Define swipe event end position
       const endX = eventEnd.changedTouches[0].clientX;
       const endY = eventEnd.changedTouches[0].clientY;
+      const endTime = eventEnd.timeStamp;
+      const timeDiff = endTime - startTime;
 
+      // Calculate movement
       const verticalDifference = startY - endY;
       const horizontalDifference = startX - endX;
 
-      if (Math.abs(verticalDifference) > Math.abs(horizontalDifference)) {
+      // If the movement is vertical, execute this
+      // and if the swipe was faster than 300 ms
+      if (Math.abs(verticalDifference) > Math.abs(horizontalDifference) && timeDiff < 300) {
 
-        if (verticalDifference > 0 && Math.abs(verticalDifference) > 500) {
+        // If the movement is up and the distance is over 400
+        if (verticalDifference > 0 && Math.abs(verticalDifference) > 400) {
           // swipe up
           this.#showNextPost();
-
-        } else if (verticalDifference < 0 && Math.abs(verticalDifference) > 500) {
+        // If the movement is down and the distance is over 400
+        } else if (verticalDifference < 0 && Math.abs(verticalDifference) > 400) {
           // swipe down
           this.#showPreviousPost();
         }
 
-      } else {
-        if (horizontalDifference > 0) {
-          // previous carousel post
-          // const carouselController = this.application.getControllerForElementAndIdentifier(this.postTarget, 'carousel');
-          // carouselController.test()
-          return
-        } else {
-          // next carousel post
-          return
-        }
-
-
       }
-
     });
 
   }
