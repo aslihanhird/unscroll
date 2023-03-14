@@ -1,4 +1,4 @@
-<div class="single-post-wrapper d-none" data-posts-target="post">
+<div class="single-post-wrapper small-padding" data-posts-target="post">
 
   <div class="post-card">
 
@@ -19,7 +19,11 @@
           <i class="fa-brands fa-twitter"></i>
         <% end %>
 
-        <i class="fa-regular fa-bookmark"></i>
+        <% if post.favourite %>
+          <i class="fa-solid fa-bookmark"></i>
+        <% else %>
+          <i class="fa-regular fa-bookmark"></i>
+        <% end %>
       </div>
 
     </div>

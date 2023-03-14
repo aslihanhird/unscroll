@@ -7,12 +7,18 @@ export default class extends Controller {
 
 
   connect() {
-    // Remove d-none only from the very first post
-    this.postTarget.classList.remove("d-none");
-    // Give it a displayed class for easier itteration
-    this.postTarget.classList.add("displayed");
 
-// Don't display the previous arrow
+    const allPosts = this.postTargets;
+
+    // Add d-none to every post but the first
+    allPosts.slice(1).forEach((post) => {
+      post.classList.add("d-none");
+    })
+
+    // Give it a displayed class for easier itteration
+    allPosts[0].classList.add("displayed");
+
+    // Don't display the previous arrow
     this.#hidePreviousButton();
     
     // Default progress bar when page loads
@@ -20,22 +26,26 @@ export default class extends Controller {
     let valueProgress = 100 / numberOfPosts;
     let progress = this.progressBarTarget;
     progress.style.width = (valueProgress) + '%';
+
   }
 
   previous(event) {
     event.preventDefault();
 
-    const targets = this.postTargets;
+    const allPosts = this.postTargets;
     const current_post_index = this.#getIndex();
 
-    targets[current_post_index].classList.add("d-none");
-    targets[current_post_index].classList.remove("displayed");
+    console.log(allPosts);
+    console.log(current_post_index);
 
-    targets[current_post_index - 1].classList.remove("d-none");
-    targets[current_post_index - 1].classList.add("displayed");
+    allPosts[current_post_index].classList.add("d-none");
+    allPosts[current_post_index].classList.remove("displayed");
+
+    allPosts[current_post_index - 1].classList.remove("d-none");
+    allPosts[current_post_index - 1].classList.add("displayed");
 
     // If we are at the last post and press previous, show the next button again
-    if (current_post_index === targets.length - 1) {
+    if (current_post_index === allPosts.length - 1) {
       this.#showNextButton();
       // this.nextTarget.classList.remove("d-none");
     }
@@ -62,20 +72,19 @@ export default class extends Controller {
   next(event) {
     event.preventDefault();
 
-    const targets = this.postTargets;
+    const allPosts = this.postTargets;
     const current_post_index = this.#getIndex();
 
+    allPosts[current_post_index].classList.add("d-none");
+    allPosts[current_post_index].classList.remove("displayed");
 
-    targets[current_post_index].classList.add("d-none");
-    targets[current_post_index].classList.remove("displayed");
 
-    targets[current_post_index + 1].classList.remove("d-none");
-    targets[current_post_index + 1].classList.add("displayed");
+    allPosts[current_post_index + 1].classList.remove("d-none");
+    allPosts[current_post_index + 1].classList.add("displayed");
 
     this.#showPreviousButton();
-    // this.previousTarget.classList.remove("d-none");
 
-    if (current_post_index === targets.length - 2) {
+    if (current_post_index === allPosts.length - 2) {
       this.#hideNextButton();
     }
 
@@ -101,18 +110,20 @@ export default class extends Controller {
   readMore(event) {
     // Remove the d-none from the current post you're on
     const captions = this.fullCaptionTargets;
+
     captions[this.#getIndex()].classList.remove("d-none");
   }
 
   closeCaption(event) {
-    console.log("Trying to close caption");
     const captions = this.fullCaptionTargets;
+
     captions[this.#getIndex()].classList.add("d-none");
   }
 
   #getIndex() {
-    const targets = this.postTargets;
-    return targets.findIndex(post => post.classList.contains("displayed"))
+    const allPosts = this.postTargets;
+
+    return allPosts.findIndex(post => post.classList.contains("displayed"))
   }
 
   #hidePreviousButton() {

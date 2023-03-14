@@ -1,5 +1,11 @@
-.avatar {
-  width: 40px;
-  border-radius: 25px;
-  margin-right: 1em;
+.favourite-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+}
+
+.favourite-grid-item {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
