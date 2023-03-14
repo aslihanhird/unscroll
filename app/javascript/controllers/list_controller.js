@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["main", "options", "viewOptions", "back"]
 
   connect() {
-    console.log("Connected")
+
   }
 
   showOptions(event) {
