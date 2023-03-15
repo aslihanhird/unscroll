@@ -6,7 +6,6 @@ export default class extends Controller {
   static targets = ["post", "previous", "next", "fullCaption", "progressBar"];
 
   connect() {
-
     const allPosts = this.postTargets;
 
     // Add d-none to every post but the first
@@ -16,6 +15,10 @@ export default class extends Controller {
 
     // Give it a displayed class for easier itteration
     allPosts[0].classList.add("displayed");
+
+    // Mark first post as read
+    let id = allPosts[0].dataset.id
+    this.#readPost(id)
 
     // Don't display the previous arrow
     this.#hidePreviousButton();
@@ -132,6 +135,12 @@ export default class extends Controller {
     allPosts[current_post_index + 1].classList.remove("d-none");
     allPosts[current_post_index + 1].classList.add("displayed");
 
+    // Mark post as read
+    let id = allPosts[current_post_index + 1].dataset.id
+    this.#readPost(id)
+    // END
+
+
     this.#showPreviousButton();
 
     if (current_post_index === allPosts.length - 2) {
@@ -198,5 +207,17 @@ export default class extends Controller {
     if (increaseValue + valueProgress === 100) {
       progress.style.backgroundColor = "#B5F1CC"
     }
+  }
+
+  #readPost(id) {
+    // Token manually assigned for authentication
+    const csrfToken = document.querySelector("[name='csrf-token']")
+    let url = `/posts/${id}/read`
+    fetch(url, {
+      method: 'PATCH',
+      headers: {
+        "X-CSRF-Token": csrfToken.content,
+      }
+    })
   }
 }
