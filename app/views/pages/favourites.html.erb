@@ -1,4 +1,15 @@
+    <% if @favourite_posts.empty? %>
+<div class="main-padding d-flex justify-content-center align-items-center pt-5">
+  <div>
+        <h1 class="welcome-message">No <span class="italic-accent underline">favourites</span> yet.</h1>
+        <h2 class="subheader">Scroll through a list & click on the bookmark icon to save it here.</h2>
+  </div>
+</div>
+    <% end %>
+
+
 <div class="main-padding favourite-grid">
+
 
   <% @favourite_posts.each do |post| %>
     <div class="position-relative">
