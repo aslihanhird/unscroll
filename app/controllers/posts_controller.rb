@@ -8,6 +8,10 @@ class PostsController < ApplicationController
     when true then @post.update(favourite: false)
     when false then @post.update(favourite: true)
     end
+
+    redirect_to favourites_path if request.referrer.match(/.*\/favourites\/?$/)
+
+
   end
 
   def show
