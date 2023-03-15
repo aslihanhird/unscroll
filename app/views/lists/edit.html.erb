@@ -1,6 +1,7 @@
 <div class="main-padding">
-  <h1 class="h1-edit">Edit your <span class="italic-accent"><%= (@list.name).downcase %></span> list</h1>
-  <%= link_to 'Add a profile', list_new_select_path(@list), class: "button-red-edit" %>
+  <h1 class="h1-edit mb-3">Edit your <span class="italic-accent"><%= (@list.name).downcase %></span> list</h1>
+  <%= link_to 'Add a profile', list_new_select_path(@list), class: "unscroll-btn unscroll-btn-primary mb-2" %>
+  <%= link_to "Refresh my list", refresh_list_path(@list), class: "unscroll-btn unscroll-btn-ghost mb-5"%>
 
   <ul id="profile-list">
     <% @list.profiles.each do |profile| %>
