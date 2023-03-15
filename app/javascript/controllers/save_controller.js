@@ -7,14 +7,6 @@ export default class extends Controller {
 
   connect() {
 
-    const allFavourites = this.favouriteFormTargets;
-
-    console.log(allFavourites);
-
-    const allBookmarks = this.bookmarkTargets;
-
-    console.log(allBookmarks);
-
   }
 
   savePost() {

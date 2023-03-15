@@ -5,8 +5,7 @@ export default class extends Controller {
   static targets = ["post"]
 
   connect() {
-    console.log(this.element)
-    console.log(this.postTarget)
+
   }
 
   nextPost() {
