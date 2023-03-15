@@ -3,29 +3,35 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="save"
 export default class extends Controller {
 
-  static targets = ['favourite']
+  static targets = ['favouriteForm', 'bookmark']
 
   connect() {
-  console.log('connected')
+
+    const allFavourites = this.favouriteFormTargets;
+
+    console.log(allFavourites);
+
+    const allBookmarks = this.bookmarkTargets;
+
+    console.log(allBookmarks);
+
   }
 
   savePost() {
+    const allFavourites = this.favouriteFormTargets;
 
-    const save = this.favouriteTarget
-    console.log(save)
-    const bookmark = document.getElementById("bookmark")
-    console.log(bookmark)
-    console.log(bookmark.innerHTML)
+    const allBookmarks = this.bookmarkTargets;
+
+    const index = allFavourites.findIndex(favourite => favourite.classList.contains("displayed"));
+
+    const bookmark = allBookmarks[(index < 0 ? 0 : index)];
 
 
-    if (bookmark.innerHTML === `<i class="fa-solid fa-bookmark"></i>`) {
+    if (bookmark.innerHTML.trim() === `<i class="fa-solid fa-bookmark"></i>`) {
       bookmark.innerHTML = `<i class="fa-regular fa-bookmark"></i>`
-      console.log("test1")
     } else {
       bookmark.innerHTML = `<i class="fa-solid fa-bookmark"></i>`;
-      console.log("test2")
     }
-    console.log(bookmark.innerHTML)
   }
 
 

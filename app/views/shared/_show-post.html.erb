@@ -1,5 +1,4 @@
 <div class="single-post-wrapper small-padding" data-posts-target="post" data-action="touchstart->posts#swipe">
-
   <div class="post-card">
 
     <%# CARD TOP WITH INFO %>
@@ -19,11 +18,9 @@
           <i class="fa-brands fa-twitter"></i>
         <% end %>
 
-        <% if post.favourite %>
-          <%= render "shared/saved", post: post %>
-        <% else %>
-          <%= render "shared/save", post: post %>
-        <% end %>
+
+        <%= render "shared/save", post: post %>
+
       </div>
 
     </div>
