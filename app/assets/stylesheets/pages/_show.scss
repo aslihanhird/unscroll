@@ -88,6 +88,9 @@
 }
 
 .user-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: $primary-color;
   font-size: 1.5em;
 }
@@ -112,5 +115,13 @@
     position: absolute;
     bottom: 0;
     left: 0;
+  }
+}
+
+.button-save {
+  color: #FF7B85;
+  border: none;
+  &:hover {
+    opacity: .3;
   }
 }

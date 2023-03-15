@@ -1,0 +1,13 @@
+<%# <%= link_to post_path(post), method: :patch do %>
+          <%= form_with model: post,
+          data: {
+            save_target: "favourite",
+            action: "submit->save#savePost"
+          } do |f| %>
+            <%# <%= f.check_box :favourite, { checked: true } %>
+            <%= f.hidden_field :favourite, :value => true %>
+            <%= button_tag( :class => "button-save", :id => "bookmark") do %>
+              <i class="fa-solid fa-bookmark"></i>
+            <% end %>
+          <% end %>
+            <%# <i class="fa-regular fa-bookmark"></i> %>

@@ -19,5 +19,8 @@ application.register("next", NextController)
 import PostsController from "./posts_controller"
 application.register("posts", PostsController)
 
+import SaveController from "./save_controller"
+application.register("save", SaveController)
+
 import SavePostController from "./save_post_controller"
 application.register("save-post", SavePostController)

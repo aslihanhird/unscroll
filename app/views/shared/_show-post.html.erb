@@ -11,7 +11,7 @@
           <p><%= post.profile.username %></p>
       </div>
 
-      <div class="user-actions">
+      <div class="user-actions" data-controller="save">
 
         <% if post.source == "instagram" %>
           <i class="fa-brands fa-instagram"></i>
@@ -20,9 +20,9 @@
         <% end %>
 
         <% if post.favourite %>
-          <i class="fa-solid fa-bookmark"></i>
+          <%= render "shared/saved", post: post %>
         <% else %>
-          <i class="fa-regular fa-bookmark"></i>
+          <%= render "shared/save", post: post %>
         <% end %>
       </div>
 
