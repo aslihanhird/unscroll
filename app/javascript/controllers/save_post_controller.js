@@ -9,6 +9,9 @@ export default class extends Controller {
 
   changeIcon(event) {
     event.preventDefault();
+
+
+
     this.iconLinkTarget.innerHTML = '<i class="fa-solid fa-bookmark primary-color"></i>';
 
   }

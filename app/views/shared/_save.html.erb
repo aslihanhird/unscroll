@@ -1,13 +1,13 @@
-<%# <%= link_to post_path(post), method: :patch do %>
+
           <%= form_with model: post,
           data: {
-            save_target: "favourite",
+            save_target: "favouriteForm",
+            posts_target: "favourite",
             action: "submit->save#savePost"
           } do |f| %>
-            <%# <%= f.check_box :favourite, { checked: true } %>
+
             <%= f.hidden_field :favourite, :value => true %>
-            <%= button_tag( :class => "button-save", :id => "bookmark") do %>
-              <i class="fa-regular fa-bookmark"></i>
+            <%= button_tag( :class => "button-save bookmark", data: {save_target: "bookmark"}) do %>
+                <i class="fa-regular fa-bookmark"></i>
             <% end %>
           <% end %>
-            <%# <i class="fa-regular fa-bookmark"></i> %>
