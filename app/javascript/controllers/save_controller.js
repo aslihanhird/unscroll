@@ -26,8 +26,6 @@ export default class extends Controller {
       console.log("test2")
     }
     console.log(bookmark.innerHTML)
-
-
   }
 
 
