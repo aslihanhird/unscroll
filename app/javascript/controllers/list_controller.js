@@ -9,8 +9,8 @@ export default class extends Controller {
   }
 
   showOptions(event) {
-    this.mainTarget.classList.toggle("d-none");
-    this.optionsTarget.classList.toggle("d-none");
+    // this.mainTarget.classList.toggle("d-none");
+    // this.optionsTarget.classList.toggle("d-none");
     this.viewOptionsTarget.classList.toggle("d-none");
     this.backTarget.classList.toggle("d-none");
   }
