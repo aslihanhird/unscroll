@@ -27,7 +27,7 @@
               <%= render "options", list: list %>
 
     <% else %>
-              <%= link_to (list.new_posts.size > 0 ? list_path(list) : edit_list_path(list)),
+              <%= link_to list_path(list),
                   data:
                   {
                     list_target: "main",
