@@ -1,39 +1,64 @@
 <div class="relative-animation">
 
-    <%= link_to (list.new_posts.size > 0 ? list_path(list) : edit_list_path(list)),
-        data:
-        {
-          list_target: "main",
-          animation_target: "mainDiv"
-        },
-        class: "animation-main" do %>
-      <div class="list-item-main <%= "shadowed" if list.new_posts.size > 0 %>">
-        <div class="list-item-name <%= "greyed-out" if list.new_posts.size <= 0 %>">
-          <h4><%= list.name.downcase %></h4>
-        </div>
+    <% if list.profiles.size == 0 %>
 
-        <div class="list-item-updates">
-              <% if list.new_posts.size > 0 %>
-                <%= list.new_posts.size %> updates
-              <% elsif list.profiles.size == 0 %>
-                no profiles
-              <% else %>
-                up to date
+              <%= link_to list_new_select_path(list),
+                  data:
+                  {
+                    list_target: "main",
+                    animation_target: "mainDiv"
+                  },
+                  class: "animation-main" do %>
+                <div class="list-item-main <%= "shadowed" if list.new_posts.size > 0 %>">
+                  <div class="list-item-name <%= "greyed-out" if list.new_posts.size <= 0 %>">
+                    <h4><%= list.name.capitalize %></h4>
+                  </div>
+
+                  <div class="list-item-updates">
+                          no profiles
+                  </div>
+
+                  <div class="list-item-icon">
+                      <i class="fa-solid fa-triangle-exclamation light-red"></i>
+                  </div>
+                </div>
               <% end %>
-        </div>
 
-        <div class="list-item-icon">
-          <% if list.new_posts.size > 0 %>
-            <i class="fa-solid fa-arrow-right-long"></i>
-          <% elsif list.profiles.size == 0 %>
-            <i class="fa-solid fa-triangle-exclamation light-red"></i>
-          <% else %>
-            <i class="fa-solid fa-check light-green"></i>
-          <% end %>
-        </div>
-      </div>
+              <%= render "options", list: list %>
+
+    <% else %>
+              <%= link_to (list.new_posts.size > 0 ? list_path(list) : edit_list_path(list)),
+                  data:
+                  {
+                    list_target: "main",
+                    animation_target: "mainDiv"
+                  },
+                  class: "animation-main" do %>
+                <div class="list-item-main <%= "shadowed" if list.new_posts.size > 0 %>">
+                  <div class="list-item-name <%= "greyed-out" if list.new_posts.size <= 0 %>">
+                    <h4><%= list.name.capitalize %></h4>
+                  </div>
+
+                  <div class="list-item-updates">
+                        <% if list.new_posts.size > 0 %>
+                          <%= list.new_posts.size %> updates
+                        <% else %>
+                          up to date
+                        <% end %>
+                  </div>
+
+                  <div class="list-item-icon">
+                    <% if list.new_posts.size > 0 %>
+                      <i class="fa-solid fa-arrow-right-long"></i>
+                    <% else %>
+                      <i class="fa-solid fa-check light-green"></i>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+
+              <%= render "options", list: list %>
     <% end %>
 
-    <%= render "options", list: list %>
 
 </div>
