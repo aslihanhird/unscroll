@@ -1,6 +1,6 @@
 <div class="relative-animation">
 
-    <%= link_to (list.new_posts.size > 0 ? list_path(list) : edit_list_path(list)),
+    <%= link_to (list.profiles.size > 0 ? list_path(list) : list_new_select_path(list)),
         data:
         {
           list_target: "main",
