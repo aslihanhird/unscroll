@@ -63,7 +63,7 @@ profile_data = [
   {
     username: "aksak.ak",
     list: List.find_by(name: "Music"),
-    profile_picture_url: "app/assets/images/seeds/profiles/aaksak.jpeg",
+    profile_picture_url: "app/assets/images/seeds/profiles/aksak.jpeg",
     profile_type: "instagram"
   },
 
@@ -126,7 +126,7 @@ profile_data = [
   {
     username: "lemonysnicket",
     list: List.find_by(name: "Writing"),
-    profile_picture_url: "app/assets/images/seeds/profiles/snicket.jpeg",
+    profile_picture_url: "app/assets/images/seeds/profiles/snicket.png",
     profile_type: "twitter"
   },
 
@@ -234,7 +234,7 @@ posts_data.each do |post|
     new_post.save
     puts "New post (#{new_post.id}) saved."
     unless new_post.media_url == 'none'
-      if media_type == 'photo'
+      if new_post.media_type == 'photo'
         new_post.photos.attach(io: File.open(new_post.media_url), filename: "seed-post-image.png", content_type: "image/png")
         puts new_post.photos.attached? ? "Image attached" : "Image Failed to attach"
       elsif new_post.media_type == 'video'
