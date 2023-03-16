@@ -27,7 +27,7 @@ end
 # Create 2 lists
 list1 = List.new(
   user: user,
-  name: "Writing"
+  name: "Music"
 )
 
 if list1.valid?
@@ -40,7 +40,7 @@ end
 
 list2 = List.new(
   user: user,
-  name: "Food"
+  name: "Writing"
 )
 
 if list2.valid?
@@ -51,40 +51,61 @@ else
   puts "Errors: #{list2.errors.messages}"
 end
 
-# Creating 5 profiles
+# Creating Music profiles
 profile_data = [
   {
-    username: "BurgerRater",
-    list: List.find_by(name: "Food"),
-    profile_picture_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpn5-3rIz4yS0icubE8vMeTIao-C7YN6dipQ&usqp=CAU",
+    username: "DOMiAndJDBECK",
+    list: List.find_by(name: "Music"),
+    profile_picture_url: "../assets/images/seeds/DomiJDBeck.png",
+    profile_type: "twitter"
+  },
+
+  {
+    username: "loumana_",
+    list: List.find_by(name: "Music"),
+    profile_picture_url: "../assets/images/seeds/loumana.png",
     profile_type: "instagram"
   },
 
   {
-    username: "ChefRamsay",
-    list: List.find_by(name: "Food"),
-    profile_picture_url: "https://pbs.twimg.com/profile_images/1448696882746695683/Jp2_LEBL_400x400.jpg",
+    username: "icesealedeyes",
+    list: List.find_by(name: "Music"),
+    profile_picture_url: "../assets/images/seeds/ISE.png",
     profile_type: "instagram"
+  },
+
+  {
+    username: "taminoamir",
+    list: List.find_by(name: "Music"),
+    profile_picture_url: "../assets/images/seeds/tamino.png",
+    profile_type: "instagram"
+  },
+
+  {
+    username: "UncleSego",
+    list: List.find_by(name: "Music"),
+    profile_picture_url: "../assets/images/seeds/masego.png",
+    profile_type: "twitter"
   },
 
   {
     username: "StephenKing",
     list: List.find_by(name: "Writing"),
-    profile_picture_url: "https://images.gr-assets.com/authors/1362814142p8/3389.jpg",
+    profile_picture_url: "../assets/images/seeds/king.png",
     profile_type: "instagram"
   },
 
   {
     username: "PatrickRothfuss",
     list: List.find_by(name: "Writing"),
-    profile_picture_url: "https://assets.wired.com/photos/w_660/wp-content/uploads/2014/10/rothfuss-inline.jpg",
+    profile_picture_url: "../assets/images/seeds/pat.png",
     profile_type: "twitter"
   },
 
   {
     username: "neilhimself",
     list: List.find_by(name: "Writing"),
-    profile_picture_url: "https://literature.britishcouncil.org/assets/Uploads/writers/_resampled/FillWyI2ODAiLCI2ODAiXQ/Neil-Gaiman-c-Kimberley-Butler-web.jpg",
+    profile_picture_url: "../assets/images/seeds/neilhimself.png",
     profile_type: "twitter"
   },
 
@@ -101,7 +122,7 @@ profile_data.each do |profile|
   if new_profile.valid?
     new_profile.save
     puts "New profile #{new_profile.username} saved succesfully."
-    new_profile.photo.attach(io: URI.open(new_profile.profile_pic), filename: "seed-content.png", content_type: "image/png")
+    new_profile.photo.attach(io: File.open(new_profile.profile_pic), filename: "seed-content.png", content_type: "image/png")
     puts new_profile.photo.attached? ? "Image attached" : "Image Failed to attach"
   else
     puts "Profile #{new_profile.username} failed to save."
