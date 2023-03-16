@@ -1,7 +1,7 @@
 body {
-  background-image: linear-gradient(to bottom right, rgba(217, 217, 217, 1.0), rgba(255, 255, 255, 1.0));
   background-attachment: fixed;
   min-height: 100vh;
+  transition: background-image 1s ease;
 }
 
 .cover {
@@ -70,3 +70,39 @@ body {
 .big-spacer {
   height: 10vh;
 }
+
+.tw-gradient {
+  opacity: 0;
+  background-image: linear-gradient(to bottom right, #d9d9d9, rgb(184, 227, 255));
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transition: opacity .75s ease;
+}
+
+.tw-gradient.active {
+  opacity: 1;
+}
+
+.ig-gradient {
+  background-image: linear-gradient(to bottom right, #ffffff, rgb(255, 184, 184));
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+// body.base-gradient {
+//   background-image: linear-gradient(to bottom right, rgba(217, 217, 217, 1.0), rgba(255, 255, 255, 1.0));
+//   transition: background-image .5s ease;
+// }
+
+// body.ig-gradient {
+//   background-image: linear-gradient(to bottom right, #ffffff, rgb(255, 184, 184));
+// }
+
+// body.tw-gradient {
+//   background-image: linear-gradient(to bottom right, #d9d9d9, rgb(184, 227, 255));
+// }
