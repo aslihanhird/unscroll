@@ -9,16 +9,6 @@
   </div>
 
 
-
-  <%# IF USER HAS NO PROFILES ATTACHED TO THE LIST %>
-
-  <% if list.profiles.size == 0 %>
-        <%= render "no_profiles", list: list %>
-  <%# IF USER HAS PROFILES ATTACHED TO THE LIST %>
-
-  <% else %>
-        <%= render "has_profiles", list: list %>
-  <% end %>
-
+  <%= render "has_profiles", list: list %>
 
 </div>

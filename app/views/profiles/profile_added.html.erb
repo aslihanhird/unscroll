@@ -1,11 +1,11 @@
 <div class="center-fullpage">
   <div class="container main-padding">
-    <h1 class="mb-5"><span class="italic-accent underline"><%= @list.profiles.last.username %></span> was succesfully added to your <%= @list.name %> list.</h1>
+    <h1 class="welcome-message mb-5">We're adding <span class="italic-accent underline"><%= flash[:username] %></span> posts to your <%= @list.name %> list.</h1>
 
-    <p class="text-center">What do you want to do next?</p>
+    <p class="text-center">What do you want to do in the meantime?</p>
 
-    <%= link_to "Add another profile", new_list_profile_path(@list), class: "unscroll-btn unscroll-btn-primary" %>
-    <%= link_to "Explore my list", list_path(@list), class: "unscroll-btn unscroll-btn-ghost mt-3" %>
+    <%= link_to "Add another profile", list_new_select_path(@list), class: "unscroll-btn unscroll-btn-primary" %>
+    <%= link_to "Explore your other lists", list_path(@list), class: "unscroll-btn unscroll-btn-ghost mt-3" %>
 
   </div>
 </div>

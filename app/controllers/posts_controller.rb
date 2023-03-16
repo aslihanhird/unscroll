@@ -3,7 +3,6 @@ require "open-uri"
 class PostsController < ApplicationController
   before_action :find_post
 
-
   def read
     @post.read = true
     @post.save
