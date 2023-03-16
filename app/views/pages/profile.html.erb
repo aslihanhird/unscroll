@@ -7,6 +7,12 @@
     Change username or password
   <% end %>
 
+  <% if cookies[:moon] %>
+    <%= link_to 'Light Mode', sun_path, method: :get, class: "unscroll-btn unscroll-btn-primary mt-3 mb-3" %>
+  <% else %>
+    <%= link_to 'Dark Mode', moon_path, method: :get, class: "unscroll-btn unscroll-btn-primary mt-3 mb-3" %>
+  <% end %>
+  
   <%= render "shared/log-out" %>
 
 </div>

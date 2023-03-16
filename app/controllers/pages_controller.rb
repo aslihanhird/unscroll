@@ -17,4 +17,16 @@ class PagesController < ApplicationController
   def favourites
     @favourite_posts = current_user.fav_posts
   end
+
+  def moon
+    cookies[:moon] = {
+      value: 'dark mode on'
+    }
+    redirect_to user_profile_path
+  end
+
+  def sun
+    cookies.delete(:moon)
+    redirect_to user_profile_path
+  end
 end

@@ -31,4 +31,8 @@ Rails.application.routes.draw do
 
   get "/user_profile", to: "pages#profile"
   get '/favourites', to: "pages#favourites"
+
+  # Cookie setting paths
+  get '/moon', to: 'pages#moon', as: 'moon'
+  get '/sun', to: 'pages#sun', as: 'sun'
 end
