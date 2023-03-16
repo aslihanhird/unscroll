@@ -17,6 +17,7 @@ class List < ApplicationRecord
     posts.sort_by { |p| p.timestamp }.reverse
   end
 
+
   def refresh
     profiles.each do |profile|
       InitializeProfileJob.perform_later(profile.id)

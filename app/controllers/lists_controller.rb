@@ -6,7 +6,7 @@ class ListsController < ApplicationController
   end
 
   def show
-    @posts = @list.new_posts
+    @posts = @list.posts.sort_by(&:timestamp).reverse
   end
 
   def new
