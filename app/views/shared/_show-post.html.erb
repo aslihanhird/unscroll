@@ -32,7 +32,7 @@
 
       <%# If it's a video, display it normally %>
       <% elsif post.media_type == 'video' %>
-        <%= cl_video_tag(post.videos[0].key, class: "post-card", preload: "none", controls: true) %>
+        <%= cl_video_tag(post.videos[0].key, class: "post-card video-max-height", preload: "none", controls: true) %>
 
       <%# If it's a carousel, do some weird stuff %>
       <% elsif post.media_type == 'carousel' %>

@@ -37,7 +37,7 @@
 }
 
 .close-caption {
-  z-index: 1000;
+  z-index: 6;
 }
 
 
@@ -83,6 +83,10 @@
 
 }
 
+.video-max-height {
+  max-height: 450px;
+}
+
 .read-more {
   color: $subtle-gray;
   display: block;
@@ -107,16 +111,17 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 5;
 }
 
 .progress-bar-wrapper {
   width: 100%;
-  z-index: 0;
+
   .progress-bar {
     height: 7px;
     width: 0%;
     background-color: #FF7B85;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
   }
