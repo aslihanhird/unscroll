@@ -15,11 +15,9 @@
 .unscroll-btn-primary {
   background-color: $primary-color;
   color: var(--light);
-  transition: 1s;
 
   &:hover {
     color: var(--light);
-    opacity: .8;
   }
 }
 
@@ -29,9 +27,6 @@
 
   &:hover {
     color: $primary-color;
-    opacity: .8;
-    transition: 1s;
-
   }
 }
 
