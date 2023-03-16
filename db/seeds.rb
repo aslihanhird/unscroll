@@ -249,7 +249,8 @@ posts_data = [
     https://twitter.com/PatrickRothfuss/status/1525268593457479681",
     media_url: "app/assets/images/seeds/posts/pat2.jpeg",
     profile: Profile.find_by(username: "PatrickRothfuss"),
-    source: "twitter"
+    source: "twitter",
+    media_type: 'photo'
   },
 
   {
@@ -270,7 +271,8 @@ posts_data = [
     caption: "Ma grand-mère, la plus belle des hortensias 🤍🎞 #96yo #lesoldelavie",
     media_url: "app/assets/images/seeds/posts/char1.jpeg",
     profile: Profile.find_by(username: "charlotteabramow"),
-    source: "instagram"
+    source: "instagram",
+    media_type: 'photo'
   }
 
 ]
