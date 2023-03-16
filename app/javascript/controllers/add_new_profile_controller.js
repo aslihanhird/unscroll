@@ -3,17 +3,13 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="add-new-profile"
 export default class extends Controller {
 
-  static targets = ["igIcon", "twIcon", "igForm", "twForm", "pagebody"]
+  static targets = ["igIcon", "twIcon", "igForm", "twForm", "pagebody", "background"]
 
   connect() {
-    // Set the body color to red only on the specific page
-    if (window.location.pathname.endsWith("new/select")) {
-      document.querySelector('body').style.backgroundImage = "linear-gradient(to bottom right, #ffffff, rgb(255, 184, 184))"
-    }
 
   }
 
-  clickig(event) {
+  instaClick(event) {
     if (!this.igIconTarget.classList.contains("selected")) {
       // Select the IG icon
       this.igIconTarget.classList.add("selected");
@@ -29,7 +25,8 @@ export default class extends Controller {
       this.twFormTarget.classList.add("d-none");
 
       // Set the background to red
-      document.querySelector('body').style.backgroundImage = "linear-gradient(to bottom right, #ffffff, rgb(255, 184, 184))"
+      this.backgroundTarget.classList.remove("active");
+
     }
   }
 
@@ -40,7 +37,7 @@ export default class extends Controller {
       this.igFormTarget.classList.add("d-none");
       this.igIconTarget.classList.remove("selected");
 
-      document.querySelector('body').style.backgroundImage = "linear-gradient(to bottom right, #d9d9d9, rgb(184, 227, 255))"
+      this.backgroundTarget.classList.add("active");
     }
   }
 }
