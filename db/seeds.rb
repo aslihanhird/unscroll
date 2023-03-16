@@ -10,7 +10,7 @@ p "................................"
 
 # Create a user
 user = User.new(
-  username: "demo",
+  username: "Aslihan",
   email: "demo@lewagon.com",
   password: "123456",
   admin: true
@@ -56,56 +56,77 @@ profile_data = [
   {
     username: "DOMiAndJDBECK",
     list: List.find_by(name: "Music"),
-    profile_picture_url: "../assets/images/seeds/DomiJDBeck.png",
+    profile_picture_url: "app/assets/images/seeds/profiles/DomiJDBeck.png",
     profile_type: "twitter"
+  },
+
+  {
+    username: "aksak.ak",
+    list: List.find_by(name: "Music"),
+    profile_picture_url: "app/assets/images/seeds/profiles/aaksak.jpeg",
+    profile_type: "instagram"
   },
 
   {
     username: "loumana_",
     list: List.find_by(name: "Music"),
-    profile_picture_url: "../assets/images/seeds/loumana.png",
+    profile_picture_url: "app/assets/images/seeds/profiles/loumana.png",
     profile_type: "instagram"
   },
 
   {
     username: "icesealedeyes",
     list: List.find_by(name: "Music"),
-    profile_picture_url: "../assets/images/seeds/ISE.png",
+    profile_picture_url: "app/assets/images/seeds/profiles/ISE.png",
     profile_type: "instagram"
   },
 
   {
     username: "taminoamir",
     list: List.find_by(name: "Music"),
-    profile_picture_url: "../assets/images/seeds/tamino.png",
+    profile_picture_url: "app/assets/images/seeds/profiles/tamino.png",
     profile_type: "instagram"
   },
 
   {
     username: "UncleSego",
     list: List.find_by(name: "Music"),
-    profile_picture_url: "../assets/images/seeds/masego.png",
+    profile_picture_url: "app/assets/images/seeds/profiles/masego.png",
     profile_type: "twitter"
+  },
+
+  {
+    username: "coltleduo",
+    list: List.find_by(name: "Music"),
+    profile_picture_url: "app/assets/images/seeds/profiles/colt.png",
+    profile_type: "instagram"
   },
 
   {
     username: "StephenKing",
     list: List.find_by(name: "Writing"),
-    profile_picture_url: "../assets/images/seeds/king.png",
+    profile_picture_url: "app/assets/images/seeds/profiles/king.png",
     profile_type: "instagram"
   },
 
   {
     username: "PatrickRothfuss",
     list: List.find_by(name: "Writing"),
-    profile_picture_url: "../assets/images/seeds/pat.png",
+    profile_picture_url: "app/assets/images/seeds/profiles/pat.png",
     profile_type: "twitter"
   },
 
   {
     username: "neilhimself",
     list: List.find_by(name: "Writing"),
-    profile_picture_url: "../assets/images/seeds/neilhimself.png",
+    profile_picture_url: "app/assets/images/seeds/profiles/neilhimself.png",
+    profile_type: "twitter"
+  },
+
+  {
+    username: "lemonysnicket",
+    list: List.find_by(name: "Writing"),
+    profile_picture_url: "app/assets/images/seeds/profiles/snicket.jpeg",
     profile_type: "twitter"
   },
 
@@ -130,65 +151,51 @@ profile_data.each do |profile|
   end
 end
 
-# Creating insta posts per profile
+# Creating insta & twitter posts per profile
 posts_data = [
   {
-    caption: "A delicious burger 😍! A perfect burger!
+    caption: "SEE U THEREv@Elbjazz
 
-    Possibly the best burger I've ever tasted! 🤤
+    TiX -> https://DOMiAndJDBECK.lnk.to/tour",
+    media_url: "app/assets/images/seeds/posts/domijd.png",
+    profile: Profile.find_by(username: "DOMiAndJDBECK"),
+    source: "twitter",
+    media_type: 'photo'
+  },
 
-    7/10",
-    media_url: "https://media-cdn.tripadvisor.com/media/photo-s/1a/e7/61/92/20200209-130439-largejpg.jpg",
-    profile: Profile.find_by(username: "BurgerRater"),
+  {
+    caption: "Torments - Out Tomorrow ⛓ Ytb premiere 6Pm ⛓Link in bio.
+    -
+    Pic @greg_evrard
+    -
+    #metalrelease #newmetalsong #newcoreband #belgiummetal #bruxellesmusic #belgianartist #photographer #photographie #localscene #torments #icesealedeyes",
+    media_url: "app/assets/images/seeds/posts/ise_post.jpeg",
+    profile: Profile.find_by(username: "icesealedeyes"),
     source: "instagram",
     media_type: 'photo'
   },
+
   {
-    caption: "This burger literally saved my marraige.  Didn't taste too good though.  3/10",
-    media_url: "https://www.umami.site/wp-content/uploads/2018/10/blended-mushroom-beef-burger-recipe.jpg",
-    profile: Profile.find_by(username: "BurgerRater"),
-    source: "instagram",
+    caption: "🎷🎷🎷",
+    media_url: "app/assets/images/seeds/posts/sego.jpeg",
+    profile: Profile.find_by(username: "UncleSego"),
+    source: "twitter",
     media_type: 'photo'
   },
+
   {
-    caption: "A perfect pot roast.  Look at that.",
-    media_url: "https://therecipecritic.com/wp-content/uploads/2020/09/potroast-500x500.jpg",
-    profile: Profile.find_by(username: "ChefRamsay"),
+    caption: "Toutes ces foutues planètes s’alignent 🙃🙂🙃 Reprise de Vie de Chien de @primerolodc 🫀",
+    media_url: "app/assets/images/seeds/posts/colt.mp4",
+    profile: Profile.find_by(username: "coltleduo"),
     source: "instagram",
-    media_type: 'photo'
+    media_type: 'video'
   },
+
   {
-    caption: "The perfect sushi rolls from gracademy!! Filled with all the good stuff - salmon, avocado and a hearty helping of soy sauce!",
-    media_url: "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-837452_11-fbff219.jpg",
-    profile: Profile.find_by(username: "ChefRamsay"),
-    source: "instagram",
-    media_type: 'photo'
-  },
-  {
-    caption: "CITY OF DREAMS, by Don Winslow: It's a crime classic. Winslow's best book, by far. You won't put it down. I think it's published next month.",
-    media_url: "https://i.harperapps.com/covers/9780062851239/y648.jpg",
-    profile: Profile.find_by(username: "StephenKing"),
-    source: "instagram",
-    media_type: 'photo'
-  },
-  {
-    caption: "THE CURATOR, by Owen King: On sale today. The unabridged audio is read by Marin Ireland. It's a bravura performance.",
-    media_url: "https://is1-ssl.mzstatic.com/image/thumb/Publication112/v4/d6/ca/a3/d6caa3ea-9da8-13b3-cac6-bf6d99b5deae/9781982196820.jpg/1200x630wz.png",
-    profile: Profile.find_by(username: "StephenKing"),
-    source: "instagram",
-    media_type: 'photo'
-  },
-  {
-    caption: "What a fabulous list to be on! it's an honour to be nominated. https://twitter.com/deloftheendless/status/1633396274559844353",
-    media_url: "none",
+    caption: "RT @RandomSandman: Random Sandman #8746.
+    #Sandman #NeilGaiman #Morpheus #Dream #Endless",
+    media_url: "app/assets/images/seeds/posts/neilRT.jpeg",
     profile: Profile.find_by(username: "neilhimself"),
-    source: "twitter"
-  },
-
-  {
-    caption: "Whenever you start to question your own artistic choices, just remember: Picasso drew a butt.",
-    media_url: "https://i.pinimg.com/originals/64/c5/ea/64c5ea82d82f916a9b6b2984961236a7.jpg",
-    profile: Profile.find_by(username: "PatrickRothfuss"),
     source: "twitter",
     media_type: 'photo'
   },
@@ -201,6 +208,13 @@ posts_data = [
     https://twitter.com/PatrickRothfuss/status/1525268593457479681",
     media_url: "none",
     profile: Profile.find_by(username: "PatrickRothfuss"),
+    source: "twitter"
+  },
+
+  {
+    caption: "A fair enough comparison, I warrant. My only hope is  the industrious children of The Mysterious Benedict Society need never face even half the dangers the Baudelaires confronted. I suspect the Benedict Society will have their own unfortunate adventures. Well wishes to all!",
+    media_url: "none",
+    profile: Profile.find_by(username: "lemonysnicket"),
     source: "twitter"
   }
 
@@ -220,8 +234,13 @@ posts_data.each do |post|
     new_post.save
     puts "New post (#{new_post.id}) saved."
     unless new_post.media_url == 'none'
-      new_post.photos.attach(io: URI.open(new_post.media_url), filename: "seed-post-image.png", content_type: "image/png")
-      puts new_post.photos.attached? ? "Image attached" : "Image Failed to attach"
+      if media_type == 'photo'
+        new_post.photos.attach(io: File.open(new_post.media_url), filename: "seed-post-image.png", content_type: "image/png")
+        puts new_post.photos.attached? ? "Image attached" : "Image Failed to attach"
+      elsif new_post.media_type == 'video'
+        new_post.videos.attach(io: File.open(new_post.media_url), filename: "seed-post-video.mp4", content_type: "video/mp4")
+        puts new_post.videos.attached? ? "Video attached" : "Video Failed to attach"
+      end
     end
   else
     puts "Post failed to save for #{post.profile}."
@@ -229,66 +248,14 @@ posts_data.each do |post|
   end
 end
 
-# Creating carousels list
-
-list3 = List.new(
-  user: user,
-  name: "Carousels test"
-)
-
-if list3.valid?
-  list3.save
-  puts "List #{list3.name} saved succesfully."
-else
-  puts "List #{list3.name} failed to save."
-  puts "Errors: #{list3.errors.messages}"
-end
-
-# Creating carousel profiles
-
-carousel_profile_data = [
-  {
-    username: "neilhimself",
-    list: List.find_by(name: "Carousels test"),
-    profile_picture_url: "https://literature.britishcouncil.org/assets/Uploads/writers/_resampled/FillWyI2ODAiLCI2ODAiXQ/Neil-Gaiman-c-Kimberley-Butler-web.jpg",
-    profile_type: "instagram"
-  },
-
-  {
-    username: "aksak.ak",
-    list: List.find_by(name: "Carousels test"),
-    profile_picture_url: "https://scontent-bru2-1.cdninstagram.com/v/t51.2885-19/107264821_581730679204297_2938797758067589536_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=101&_nc_ohc=Dnt5PeCFrLEAX8vSCak&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBzZzGDhZb0G73_dLBHU7tAcgq1YTO7SftDx-jL5UZk4w&oe=6415708B&_nc_sid=8fd12b",
-    profile_type: "instagram"
-  },
-]
-
-carousel_profile_data.each do |profile|
-  new_profile = Profile.new(
-    username: profile[:username],
-    list: profile[:list],
-    profile_pic: profile[:profile_picture_url],
-    profile_type: profile[:profile_type]
-  )
-
-  if new_profile.valid?
-    new_profile.save
-    puts "New profile #{new_profile.username} saved succesfully."
-    new_profile.photo.attach(io: URI.open(new_profile.profile_pic), filename: "seed-content.png", content_type: "image/png")
-    puts new_profile.photo.attached? ? "Profile Pic attached" : "Profile Pic Failed to attach"
-  else
-    puts "Profile #{new_profile.username} failed to save."
-    puts "Errors: #{new_profile.errors.messages}"
-  end
-end
-
-# Carousel 1
+# Creating carousel posts
 
 carousel_data_1 = {
-  caption: "Night sky. The stars were out the night before last, so I improvised a tripod from a tissue box, and took a few pictures. I love this one of the sky and the shadows of the trees.",
-  profile: Profile.find_by(username: "neilhimself"),
+  caption: "Never ending cycle ♻️♻️♻️♻️♻️",
+  profile: Profile.find_by(username: "loumana_"),
   source: "instagram",
   media_type: 'carousel',
-  media_keys: ['photo', 'video']
+  media_keys: ['photo', 'photo', 'video', 'photo']
 }
 
 carousel_1 = Post.new(
@@ -303,8 +270,14 @@ carousel_1 = Post.new(
 if carousel_1.valid?
   carousel_1.save
   puts "New post (#{carousel_1.id}) saved."
-  carousel_1.photos.attach(io: URI.open('https://scontent-bru2-1.cdninstagram.com/v/t51.2885-15/325854201_545110114228565_4686087712766057585_n.webp?stp=dst-jpg_e35&_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=105&_nc_ohc=rbMCUFXiI5QAX-w54oL&edm=ALQROFkBAAAA&ccb=7-5&ig_cache_key=MzAxODg1NDk1MzM4MTU0MTExMg%3D%3D.2-ccb7-5&oh=00_AfCvIo4r2izZfjemskm-DlOECZT7HIaqv2bhLN2u1ZwAEA&oe=641612E6&_nc_sid=30a2ef'), filename: "seed-post-photo.png", content_type: "image/png")
-  carousel_1.videos.attach(io: URI.open('https://scontent-bru2-1.cdninstagram.com/v/t50.2886-16/326455002_1528689777597378_143681180239615834_n.mp4?efg=eyJ2ZW5jb2RlX3RhZyI6InZ0c192b2RfdXJsZ2VuLjQ4MC5jYXJvdXNlbF9pdGVtLmJhc2VsaW5lIiwicWVfZ3JvdXBzIjoiW1wiaWdfd2ViX2RlbGl2ZXJ5X3Z0c19vdGZcIl0ifQ&_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=106&_nc_ohc=7CNPJSEpsEAAX8ubRTu&edm=ALQROFkBAAAA&vs=1479892792537873_744399830&_nc_vs=HBkcFQAYJEdOcE9kUlBDV3lyVFZXNEZBRnBYRjYxRmRmNEJia1lMQUFBRhUAAsgBACgAGAAbAYgHdXNlX29pbAEwFQAAJp6p3JnesuQ%2FFQIoAkMzLBc%2F9MzMzMzMzRgSZGFzaF9iYXNlbGluZV8yX3YxEQB17gcA&ccb=7-5&oh=00_AfC4DQ5_FdKjr4pSeljat8MwxXtmykdIBlngXeonr-Ezdg&oe=6411CA68&_nc_sid=30a2ef'), filename: "seed-post-video.png", content_type: "video/mp4")
+  carousel_1.photos.attach(io: File.open('app/assets/images/seeds/carousel1/loumana1.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+  puts "Carousel photo 1 attached"
+  carousel_1.photos.attach(io: File.open('app/assets/images/seeds/carousel1/loumana2.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+  puts "Carousel photo 2 attached"
+  carousel_1.videos.attach(io: File.open('app/assets/images/seeds/carousel1/loumana3.mp4'), filename: "seed-post-video.png", content_type: "video/mp4")
+  puts "Carousel video 3 attached"
+  carousel_1.photos.attach(io: File.open('app/assets/images/seeds/carousel1/loumana4.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+  puts "Carousel photo 3 attached"
   puts carousel_1.photos.attached? ? "Photo attached" : "Photo Failed to attach"
   puts carousel_1.videos.attached? ? "Video attached" : "Video Failed to attach"
 
@@ -341,15 +314,61 @@ carousel_2 = Post.new(
 if carousel_2.valid?
   carousel_2.save
   puts "New post (#{carousel_2.id}) saved."
-  carousel_2.videos.attach(io: URI.open('https://scontent-bru2-1.cdninstagram.com/v/t50.2886-16/315450558_626917079226911_3234041562241735884_n.mp4?efg=eyJ2ZW5jb2RlX3RhZyI6InZ0c192b2RfdXJsZ2VuLjQ4Mi5jYXJvdXNlbF9pdGVtLmJhc2VsaW5lIiwicWVfZ3JvdXBzIjoiW1wiaWdfd2ViX2RlbGl2ZXJ5X3Z0c19vdGZcIl0ifQ&_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=111&_nc_ohc=qqN2BVeigAgAX9J18If&edm=ALQROFkBAAAA&vs=661440272344554_453028934&_nc_vs=HBksFQAYJEdMNWt6UklmbXNfQkxUb0NBTXljUklxcW5fRXNia1lMQUFBRhUAAsgBABUAGCRHUGh6eXhMZW95ZGlQR1FDQU1oeGdRR1Atd1VNYmtZTEFBQUYVAgLIAQAoABgAGwGIB3VzZV9vaWwBMBUAACaIjYjL7vjOPxUCKAJDMywXQDDVP3ztkWgYEmRhc2hfYmFzZWxpbmVfMl92MREAde4HAA%3D%3D&ccb=7-5&oh=00_AfDfbiM2RATgt8SKP8Tlp2Kt1f2-Hpxx5a0RiIglc8O9JQ&oe=6412066E&_nc_sid=30a2ef'), filename: "seed-post-video.png", content_type: "image/png")
-  carousel_2.photos.attach(io: URI.open('https://scontent-bru2-1.cdninstagram.com/v/t51.2885-15/315066320_173788325273180_5523960232077781542_n.jpg?stp=dst-jpg_e35_s1080x1080&_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=108&_nc_ohc=5dezoTp3qSkAX-i4jgb&edm=ALQROFkBAAAA&ccb=7-5&ig_cache_key=Mjk2OTE1NzgwODYwNzU4MTkxOA%3D%3D.2-ccb7-5&oh=00_AfDb5iggH4LMu4DNEKpumcON7pJT3Xj1tcv662b_wxnVnw&oe=64153E16&_nc_sid=30a2ef'), filename: "seed-post-video.png", content_type: "video/mp4")
-  carousel_2.photos.attach(io: URI.open('https://scontent-bru2-1.cdninstagram.com/v/t51.2885-15/314821835_192839169973395_372215399562011978_n.jpg?stp=dst-jpg_e35&_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=103&_nc_ohc=tRHOOPHzoqYAX_h1fwW&edm=ALQROFkBAAAA&ccb=7-5&ig_cache_key=Mjk2OTE1NzgwODIzMDEwOTM2OA%3D%3D.2-ccb7-5&oh=00_AfAqFatAv0SIq2Vrqx--CJwQi9Dw-vy6eAewjxdLmkRwlw&oe=6414DFA8&_nc_sid=30a2ef'), filename: "seed-post-video.png", content_type: "video/mp4")
+  carousel_2.videos.attach(io: File.open('app/assets/images/seeds/carousel2/aksak.mp4'), filename: "seed-post-video.png", content_type: "video/mp4")
+  carousel_2.photos.attach(io: File.open('app/assets/images/seeds/carousel2/aksak2.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+  carousel_2.photos.attach(io: File.open('app/assets/images/seeds/carousel2/aksak3.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
   puts carousel_2.photos.attached? ? "Photo attached" : "Photo Failed to attach"
   puts carousel_2.videos.attached? ? "Video attached" : "Video Failed to attach"
 
 else
   puts "Post failed to save for #{carousel_2.profile}."
   puts "Errors: #{carousel_2.errors.messages}"
+end
+
+carousel_data_3 = {
+  caption: "tour&🦦things",
+  profile: Profile.find_by(username: "taminoamir"),
+  source: "instagram",
+  media_type: 'carousel',
+  # media_keys: ['video', 'photo', 'video', 'photo', 'photo', 'photo', 'photo', 'video', 'photo', 'photo']
+  media_keys: ['video', 'photo', 'photo', 'photo', 'photo', 'photo', 'photo', 'photo']
+}
+
+carousel_3 = Post.new(
+  caption: carousel_data_3[:caption],
+  timestamp: rand(1600000000..1678447387),
+  source: carousel_data_3[:source],
+  profile: carousel_data_3[:profile],
+  media_type: carousel_data_3[:media_type],
+  media_keys: carousel_data_3[:media_keys]
+)
+
+if carousel_3.valid?
+  carousel_3.save
+  puts "New post (#{carousel_3.id}) saved."
+
+  carousel_3.videos.attach(io: File.open('app/assets/images/seeds/carousel3/tamino1.mp4'), filename: "seed-post-video.png", content_type: "video/mp4")
+
+  carousel_3.photos.attach(io: File.open('app/assets/images/seeds/carousel3/tamino2.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_3.photos.attach(io: File.open('app/assets/images/seeds/carousel3/tamino4.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_3.photos.attach(io: File.open('app/assets/images/seeds/carousel3/tamino5.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_3.photos.attach(io: File.open('app/assets/images/seeds/carousel3/tamino6.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_3.photos.attach(io: File.open('app/assets/images/seeds/carousel3/tamino7.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_3.photos.attach(io: File.open('app/assets/images/seeds/carousel3/tamino9.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_3.photos.attach(io: File.open('app/assets/images/seeds/carousel3/tamino10.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  puts carousel_3.photos.attached? ? "Photo attached" : "Photo Failed to attach"
+  puts carousel_3.videos.attached? ? "Video attached" : "Video Failed to attach"
+
+else
+  puts "Post failed to save for #{carousel_3.profile}."
+  puts "Errors: #{carousel_3.errors.messages}"
 end
 
 puts 'Done :) (special request from damian)'
