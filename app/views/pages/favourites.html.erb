@@ -1,8 +1,36 @@
+    <% if @favourite_posts.empty? %>
+<div class="main-padding d-flex justify-content-center align-items-center pt-5">
+  <div>
+        <h1 class="welcome-message">No <span class="italic-accent underline">favourites</span> yet.</h1>
+        <h2 class="subheader">Scroll through a list & click on the bookmark icon to save it here.</h2>
+  </div>
+</div>
+    <% end %>
+
+
 <div class="main-padding favourite-grid">
+
 
   <% @favourite_posts.each do |post| %>
     <div class="position-relative">
-        <i class="fa-solid fa-trash unfavourite-btn shadowed"></i>
+
+        <%= form_with model: post,
+          data: {
+            save_target: "favouriteForm",
+            posts_target: "favourite",
+            action: "submit->save#savePost",
+            turbo_confirm: "Are you sure you want to delete this post from your favourites?"
+          },
+          class: "unfavourite-btn" do |f| %>
+
+            <%= f.hidden_field :favourite, :value => (post.favourite ? false : true) %>
+            <%= button_tag( :class => "button-save bookmark", data: {save_target: "bookmark"}) do %>
+
+              <i class="fa-solid fa-trash"></i>
+
+
+            <% end %>
+          <% end %>
 
         <%= link_to post_path(post) do %>
             <% if post.photos[0] %>

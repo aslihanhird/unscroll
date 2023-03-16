@@ -7,6 +7,9 @@ import { application } from "./application"
 import AddNewProfileController from "./add_new_profile_controller"
 application.register("add-new-profile", AddNewProfileController)
 
+import AnimationController from "./animation_controller"
+application.register("animation", AnimationController)
+
 import CarouselController from "./carousel_controller"
 application.register("carousel", CarouselController)
 
@@ -18,6 +21,9 @@ application.register("next", NextController)
 
 import PostsController from "./posts_controller"
 application.register("posts", PostsController)
+
+import SaveController from "./save_controller"
+application.register("save", SaveController)
 
 import SavePostController from "./save_post_controller"
 application.register("save-post", SavePostController)

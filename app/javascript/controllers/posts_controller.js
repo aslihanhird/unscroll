@@ -3,10 +3,12 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="posts"
 export default class extends Controller {
 
-  static targets = ["post", "previous", "next", "fullCaption", "progressBar"];
+  static targets = ["post", "previous", "next", "fullCaption", "progressBar", "close", "favourite"];
 
   connect() {
     const allPosts = this.postTargets;
+    const allFavourites = this.favouriteTargets;
+
 
     // Add d-none to every post but the first
     allPosts.slice(1).forEach((post) => {
@@ -15,6 +17,8 @@ export default class extends Controller {
 
     // Give it a displayed class for easier itteration
     allPosts[0].classList.add("displayed");
+    // Give displayed to the first favourite form
+    allFavourites[0].classList.add("displayed");
 
     // Mark first post as read
     let id = allPosts[0].dataset.id
@@ -50,12 +54,17 @@ export default class extends Controller {
     const captions = this.fullCaptionTargets;
 
     captions[this.#getIndex()].classList.remove("d-none");
+
+    this.closeTarget.classList.add("d-none");
   }
 
   closeCaption(event) {
     const captions = this.fullCaptionTargets;
 
     captions[this.#getIndex()].classList.add("d-none");
+
+    this.closeTarget.classList.remove("d-none");
+
   }
 
   swipe(event) {
@@ -122,6 +131,7 @@ export default class extends Controller {
 
   #showNextPost() {
     const allPosts = this.postTargets;
+    const allFavourites = this.favouriteTargets;
     const current_post_index = this.#getIndex();
 
     // If we're at the last post, stop here.
@@ -135,11 +145,14 @@ export default class extends Controller {
     allPosts[current_post_index + 1].classList.remove("d-none");
     allPosts[current_post_index + 1].classList.add("displayed");
 
+
     // Mark post as read
     let id = allPosts[current_post_index + 1].dataset.id
     this.#readPost(id)
     // END
 
+    allFavourites[current_post_index].classList.remove("displayed");
+    allFavourites[current_post_index + 1].classList.add("displayed");
 
     this.#showPreviousButton();
 
@@ -156,6 +169,8 @@ export default class extends Controller {
 
   #showPreviousPost() {
     const allPosts = this.postTargets;
+    const allFavourites = this.favouriteTargets;
+
     const current_post_index = this.#getIndex();
 
     // If we're at the first post, stop here.
@@ -168,6 +183,9 @@ export default class extends Controller {
 
     allPosts[current_post_index - 1].classList.remove("d-none");
     allPosts[current_post_index - 1].classList.add("displayed");
+
+    allFavourites[current_post_index].classList.remove("displayed");
+    allFavourites[current_post_index - 1].classList.add("displayed");
 
     // If we are at the last post and press previous, show the next button again
     if (current_post_index === allPosts.length - 1) {

@@ -1,41 +1,39 @@
-<%= link_to list_path(list), data: {list_target: "main"} do %>
-  <div class="list-item-main <%= "shadowed" if list.new_posts.size > 0 %>">
-    <div class="list-item-name <%= "greyed-out" if list.new_posts.size <= 0 %>">
-      <h4><%= list.name.downcase %></h4>
-    </div>
+<div class="relative-animation">
 
-    <div class="list-item-updates">
+    <%= link_to (list.new_posts.size > 0 ? list_path(list) : edit_list_path(list)),
+        data:
+        {
+          list_target: "main",
+          animation_target: "mainDiv"
+        },
+        class: "animation-main" do %>
+      <div class="list-item-main <%= "shadowed" if list.new_posts.size > 0 %>">
+        <div class="list-item-name <%= "greyed-out" if list.new_posts.size <= 0 %>">
+          <h4><%= list.name.downcase %></h4>
+        </div>
+
+        <div class="list-item-updates">
+              <% if list.new_posts.size > 0 %>
+                <%= list.new_posts.size %> updates
+              <% elsif list.profiles.size == 0 %>
+                no profiles
+              <% else %>
+                up to date
+              <% end %>
+        </div>
+
+        <div class="list-item-icon">
           <% if list.new_posts.size > 0 %>
-            <%= list.new_posts.size %> updates
+            <i class="fa-solid fa-arrow-right-long"></i>
           <% elsif list.profiles.size == 0 %>
-            no profiles
+            <i class="fa-solid fa-triangle-exclamation light-red"></i>
           <% else %>
-            up to date
+            <i class="fa-solid fa-check light-green"></i>
           <% end %>
-    </div>
-
-    <div class="list-item-icon">
-      <% if list.new_posts.size > 0 %>
-        <i class="fa-solid fa-arrow-right-long"></i>
-      <% elsif list.profiles.size == 0 %>
-        <i class="fa-solid fa-triangle-exclamation light-red"></i>
-      <% else %>
-        <i class="fa-solid fa-check light-green"></i>
-      <% end %>
-    </div>
-  </div>
-<% end %>
-
-<div class="list-item-options shadowed d-none" data-list-target="options">
-  <div class="list-edit">
-    <%= link_to edit_list_path(list) do %>
-      <i class="fa-solid fa-pen"></i>edit list
+        </div>
+      </div>
     <% end %>
-    <%= link_to "refresh", refresh_list_path(list) %>
-  </div>
-  <div class="list-delete">
-    <%= link_to list_path(list), data: {turbo_method: "delete", turbo_confirm: "Do you really want to delete this list?"} do %>
-      <i class="fa-regular fa-trash-can"></i>delete list
-    <% end %>
-  </div>
+
+    <%= render "options", list: list %>
+
 </div>

@@ -80,14 +80,9 @@ export default class extends Controller {
           const verticalDifference = startY - endY;
           const horizontalDifference = startX - endX;
 
-          console.log("vertical diff:", verticalDifference);
-          console.log("horizontal diff:", horizontalDifference);
-
           // If the movement is horizontal, execute this
           // and if the swipe was faster than 300 ms
           if (Math.abs(verticalDifference) < Math.abs(horizontalDifference) && timeDiff < 300) {
-
-            console.log("Valid swipe");
 
             // If the movement is up and the distance is over 400
             if (horizontalDifference > 0 && Math.abs(horizontalDifference) > 200) {

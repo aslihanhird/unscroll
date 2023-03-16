@@ -1,3 +1,4 @@
+
 <div class="single-post-wrapper small-padding" data-posts-target="post" data-action="touchstart->posts#swipe" data-id=<%= post.id %>>
 
   <div class="post-card">
@@ -11,7 +12,7 @@
           <p><%= post.profile.username %></p>
       </div>
 
-      <div class="user-actions">
+      <div class="user-actions" data-controller="save">
 
         <% if post.source == "instagram" %>
           <i class="fa-brands fa-instagram"></i>
@@ -19,11 +20,9 @@
           <i class="fa-brands fa-twitter"></i>
         <% end %>
 
-        <% if post.favourite %>
-          <i class="fa-solid fa-bookmark"></i>
-        <% else %>
-          <i class="fa-regular fa-bookmark"></i>
-        <% end %>
+
+        <%= render "shared/save", post: post %>
+
       </div>
 
     </div>
