@@ -51,13 +51,54 @@ else
   puts "Errors: #{list2.errors.messages}"
 end
 
+list3 = List.new(
+  user: user,
+  name: "Visuals"
+)
+
+if list3.valid?
+  list3.save
+  puts "List #{list3.name} saved succesfully."
+else
+  puts "List #{list3.name} failed to save."
+  puts "Errors: #{list3.errors.messages}"
+end
+
 # Creating Music profiles
 profile_data = [
+  {
+    username: "yaqine.raw",
+    list: List.find_by(name: "Visuals"),
+    profile_picture_url: "app/assets/images/seeds/profiles/yaq.jpeg",
+    profile_type: "instagram"
+  },
+
+  {
+    username: "charlotteabramow",
+    list: List.find_by(name: "Visuals"),
+    profile_picture_url: "app/assets/images/seeds/profiles/char.jpeg",
+    profile_type: "instagram"
+  },
+
+  {
+    username: "dannycoleee",
+    list: List.find_by(name: "Visuals"),
+    profile_picture_url: "app/assets/images/seeds/profiles/danny.jpeg",
+    profile_type: "instagram"
+  },
+
   {
     username: "DOMiAndJDBECK",
     list: List.find_by(name: "Music"),
     profile_picture_url: "app/assets/images/seeds/profiles/DomiJDBeck.png",
     profile_type: "twitter"
+  },
+
+  {
+    username: "lousandtheyakuza",
+    list: List.find_by(name: "Music"),
+    profile_picture_url: "app/assets/images/seeds/profiles/lous.jpeg",
+    profile_type: "instagram"
   },
 
   {
@@ -206,6 +247,14 @@ posts_data = [
     Sharing to show that simply being open about your struggle can sometimes be enough to help another person:
 
     https://twitter.com/PatrickRothfuss/status/1525268593457479681",
+    media_url: "app/assets/images/seeds/posts/pat2.jpeg",
+    profile: Profile.find_by(username: "PatrickRothfuss"),
+    source: "twitter",
+    media_type: 'photo'
+  },
+
+  {
+    caption: "Whenever you start to question your own artistic choices, just remember: Picasso drew a butt.",
     media_url: "none",
     profile: Profile.find_by(username: "PatrickRothfuss"),
     source: "twitter"
@@ -216,6 +265,14 @@ posts_data = [
     media_url: "none",
     profile: Profile.find_by(username: "lemonysnicket"),
     source: "twitter"
+  },
+
+  {
+    caption: "Ma grand-mère, la plus belle des hortensias 🤍🎞 #96yo #lesoldelavie",
+    media_url: "app/assets/images/seeds/posts/char1.jpeg",
+    profile: Profile.find_by(username: "charlotteabramow"),
+    source: "instagram",
+    media_type: 'photo'
   }
 
 ]
@@ -369,6 +426,126 @@ if carousel_3.valid?
 else
   puts "Post failed to save for #{carousel_3.profile}."
   puts "Errors: #{carousel_3.errors.messages}"
+end
+
+carousel_data_4 = {
+  caption: "Je l’ai vu dans tes yeux depuis longtemps.. 🎶🎵Merciiii @dinospichichi pour l’invitationnnnnn t’es le meilleur 🌸💞
+  📸 @74pixel 📸 @charlottefautrat",
+  profile: Profile.find_by(username: "lousandtheyakuza"),
+  source: "instagram",
+  media_type: 'carousel',
+  media_keys: ['photo', 'photo', 'photo', 'photo', 'photo', 'photo', 'photo']
+}
+
+carousel_4 = Post.new(
+  caption: carousel_data_4[:caption],
+  timestamp: rand(1600000000..1678447387),
+  source: carousel_data_4[:source],
+  profile: carousel_data_4[:profile],
+  media_type: carousel_data_4[:media_type],
+  media_keys: carousel_data_4[:media_keys]
+)
+
+if carousel_4.valid?
+  carousel_4.save
+  puts "New post (#{carousel_4.id}) saved."
+
+  carousel_4.photos.attach(io: File.open('app/assets/images/seeds/carousel4/lous1.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_4.photos.attach(io: File.open('app/assets/images/seeds/carousel4/lous2.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_4.photos.attach(io: File.open('app/assets/images/seeds/carousel4/lous3.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_4.photos.attach(io: File.open('app/assets/images/seeds/carousel4/lous4.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_4.photos.attach(io: File.open('app/assets/images/seeds/carousel4/lous5.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_4.photos.attach(io: File.open('app/assets/images/seeds/carousel4/lous6.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_4.photos.attach(io: File.open('app/assets/images/seeds/carousel4/lous7.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  puts carousel_4.photos.attached? ? "Photo attached" : "Photo Failed to attach"
+
+else
+  puts "Post failed to save for #{carousel_4.profile}."
+  puts "Errors: #{carousel_4.errors.messages}"
+end
+
+carousel_data_5 = {
+  caption: "CROWD
+  took a painting of a crowd of creatures in many colors
+  and used code to make infinite colorways of it
+  they are available to purchase as digital artworks for 24 hours on opensea.io
+  (or free to look at 🙂)",
+  profile: Profile.find_by(username: "dannycoleee"),
+  source: "instagram",
+  media_type: 'carousel',
+  media_keys: ['photo', 'photo', 'photo']
+}
+
+carousel_5 = Post.new(
+  caption: carousel_data_5[:caption],
+  timestamp: rand(1600000000..1678447387),
+  source: carousel_data_5[:source],
+  profile: carousel_data_5[:profile],
+  media_type: carousel_data_5[:media_type],
+  media_keys: carousel_data_5[:media_keys]
+)
+
+if carousel_5.valid?
+  carousel_5.save
+  puts "New post (#{carousel_5.id}) saved."
+
+  carousel_5.photos.attach(io: File.open('app/assets/images/seeds/carousel5/danny1.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_5.photos.attach(io: File.open('app/assets/images/seeds/carousel5/danny2.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_5.photos.attach(io: File.open('app/assets/images/seeds/carousel5/danny3.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  puts carousel_5.photos.attached? ? "Photo attached" : "Photo Failed to attach"
+
+else
+  puts "Post failed to save for #{carousel_5.profile}."
+  puts "Errors: #{carousel_5.errors.messages}"
+end
+
+carousel_data_6 = {
+  caption: "Collab between @pomkoo, me and the beloved artists being themselfs in front of my lens.
+  Thankyou
+
+  [Selected photos of a series]
+
+  Illustrations @pomkoo
+
+  @trix_online",
+  profile: Profile.find_by(username: "yaqine.raw"),
+  source: "instagram",
+  media_type: 'carousel',
+  media_keys: ['photo', 'photo']
+}
+
+carousel_6 = Post.new(
+  caption: carousel_data_6[:caption],
+  timestamp: rand(1600000000..1678447387),
+  source: carousel_data_6[:source],
+  profile: carousel_data_6[:profile],
+  media_type: carousel_data_6[:media_type],
+  media_keys: carousel_data_6[:media_keys]
+)
+
+if carousel_6.valid?
+  carousel_6.save
+  puts "New post (#{carousel_6.id}) saved."
+
+  carousel_6.photos.attach(io: File.open('app/assets/images/seeds/carousel6/yaq1.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  carousel_6.photos.attach(io: File.open('app/assets/images/seeds/carousel6/yaq2.jpeg'), filename: "seed-post-photo.png", content_type: "image/png")
+
+  puts carousel_6.photos.attached? ? "Photo attached" : "Photo Failed to attach"
+
+else
+  puts "Post failed to save for #{carousel_6.profile}."
+  puts "Errors: #{carousel_6.errors.messages}"
 end
 
 puts 'Done :) (special request from damian)'
