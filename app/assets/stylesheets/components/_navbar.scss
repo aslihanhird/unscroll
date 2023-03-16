@@ -12,6 +12,10 @@
 
 .navbar-icon {
   color: white;
+  transition: 1s;
+  &:hover {
+    color: $primary-color;
+  }
 }
 
 

@@ -15,11 +15,24 @@
 .unscroll-btn-primary {
   background-color: $primary-color;
   color: var(--light);
+  transition: 1s;
+
+  &:hover {
+    color: var(--light);
+    opacity: .8;
+  }
 }
 
 .unscroll-btn-ghost {
   border: 1px solid $primary-color;
   color: $primary-color;
+
+  &:hover {
+    color: $primary-color;
+    opacity: .8;
+    transition: 1s;
+
+  }
 }
 
 .fixed-bottom-right {
