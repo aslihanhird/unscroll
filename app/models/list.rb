@@ -7,17 +7,6 @@ class List < ApplicationRecord
 
   validates :name, presence: true
 
-  def allRead?
-    # If the list has profiles
-
-
-    # And the list has posts
-
-    # And all the posts are favourited (= there are no more posts to see)
-
-
-  end
-
   def new_posts
     posts = []
     profiles.each do |profile|
