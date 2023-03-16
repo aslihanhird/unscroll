@@ -1,6 +1,13 @@
 require "open-uri"
 
 class PostsController < ApplicationController
+  before_action :find_post
+
+
+  def read
+    @post.read = true
+    @post.save
+  end
 
   def update
     @post = Post.find(params[:id])
@@ -10,20 +17,14 @@ class PostsController < ApplicationController
     end
 
     redirect_to favourites_path if request.referrer.match(/.*\/favourites\/?$/)
-
-
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   private
 
-  def call_successful?(response)
-    errors = ["error", "fail"]
-    return false if errors.include?(response['status'])
-
-    true
+  def find_post
+    @post = Post.find(params[:id])
   end
 end

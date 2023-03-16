@@ -6,7 +6,6 @@ export default class extends Controller {
   static targets = ["post", "previous", "next", "fullCaption", "progressBar", "close", "favourite"];
 
   connect() {
-
     const allPosts = this.postTargets;
     const allFavourites = this.favouriteTargets;
 
@@ -20,6 +19,10 @@ export default class extends Controller {
     allPosts[0].classList.add("displayed");
     // Give displayed to the first favourite form
     allFavourites[0].classList.add("displayed");
+
+    // Mark first post as read
+    let id = allPosts[0].dataset.id
+    this.#readPost(id)
 
     // Don't display the previous arrow
     this.#hidePreviousButton();
@@ -142,6 +145,12 @@ export default class extends Controller {
     allPosts[current_post_index + 1].classList.remove("d-none");
     allPosts[current_post_index + 1].classList.add("displayed");
 
+
+    // Mark post as read
+    let id = allPosts[current_post_index + 1].dataset.id
+    this.#readPost(id)
+    // END
+
     allFavourites[current_post_index].classList.remove("displayed");
     allFavourites[current_post_index + 1].classList.add("displayed");
 
@@ -216,5 +225,17 @@ export default class extends Controller {
     if (increaseValue + valueProgress === 100) {
       progress.style.backgroundColor = "#B5F1CC"
     }
+  }
+
+  #readPost(id) {
+    // Token manually assigned for authentication
+    const csrfToken = document.querySelector("[name='csrf-token']")
+    let url = `/posts/${id}/read`
+    fetch(url, {
+      method: 'PATCH',
+      headers: {
+        "X-CSRF-Token": csrfToken.content,
+      }
+    })
   }
 }
