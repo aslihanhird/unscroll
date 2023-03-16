@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   resources :profiles, only: :destroy
 
-  resources :posts, only: %i[create show]
+  resources :posts, only: %i[create show update]
   patch "posts/:id/read", to: "posts#read"
 
   get "/user_profile", to: "pages#profile"
