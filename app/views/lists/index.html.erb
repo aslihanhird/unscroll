@@ -3,8 +3,12 @@
   <h2 class="subheader">Let's get you up to date with your social media.</h2>
 
   <% if @lists.size > 0 %>
-    <h3 class="your-lists">Your lists</h3>
-
+    <div class="d-flex justify-content-between mt-5">
+      <h3>Your lists</h3>
+      <%= link_to new_list_path, class: "primary-color" do %>
+          <i class="fa-solid fa-plus"></i> create new list
+      <% end %>
+      </div>
     <div class="lists-wrapper mb-5">
       <% @lists.each do |list| %>
         <%= render "shared/single_list", list: list %>
@@ -21,10 +25,11 @@
     <h3 class="no-lists-info">
     You have no lists yet. How about you <span class="italic-accent underline"><%= link_to "create one", new_list_path %></span>?</h3>
 
+    <%= link_to new_list_path, class: "unscroll-btn unscroll-btn-primary mt-5" do %>
+        create new list
+    <% end %>
+
 
   <% end %>
 
-  <%= link_to new_list_path, class: "unscroll-btn-sm unscroll-btn-primary fixed-bottom-right" do %>
-      create new list
-  <% end %>
 </div>
