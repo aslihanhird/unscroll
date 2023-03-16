@@ -145,7 +145,6 @@ export default class extends Controller {
     allPosts[current_post_index + 1].classList.remove("d-none");
     allPosts[current_post_index + 1].classList.add("displayed");
 
-
     // Mark post as read
     let id = allPosts[current_post_index + 1].dataset.id
     this.#readPost(id)
@@ -162,8 +161,6 @@ export default class extends Controller {
 
     // Progress bar
     this.#updateProgressBar(current_post_index);
-
-
 
   }
 

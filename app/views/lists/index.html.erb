@@ -9,6 +9,10 @@
       <% @lists.each do |list| %>
         <%= render "shared/single_list", list: list %>
       <% end %>
+
+      <% if @lists.size >= 5 %>
+        <div class="big-spacer"></div>
+      <% end %>
     </div>
   <% else %>
     <div class="divider">

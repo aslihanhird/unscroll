@@ -17,8 +17,8 @@ class ProfilesController < ApplicationController
     source = params[:source]
     username = profile_params[:username]
     NewProfileJob.perform_later(source, username, @list)
+    redirect_to list_profile_added_path(@list), flash: {username: username}
     flash[:notice] = "Adding #{username} to your list..."
-    redirect_to root_path
   end
 
   def destroy

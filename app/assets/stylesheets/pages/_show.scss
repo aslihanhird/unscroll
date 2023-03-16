@@ -104,6 +104,9 @@
   height: 100vh;
   background-color: white;
   transition: 1s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .progress-bar-wrapper {
