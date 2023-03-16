@@ -46,9 +46,21 @@ body {
   background-color: $twitter-blue;
 }
 
+.twitter-blue-font {
+  color: $twitter-blue;
+}
+
 .hyphens {
   hyphens: auto;
   overflow-wrap:break-word;
+
+  background-color: white;
+  padding: .75em;
+
+  margin-top: 1em;
+  box-shadow: rgba(0, 0, 0, 0.8), 0px 1px 6px;
+
+  border-radius: 3px;
 }
 
 .big-spacer {
