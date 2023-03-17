@@ -5,6 +5,7 @@
     <meta name="description" content="<%= meta_description %>">
     <%= favicon_link_tag "favicon.png", rel: "icon", type: "image/png" %>
 
+
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>">
     <meta property="og:type" content="website">
@@ -25,7 +26,13 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+
+    <%# Darkmode base on cookies %>
+    <% if cookies[:moon] %>
+      <%= stylesheet_link_tag 'darkmode', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% end %>
+
   </head>
 
   <body data-controller="add-new-profile" data-target="pagebody">
